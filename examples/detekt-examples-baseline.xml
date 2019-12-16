@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <Blacklist></Blacklist>
+  <Whitelist>
+    <ID>MaxLineLength:PipelineDslConfiguration.kt$echo("Hello, I am a stage and I am running on '${"NODE_NAME".environmentVar()}', which I have inherited from the parent context")</ID>
+    <ID>MayBeConst:GradleBuildWithParallelValidation.kt$val gradleArgs = "-DmyArg=myArgValue"</ID>
+  </Whitelist>
+</SmellBaseline>

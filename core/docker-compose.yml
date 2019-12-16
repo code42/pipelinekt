@@ -1,0 +1,23 @@
+version: '2'
+services:
+  jenkins:
+    image: jenkins/jenkins:latest
+    container_name: jenkins
+    user: jenkins
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      JENKINS_HOST_HOME: "/data/jenkins"
+    ports:
+      - "8080:8080"
+      - "5000:5000"
+      - "50000:50000"
+  nexus:
+    image: sonatype/nexus:oss
+    volumes:
+      - "nexus-data:/sonatype-work"
+    ports:
+    - "8081:8081"
+volumes:
+  nexus-data: {}

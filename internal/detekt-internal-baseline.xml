@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <Blacklist></Blacklist>
+  <Whitelist>
+    <ID>MatchingDeclarationName:GrovyScriptTest.kt$GroovyScriptTest</ID>
+    <ID>MaxLineLength:ArchiveArtifacts.kt$ArchiveArtifacts$data</ID>
+    <ID>MaxLineLength:Bat.kt$Bat$data</ID>
+    <ID>MaxLineLength:BooleanParam.kt$BooleanParam$writer.writeln("booleanParam(defaultValue: $defaultValue, description: ${description.toGroovy()}, name: ${name.toGroovy()})")</ID>
+    <ID>MaxLineLength:BuildTest.kt$BuildTest$"${writer.indentStr}${writer.indentStr}[\$class: 'hudson.model.StringParameterValue', name: 'BRANCH_NAME', value: env.GIT_BRANCH]],\n"</ID>
+    <ID>MaxLineLength:BuildTest.kt$BuildTest$"${writer.indentStr}${writer.indentStr}[\$class: 'hudson.model.StringParameterValue', name: 'EXT_BUILD_NUMBER', value: env.EXT_BUILD_NUMBER],\n"</ID>
+    <ID>MaxLineLength:BuildTest.kt$BuildTest$"${writer.indentStr}parameters: [[\$class: 'hudson.model.StringParameterValue', name: 'COMMIT_HASH', value: env.GIT_COMMIT],\n"</ID>
+    <ID>MaxLineLength:BuildTest.kt$BuildTest$"${writer.indentStr}parameters: [[\$class: 'hudson.model.StringParameterValue', name: 'COMMIT_HASH', value: env.GIT_COMMIT]],\n"</ID>
+    <ID>MaxLineLength:BuildTest.kt$BuildTest$Build</ID>
+    <ID>MaxLineLength:BuildTest.kt$BuildTest$Build("my_downstream_job".strDouble(), listOf(StringBuildParameterValue("COMMIT_HASH".strSingle(), "GIT_COMMIT".environmentVar())), true.boolVar()).toGroovy(writer)</ID>
+    <ID>MaxLineLength:BuildTest.kt$BuildTest$StringBuildParameterValue("BRANCH_NAME".strSingle(), "GIT_BRANCH".environmentVar())</ID>
+    <ID>MaxLineLength:ChangeRequest.kt$ChangeRequest.AuthorDisplayName$data</ID>
+    <ID>MaxLineLength:ClosureInvocation.kt$ClosureInvocation$data</ID>
+    <ID>MaxLineLength:EmailExtTest.kt$EmailExtTest$EmailExt("Very important".strDouble(), "Just kidding. Not important".strDouble(), "Bob".strDouble(), null).toGroovy(writer)</ID>
+    <ID>MaxLineLength:EmailExtTest.kt$EmailExtTest$EmailExt("Very important".strDouble(), "Just kidding. Not important".strDouble(), "Bob".strDouble(), recipients).toGroovy(writer)</ID>
+    <ID>MaxLineLength:EmailExtTest.kt$EmailExtTest$EmailExt("Very important".strDouble(), "Just kidding. Not important".strDouble(), null, recipients).toGroovy(writer)</ID>
+    <ID>MaxLineLength:EmailExtTest.kt$EmailExtTest$val expected = "emailext (\n\tsubject: \"Very important\",\n\tbody: \"Just kidding. Not important\",\n\trecipientProviders: [[\$class: 'CulpritsRecipientProvider'],[\$class: 'DevelopersRecipientProvider'],[\$class: 'RequesterRecipientProvider']]\n)\n".multline()</ID>
+    <ID>MaxLineLength:EmailExtTest.kt$EmailExtTest$val expected = "emailext (\n\tsubject: \"Very important\",\n\tbody: \"Just kidding. Not important\",\n\tto: \"Bob\",\n\trecipientProviders: [[\$class: 'CulpritsRecipientProvider'],[\$class: 'DevelopersRecipientProvider'],[\$class: 'RequesterRecipientProvider']]\n)\n".multline()</ID>
+    <ID>MaxLineLength:EmailExtTest.kt$EmailExtTest$val expected = "emailext (\n\tsubject: \"Very important\",\n\tbody: \"Just kidding. Not important\",\n\tto: \"Bob\"\n)\n".multline()</ID>
+    <ID>MaxLineLength:EmailExtTest.kt$EmailExtTest$val recipients = listOf&lt;RecipientProvider&gt;(RecipientProvider.Culprits, RecipientProvider.Devlopers, RecipientProvider.Requester)</ID>
+    <ID>MaxLineLength:IfTest.kt$IfTest$BooleanStatement.BinaryOperator.Equals(BooleanStatement.Variable(val1), BooleanStatement.Variable(val2))</ID>
+    <ID>MaxLineLength:IfTest.kt$IfTest$val statement = BooleanStatement.BinaryOperator.Equals(BooleanStatement.Variable(val1), BooleanStatement.Variable(val2))</ID>
+    <ID>MaxLineLength:InfluxDbPublisher.kt$InfluxDbPublisher$indentedWriter.writeln("customDataMapTags: ${groovyStringForNestedMap(customDataMapTags, writer.indentStr)}")</ID>
+    <ID>MaxLineLength:InfluxDbPublisherTest.kt$InfluxDbPublisherTest$val customData = mapOf("myField" to "env_var".environmentVar(), "myParam" to "parameter".parameter(), "constant" to "str".strSingle())</ID>
+    <ID>MaxLineLength:InfluxDbPublisherTest.kt$InfluxDbPublisherTest$val customTags = mapOf("myTag" to "customTag".strSingle(), "interpolated" to "${"my_env".environmentVar()}".strDouble())</ID>
+    <ID>MaxLineLength:Password.kt$Password$writer.writeln("password(defaultValue: ${defaultValue.toGroovy()}, description: ${description.toGroovy()}, name: ${name.toGroovy()})")</ID>
+    <ID>MaxLineLength:PublishHtmlStepTest.kt$PublishHtmlStepTest$PublishHtml("reportsDirectory".strDouble(), "reportFiles".strDouble(), "reportName".strDouble()).toGroovy(writer)</ID>
+    <ID>MaxLineLength:RTDownloadTest.kt$RTDownloadTest$RTDownload("-123456789".strDouble(), "SOME_BUILD_NAME".strDouble(), "12".strDouble(), false.boolVar(), filesSpec, "SOME_SPEC_PATH".strDouble()).toGroovy(writer)</ID>
+    <ID>MaxLineLength:RTDownloadTest.kt$RTDownloadTest$RTDownload("-123456789".strDouble(), "SOME_BUILD_NAME".strDouble(), null, false.boolVar(), null, "SOME_SPEC_PATH".strDouble()).toGroovy(writer)</ID>
+    <ID>MaxLineLength:RTUploadTest.kt$RTUploadTest$RTUpload("-123456789".strDouble(), "SOME_BUILD_NAME".strDouble(), "12".strDouble(), false.boolVar(), filesSpec, "SOME_SPEC_PATH".strDouble()).toGroovy(writer)</ID>
+    <ID>MaxLineLength:RTUploadTest.kt$RTUploadTest$RTUpload("-123456789".strDouble(), "SOME_BUILD_NAME".strDouble(), null, false.boolVar(), null, "SOME_SPEC_PATH".strDouble()).toGroovy(writer)</ID>
+    <ID>MaxLineLength:RecordIssues.kt$RecordIssues$data</ID>
+    <ID>MaxLineLength:RecordIssues.kt$RecordIssues$writer.writeln("recordIssues enabledForFailure: true, aggregatingResults: ${aggregatingResults.toGroovy()}, tool: ${tool.toGroovy()}")</ID>
+    <ID>MaxLineLength:RecordIssuesTest.kt$RecordIssuesTest$val expected = "recordIssues enabledForFailure: true, aggregateResults: true, tool: checkStyle(pattern: ${pattern.toGroovy()}, id: ${id.toGroovy()}, name: ${name.toGroovy()})"</ID>
+    <ID>MaxLineLength:RecordIssuesTest.kt$RecordIssuesTest$val expected = "recordIssues enabledForFailure: true, aggregateResults: true, tool: spotbugs(pattern: ${pattern.toGroovy()}, id: ${id.toGroovy()}, name: ${name.toGroovy()})"</ID>
+    <ID>MaxLineLength:Sh.kt$Sh$data</ID>
+    <ID>MaxLineLength:SshAgent.kt$SshAgent$data</ID>
+    <ID>MaxLineLength:SshAgent.kt$SshAgent$writer.closure("sshagent(credentials: [${credentials.map { it.toGroovy() }.joinToString(",")}]${ignoreMissing?.let { ", ignoreMissing: ${it.toGroovy()}"} ?: ""})", steps::toGroovy)</ID>
+    <ID>MaxLineLength:StringParam.kt$StringParam$writer.writeln("string(defaultValue: ${defaultValue.toGroovy()}, description: ${description.toGroovy()}, name: ${name.toGroovy()})")</ID>
+    <ID>MaxLineLength:Text.kt$Text$writer.writeln("text(defaultValue: ${defaultValue.toGroovy()}, description: ${description.toGroovy()}, name: ${name.toGroovy()})")</ID>
+    <ID>MaxLineLength:WithCredentials.kt$WithCredentials$data</ID>
+    <ID>MaxLineLength:WithCredentials.kt$WithCredentials$writer.closure(listOf("withCredentials([[") + credentials.toGroovy().map { "${writer.indentStr}$it" } + "]])", steps::toGroovy)</ID>
+    <ID>UnnecessaryAbstractClass:GrovyScriptTest.kt$GroovyScriptTest</ID>
+  </Whitelist>
+</SmellBaseline>
