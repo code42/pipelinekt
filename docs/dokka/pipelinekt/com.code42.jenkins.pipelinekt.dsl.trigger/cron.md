@@ -1,0 +1,6 @@
+[pipelinekt](../index.md) / [com.code42.jenkins.pipelinekt.dsl.trigger](index.md) / [cron](./cron.md)
+
+# cron
+
+`fun `[`DslContext`](../com.code42.jenkins.pipelinekt.dsl/-dsl-context/index.md)`<`[`Trigger`](../com.code42.jenkins.pipelinekt.core/-trigger.md)`>.cron(pollInterval: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)` = "H * * * *"): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/trigger/TriggerDsl.kt#L19)
+`fun `[`DslContext`](../com.code42.jenkins.pipelinekt.dsl/-dsl-context/index.md)`<`[`Trigger`](../com.code42.jenkins.pipelinekt.core/-trigger.md)`>.cron(pollInterval: Str = "H * * * *".strSingle()): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/trigger/TriggerDsl.kt#L23)

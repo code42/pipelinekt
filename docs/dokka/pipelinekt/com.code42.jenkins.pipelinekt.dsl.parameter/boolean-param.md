@@ -1,0 +1,6 @@
+[pipelinekt](../index.md) / [com.code42.jenkins.pipelinekt.dsl.parameter](index.md) / [booleanParam](./boolean-param.md)
+
+# booleanParam
+
+`fun `[`DslContext`](../com.code42.jenkins.pipelinekt.dsl/-dsl-context/index.md)`<`[`Parameter`](../com.code42.jenkins.pipelinekt.core/-parameter/index.md)`>.booleanParam(name: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, defaultValue: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)`, description: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/parameter/ParameterDsl.kt#L37)
+`fun `[`DslContext`](../com.code42.jenkins.pipelinekt.dsl/-dsl-context/index.md)`<`[`Parameter`](../com.code42.jenkins.pipelinekt.core/-parameter/index.md)`>.booleanParam(name: Str, defaultValue: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)`, description: Str): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/parameter/ParameterDsl.kt#L41)

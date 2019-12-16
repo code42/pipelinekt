@@ -1,0 +1,31 @@
+def Build() {
+  bat (script: "echo 'Hello, World'", returnStdout: false)
+}
+pipeline {
+  agent {
+    label "windows"
+  }
+  options {
+    buildDiscarder(logRotator(
+      numToKeepStr: "10",
+      daysToKeepStr: "10",
+      artifactNumToKeepStr: "10",
+      artifactDaysToKeepStr: "10"
+    ))
+    ansiColor("xterm")
+    timestamps()
+    disableConcurrentBuilds()
+  }
+  stages {
+    stage("Build") {
+      steps {
+        Build()
+      }
+    }
+  }
+  post {
+    cleanup {
+      cleanWs()
+    }
+  }
+}

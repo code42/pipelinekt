@@ -1,0 +1,14 @@
+.gradle/
+.idea/
+*.ipr
+*.iml
+build/
+out/
+core/build/
+core/out/
+dsl/build/
+dsl/out
+examples/build/
+examples/out/
+internal/build/
+interna/out

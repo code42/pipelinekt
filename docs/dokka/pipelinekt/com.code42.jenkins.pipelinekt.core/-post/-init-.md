@@ -1,0 +1,5 @@
+[pipelinekt](../../index.md) / [com.code42.jenkins.pipelinekt.core](../index.md) / [Post](index.md) / [&lt;init&gt;](./-init-.md)
+
+# &lt;init&gt;
+
+`Post(always: `[`Step`](../../com.code42.jenkins.pipelinekt.core.step/-step/index.md)` = Void, success: `[`Step`](../../com.code42.jenkins.pipelinekt.core.step/-step/index.md)` = Void, cleanup: `[`Step`](../../com.code42.jenkins.pipelinekt.core.step/-step/index.md)` = Void, changed: `[`Step`](../../com.code42.jenkins.pipelinekt.core.step/-step/index.md)` = Void, fixed: `[`Step`](../../com.code42.jenkins.pipelinekt.core.step/-step/index.md)` = Void, regression: `[`Step`](../../com.code42.jenkins.pipelinekt.core.step/-step/index.md)` = Void, aborted: `[`Step`](../../com.code42.jenkins.pipelinekt.core.step/-step/index.md)` = Void, unsuccessful: `[`Step`](../../com.code42.jenkins.pipelinekt.core.step/-step/index.md)` = Void, unstable: `[`Step`](../../com.code42.jenkins.pipelinekt.core.step/-step/index.md)` = Void, failure: `[`Step`](../../com.code42.jenkins.pipelinekt.core.step/-step/index.md)` = Void)`

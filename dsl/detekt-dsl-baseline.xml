@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <Blacklist></Blacklist>
+  <Whitelist>
+    <ID>ClassNaming:DockerDsl.kt$docker$docker</ID>
+    <ID>FunctionParameterNaming:BooleanStatementDsl.kt$`else`: DslContext&lt;Step&gt;.() -&gt; Unit = { Void }</ID>
+    <ID>LongParameterList:AgentContext.kt$( filename: String, dir: String? = null, additionalBuildArgs: String? = null, args: String? = null, label: String? = null, customWorkspace: String? = null, registryUrl: String? = null, registryCredentialsId: String? = null, reuseNode: Boolean? = null )</ID>
+    <ID>LongParameterList:AgentContext.kt$( filename: Var.Literal.Str, dir: Var.Literal.Str? = null, additionalBuildArgs: Var.Literal.Str? = null, args: Var.Literal.Str? = null, label: Var.Literal.Str? = null, customWorkspace: Var.Literal.Str? = null, registryUrl: Var.Literal.Str? = null, registryCredentialsId: Var.Literal.Str? = null, reuseNode: Var.Literal.Bool? = null )</ID>
+    <ID>LongParameterList:AgentContext.kt$( image: String, args: String? = null, label: String? = null, customWorkspace: String? = null, registryUrl: String? = null, registryCredentialsId: String? = null, reuseNode: Boolean? = null )</ID>
+    <ID>LongParameterList:AgentContext.kt$( image: Var.Literal.Str, args: Var.Literal.Str? = null, label: Var.Literal.Str? = null, customWorkspace: Var.Literal.Str? = null, registryUrl: Var.Literal.Str? = null, registryCredentialsId: Var.Literal.Str? = null, reuseNode: Var.Literal.Bool? = null )</ID>
+    <ID>LongParameterList:PublishHtmlDsl.kt$( reportDir: String, reportFiles: String, reportName: String, allowMissing: Boolean = true, alwaysLinkToLastBuild: Boolean = true, keepAll: Boolean = true )</ID>
+    <ID>LongParameterList:PublishHtmlDsl.kt$( reportDir: Var.Literal.Str, reportFiles: Var.Literal.Str, reportName: Var.Literal.Str, allowMissing: Var.Literal.Bool = true.boolVar(), alwaysLinkToLastBuild: Var.Literal.Bool = true.boolVar(), keepAll: Var.Literal.Bool = true.boolVar() )</ID>
+    <ID>LongParameterList:RtUpload.kt$( serverId: String, buildName: String? = null, buildNumber: String? = null, failNoOp: Boolean = false, spec: RTSpec? = null, specPath: String? = null )</ID>
+    <ID>LongParameterList:RtUpload.kt$( serverId: Var.Literal.Str, buildName: Var.Literal.Str? = null, buildNumber: Var.Literal.Str? = null, failNoOp: Var.Literal.Bool = false.boolVar(), spec: RTSpec? = null, specPath: Var.Literal.Str? = null )</ID>
+    <ID>MagicNumber:PipelineDsl.kt$PipelineDsl$10</ID>
+    <ID>MatchingDeclarationName:DockerDsl.kt$docker</ID>
+    <ID>MaxLineLength:AgentContext.kt$add(DockerAgent.File(filename, dir, additionalBuildArgs, args, label, customWorkspace, registryUrl, registryCredentialsId, reuseNode))</ID>
+    <ID>MaxLineLength:AgentContext.kt$dockerImage(image.strDouble(), args?.strDouble(), label?.strDouble(), customWorkspace?.strDouble(), registryUrl?.strDouble(), registryCredentialsId?.strDouble(), reuseNode?.boolVar())</ID>
+    <ID>MaxLineLength:AgentContext.kt$label?.strDouble()</ID>
+    <ID>MaxLineLength:BooleanStatementDsl.kt$fun and(left: BooleanStatement, right: BooleanStatement): BooleanStatement</ID>
+    <ID>MaxLineLength:BooleanStatementDsl.kt$fun and(left: Var, right: Var): BooleanStatement</ID>
+    <ID>MaxLineLength:BooleanStatementDsl.kt$fun equal(left: BooleanStatement, right: BooleanStatement): BooleanStatement</ID>
+    <ID>MaxLineLength:BooleanStatementDsl.kt$fun equal(left: Var, right: Var): BooleanStatement</ID>
+    <ID>MaxLineLength:BooleanStatementDsl.kt$fun or(left: BooleanStatement, right: BooleanStatement): BooleanStatement</ID>
+    <ID>MaxLineLength:BooleanStatementDsl.kt$fun or(left: Var, right: Var): BooleanStatement</ID>
+    <ID>MaxLineLength:DockerDsl.kt$docker$fun withRegistry(url: String, credentialsId: String? = null, steps: Step): Docker.WithRegistry</ID>
+    <ID>MaxLineLength:DockerDsl.kt$docker$fun withRegistry(url: Var.Literal.Str, credentialsId: Var.Literal.Str? = null, steps: Step): Docker.WithRegistry</ID>
+    <ID>MaxLineLength:DockerDsl.kt$docker$fun withServer(url: String, credentialsId: String? = null, steps: Step): Docker.WithServer</ID>
+    <ID>MaxLineLength:DockerDsl.kt$docker$fun withServer(url: Var.Literal.Str, credentialsId: Var.Literal.Str? = null, steps: Step): Docker.WithServer</ID>
+    <ID>MaxLineLength:DockerDsl.kt$fun Docker.ImageOps.push(tagName: String? = null, force: Boolean = true)</ID>
+    <ID>MaxLineLength:DockerDsl.kt$fun Docker.ImageOps.tag(tagName: String? = null, force: Boolean = true)</ID>
+    <ID>MaxLineLength:DockerDsl.kt$fun Docker.ImageOps.withRun(args: String = "", command: String = "", steps: Step): Step</ID>
+    <ID>MaxLineLength:DockerStageDsl.kt$DockerHelper$ fun DslContext&lt;Step&gt;.insideContainer(name: String, dockerAgent: SingletonDslContext&lt;DockerAgent&gt;.() -&gt; Unit, sideCars: List&lt;SideCar&gt; = emptyList(), steps: DslContext&lt;Step&gt;.() -&gt; Unit)</ID>
+    <ID>MaxLineLength:DockerStageDsl.kt$DockerHelper$fun DslContext&lt;Step&gt;.insideContainer(name: String, agent: DockerAgent, sideCars: List&lt;SideCar&gt; = emptyList(), steps: Step)</ID>
+    <ID>MaxLineLength:DockerStageDsl.kt$DockerHelper$is DockerAgent.File -&gt; Docker.Build(imageName, "--file ${this.filename} $defaultDockerBuildArgs ${this.additionalBuildArgs ?: "."}".strDouble())</ID>
+    <ID>MaxLineLength:DockerStageDsl.kt$DockerHelper$val dockerAgent = SingletonDslContext.into(dockerAgent) ?: throw IllegalStateException("Must define a docker agent")</ID>
+    <ID>MaxLineLength:DockerStageDsl.kt$DockerHelper$val mainContainerRunArgs = "${agent.args ?: "".strSingle()} ${sideCars.map { "--link ${it.containerVariable.accessMember("id")}:${it.containerLinkName}" }.joinToString(" ")}".strDouble()</ID>
+    <ID>MaxLineLength:DockerStageDsl.kt$SideCar.Image$( // Name of the variable in the groovy withRun closure override val containerVariable: Var.Variable, // Name of the container for host linking (i.e. the DNS by wich other containers will call this container on the network) override val containerLinkName: String, // image to use, inherites registry from parent if defined val image: Var.Literal.Str, // include any expose posrts here override val runArgs: Var.Literal.Str, // custom container command override val runCommand: Var.Literal.Str? = null )</ID>
+    <ID>MaxLineLength:GitDsl.kt$GitDsl$withCredentials</ID>
+    <ID>MaxLineLength:GitDsl.kt$GitDsl$withEnv(mapOf("GIT_SSH_COMMAND" to "ssh -i $keyFileEnvVar -F /dev/null -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"), steps)</ID>
+    <ID>MaxLineLength:GradleBuildDsl.kt$GradleBuildDsl$(gradleCredentials?.let { "-D$gradleUserProperty=%${it.usernameVariable.value}% -D$gradlePasswordProperty=%${it.passwordVariable.value}% " } ?: "")</ID>
+    <ID>MaxLineLength:GradleBuildDsl.kt$GradleBuildDsl$(gradleCredentials?.let { "-D$gradleUserProperty=\\\"\\\${${it.usernameVariable.value}}\\\" -D$gradlePasswordProperty=\\\"\\\${${it.passwordVariable.value}}\\\" " } ?: "")</ID>
+    <ID>MaxLineLength:GradleBuildDsl.kt$GradleBuildDsl$fun DslContext&lt;Step&gt;.gradleCommandMultiPlatform(command: String, additionalBuildArgs: Var.Literal.Str, booleanStatement: BooleanStatement = "PATH".environmentVar().containsSubstring("C:".strSingle()))</ID>
+    <ID>MaxLineLength:GradleBuildDsl.kt$GradleBuildDsl$withEnv</ID>
+    <ID>MaxLineLength:GradleBuildDsl.kt$ShellContext$Inferred : ShellContext</ID>
+    <ID>MaxLineLength:PipelineDsl.kt$PipelineDsl$val context = PipelineContext(topLevelStageContext = topLevelStageWrapperContext(), pipelineMethodRegistry = pipelineMethodRegistry)</ID>
+    <ID>MaxLineLength:PipelineDsl.kt$PipelineDsl${ TopLevelStageContext(parallelStageContext = nestedStageWrapperContext(), nestedStageContext = nestedStageWrapperContext()) }</ID>
+    <ID>MaxLineLength:PostContext.kt$PostContext$fun toPost(): Post</ID>
+    <ID>MaxLineLength:PublishHtmlDsl.kt$add(PublishHtml(reportDir = reportDir, reportFiles = reportFiles, reportName = reportName, allowMissing = allowMissing, alwaysLinkToLastBuild = alwaysLinkToLastBuild, keepAll = keepAll))</ID>
+    <ID>MaxLineLength:RtUpload.kt$rtDownload(serverId.strDouble(), buildName?.strDouble(), buildNumber?.strDouble(), failNoOp.boolVar(), spec, specPath?.strDouble())</ID>
+    <ID>MaxLineLength:RtUpload.kt$rtUpload(serverId.strDouble(), buildName?.strDouble(), buildNumber?.strDouble(), failNoOp.boolVar(), spec, specPath?.strDouble())</ID>
+    <ID>MaxLineLength:ShellDsl.kt$fun DslContext&lt;Step&gt;.bat(script: Var.Literal.Str, returnStdout: Var.Literal.Bool = false.boolVar(), label: Var.Literal.Str? = null)</ID>
+    <ID>MaxLineLength:ShellDsl.kt$fun DslContext&lt;Step&gt;.sh(script: Var.Literal.Str, returnStdout: Var.Literal.Bool = false.boolVar(), label: Var.Literal.Str? = null)</ID>
+    <ID>MaxLineLength:SshAgentDsl.kt$fun DslContext&lt;Step&gt;.sshAgent(credentals: List&lt;String&gt;, steps: DslContext&lt;Step&gt;.() -&gt; Unit, ignoreMissing: Boolean? = null)</ID>
+    <ID>MaxLineLength:SshAgentDsl.kt$fun DslContext&lt;Step&gt;.sshAgent(credentals: List&lt;Var.Literal.Str&gt;, steps: DslContext&lt;Step&gt;.() -&gt; Unit, ignoreMissing: Var.Literal.Bool? = null)</ID>
+    <ID>MaxLineLength:StageWrapperContext.kt$StageWrapperContext$ fun localDockerStage( name: String, dockerAgent: SingletonDslContext&lt;DockerAgent&gt;.() -&gt; Unit, sideCars: List&lt;SideCar&gt; = emptyList(), stageBlock: StageContext.() -&gt; Unit )</ID>
+    <ID>MaxLineLength:StageWrapperContext.kt$StageWrapperContext$ fun remoteDockerStage( name: String, dockerAgent: SingletonDslContext&lt;DockerAgent&gt;.() -&gt; Unit, nodeAgent: SingletonDslContext&lt;Agent&gt;.() -&gt; Unit = defaultAgent, sideCars: List&lt;SideCar&gt; = emptyList(), stageBlock: StageContext.() -&gt; Unit )</ID>
+    <ID>MaxLineLength:StageWrapperContext.kt$StageWrapperContext$context.drainAll() .filter { defaultOption -&gt; stageOptions.none { userOption -&gt; userOption.javaClass == defaultOption.javaClass } }</ID>
+    <ID>MaxLineLength:StageWrapperContext.kt$StageWrapperContext$val dockerAgentInstance = SingletonDslContext.into(dockerAgent) ?: throw IllegalStateException("Must define a docker agent")</ID>
+    <ID>MaxLineLength:StringComparisonDsl.kt$fun Var.containsSubstring(subString: String): BooleanStatement.StringOperator.Contains</ID>
+    <ID>MaxLineLength:StringComparisonDsl.kt$fun Var.containsSubstring(subString: Var): BooleanStatement.StringOperator.Contains</ID>
+    <ID>MaxLineLength:StringComparisonDsl.kt$fun Var.endsWithSubstring(subString: String): BooleanStatement.StringOperator.EndsWith</ID>
+    <ID>MaxLineLength:StringComparisonDsl.kt$fun Var.endsWithSubstring(subString: Var): BooleanStatement.StringOperator.EndsWith</ID>
+    <ID>MaxLineLength:StringComparisonDsl.kt$fun Var.startsWithSubstring(subString: String): BooleanStatement.StringOperator.StartsWith</ID>
+    <ID>MaxLineLength:StringComparisonDsl.kt$fun Var.startsWithSubstring(subString: Var): BooleanStatement.StringOperator.StartsWith</ID>
+    <ID>MaxLineLength:WarningsNextGenDsl.kt$fun DslContext&lt;Step&gt;.recordIssues(aggregateResults: Var.Literal.Bool = false.boolVar(), tool: RecordIssuesTool)</ID>
+    <ID>MaxLineLength:WhenDsl.kt$fun DslContext&lt;When&gt;.changeRequest(changeRequestType: ChangeRequestType, value: Var.Literal.Str, comparator: Comparator)</ID>
+    <ID>ReturnCount:TopLevelStageContext.kt$TopLevelStageContext$override fun toStage(name: String): Stage</ID>
+    <ID>TooManyFunctions:BooleanStatementDsl.kt$com.code42.jenkins.pipelinekt.dsl.step.conditional.BooleanStatementDsl.kt</ID>
+    <ID>TooManyFunctions:OptionsDsl.kt$com.code42.jenkins.pipelinekt.dsl.option.OptionsDsl.kt</ID>
+    <ID>TooManyFunctions:PipelineDsl.kt$PipelineDsl$PipelineDsl</ID>
+    <ID>TooManyFunctions:StageWrapperContext.kt$StageWrapperContext$StageWrapperContext</ID>
+    <ID>TooManyFunctions:WhenDsl.kt$com.code42.jenkins.pipelinekt.dsl.when.WhenDsl.kt</ID>
+  </Whitelist>
+</SmellBaseline>

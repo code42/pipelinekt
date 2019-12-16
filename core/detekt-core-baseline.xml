@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <Blacklist></Blacklist>
+  <Whitelist>
+    <ID>EmptyFunctionBlock:Void.kt$Void${}</ID>
+    <ID>MaxLineLength:BooleanStatement.kt$BooleanStatement.BinaryOperator.Equals$data</ID>
+    <ID>MaxLineLength:GroovyWriter.kt$GroovyWriter$data</ID>
+    <ID>MaxLineLength:Post.kt$Post$if (listOf(always, success, cleanup, changed, fixed, regression, aborted, unstable, unstable, failure).any { !it.isEmpty() }) { writer.closure("post") { writer -&gt; toGroovy("success", success, writer) toGroovy("always", always, writer) toGroovy("cleanup", cleanup, writer) toGroovy("changed", changed, writer) toGroovy("fixed", fixed, writer) toGroovy("regression", regression, writer) toGroovy("aborted", aborted, writer) toGroovy("unsuccessful", unsuccessful, writer) toGroovy("unstable", unstable, writer) toGroovy("failure", failure, writer) } }</ID>
+    <ID>MaxLineLength:RecipientProviderTest.kt$RecipientProviderTest$val actual = listOf&lt;String&gt;(RecipientProvider.Culprits.toGroovy(), RecipientProvider.Requester.toGroovy()).joinToString(",")</ID>
+    <ID>MaxLineLength:RecipientProviderTest.kt$RecipientProviderTest$val expected = listOf&lt;String&gt;("[\$class: 'CulpritsRecipientProvider']", "[\$class: 'RequesterRecipientProvider']").joinToString(",")</ID>
+    <ID>MaxLineLength:RecordIssuesTool.kt$RecordIssuesTool.CheckStyle$data</ID>
+    <ID>MaxLineLength:RecordIssuesTool.kt$RecordIssuesTool.Spotbugs$data</ID>
+    <ID>MaxLineLength:UsernamePassword.kt$UsernamePassword$data</ID>
+    <ID>UnnecessaryAbstractClass:GroovyScriptTest.kt$GroovyScriptTest</ID>
+  </Whitelist>
+</SmellBaseline>
