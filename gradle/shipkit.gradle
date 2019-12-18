@@ -6,7 +6,7 @@
 //
 shipkit {
     gitHub.repository = "code42/pipelinekt"
-    gitHub.readOnlyAuthToken = System.getenv("GH_READ_TOKEN")
+    gitHub.readOnlyAuthToken = ""
     gitHub.writeAuthToken = System.getenv("GH_WRITE_TOKEN")
 }
 
@@ -21,7 +21,7 @@ subprojects {
 
             pkg {
                 repo = 'pipelinekt'
-                userOrg = 'code42'
+                userOrg = 'com.code42'
                 name = 'pipelinekt'
                 licenses = ['MIT']
                 labels = ['continuous delivery', 'release automation', 'shipkit']

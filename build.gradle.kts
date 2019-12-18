@@ -19,7 +19,7 @@ val baseProjectName = "pipelinekt"
 val publishedProjects = listOf("core", "internal", "dsl")
 
 allprojects {
-    group = "com.code42.lib.jenkins"
+    group = "com.code42"
 
     repositories {
         mavenCentral()
@@ -50,6 +50,10 @@ tasks.build {
 subprojects {
     apply(plugin = "org.gradle.maven")
     apply(plugin = "org.jetbrains.kotlin.jvm")
+    
+    if(!base.archivesBaseName.startsWith("pipelinekt-")) {
+        base.archivesBaseName = "pipelinekt-${base.archivesBaseName}"
+    }
 
     dependencies {
         implementation(kotlin("stdlib-jdk8", kotlinVersion))
@@ -57,16 +61,11 @@ subprojects {
         testImplementation("org.jetbrains.kotlin:kotlin-test")
         testImplementation( "org.jetbrains.kotlin:kotlin-test-junit")
     }
-
-
-
-
-
+    
     if(publishedProjects.contains(project.name)) {
         apply(plugin = "com.diffplug.gradle.spotless")
         apply(plugin = "io.gitlab.arturbosch.detekt")
         apply(plugin = "org.gradle.jacoco")
-
 
         tasks.withType<JacocoReport> {
             reports {
