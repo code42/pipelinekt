@@ -11,28 +11,19 @@ plugins {
     id("org.jetbrains.dokka").version("0.10.0")
     id("io.gitlab.arturbosch.detekt").version("1.2.2")
     jacoco
+    id("org.shipkit.java").version("2.2.5")
 }
 
 val groupName = "com.code42.jenkins"
 val baseProjectName = "pipelinekt"
 val publishedProjects = listOf("core", "internal", "dsl")
 
-val version = "0.13.1-SNAPSHOT"
-
-
-
-repositories {
-    mavenCentral()
-    jcenter()
-}
 allprojects {
     group = "com.code42.lib.jenkins"
 
     repositories {
-        repositories {
-            jcenter()
-            mavenCentral()
-        }
+        mavenCentral()
+        jcenter()
     }
 }
 
@@ -57,18 +48,8 @@ tasks.build {
 }
 
 subprojects {
-    val sourcesJar by tasks.registering(Jar::class) {
-        classifier = "sources"
-        from(sourceSets.main.get().allSource)
-    }
-    
-    apply {
-        plugin("org.jetbrains.kotlin.jvm")
-        plugin("org.gradle.maven")
-        if(publishedProjects.contains(project.name)) {
-            plugin("org.gradle.maven-publish")
-        }
-    }
+    apply(plugin = "org.gradle.maven")
+    apply(plugin = "org.jetbrains.kotlin.jvm")
 
     dependencies {
         implementation(kotlin("stdlib-jdk8", kotlinVersion))
@@ -122,5 +103,4 @@ subprojects {
         }
     }
 }
-
 
