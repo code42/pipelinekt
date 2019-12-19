@@ -1,0 +1,38 @@
+name: Build Release
+
+on:
+  push:
+    branches:
+      - master
+      - 'release/**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11.0.5
+      - name: Gradle Build
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: build
+      - name: Create Tag
+        run: ./.github/scripts/create-tag.sh
+      - name: Gradle Publish And Increment
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: publish incrementVersion
+      - name: Commit files
+        run: |
+          git add docs
+          git add version.txt
+          git commit -m "Update version and docs" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

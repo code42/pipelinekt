@@ -1,12 +1,14 @@
 import org.jetbrains.dokka.gradle.DokkaTask
+import com.code42.version.Version
 
 val kotlinVersion = "1.3.61"
 
 plugins {
     base
-    kotlin("jvm") version "1.3.21"
+    kotlin("jvm") version "1.3.61"
     id("idea")
     maven
+    `maven-publish`
     id("com.diffplug.gradle.spotless").version("3.26.1")
     id("org.jetbrains.dokka").version("0.10.0")
     id("io.gitlab.arturbosch.detekt").version("1.2.2")
@@ -17,23 +19,15 @@ val groupName = "com.code42.jenkins"
 val baseProjectName = "pipelinekt"
 val publishedProjects = listOf("core", "internal", "dsl")
 
-val version = "0.13.1-SNAPSHOT"
-
-
-
-repositories {
-    mavenCentral()
-    jcenter()
-}
 allprojects {
-    group = "com.code42.lib.jenkins"
+    group = "com.code42"
+    version = Version.getVersion()
 
     repositories {
-        repositories {
-            jcenter()
-            mavenCentral()
-        }
+        jcenter()
+        mavenCentral()
     }
+
 }
 
 val dokka by tasks.getting(DokkaTask::class) {
@@ -52,22 +46,23 @@ val dokka by tasks.getting(DokkaTask::class) {
 
 }
 
+tasks {
+    create("incrementVersion") {
+        doLast {
+            Version.incrementVersion()
+        }
+    }
+}
+
 tasks.build {
     finalizedBy("dokka")
 }
 
 subprojects {
-    val sourcesJar by tasks.registering(Jar::class) {
-        classifier = "sources"
-        from(sourceSets.main.get().allSource)
-    }
-    
-    apply {
-        plugin("org.jetbrains.kotlin.jvm")
-        plugin("org.gradle.maven")
-        if(publishedProjects.contains(project.name)) {
-            plugin("org.gradle.maven-publish")
-        }
+    apply(plugin = "org.jetbrains.kotlin.jvm")
+
+    if(!base.archivesBaseName.startsWith("pipelinekt-")) {
+        base.archivesBaseName = "pipelinekt-${base.archivesBaseName}"
     }
 
     dependencies {
@@ -77,15 +72,42 @@ subprojects {
         testImplementation( "org.jetbrains.kotlin:kotlin-test-junit")
     }
 
-
-
-
-
     if(publishedProjects.contains(project.name)) {
+        apply(plugin = "org.gradle.maven-publish")
         apply(plugin = "com.diffplug.gradle.spotless")
         apply(plugin = "io.gitlab.arturbosch.detekt")
         apply(plugin = "org.gradle.jacoco")
+        apply(plugin = "org.jetbrains.dokka")
 
+        val sourcesJar by tasks.creating(Jar::class) {
+            classifier = "sources"
+            from(sourceSets.main.get().allSource)
+        }
+
+
+        val dokkaKdoc by tasks.creating(DokkaTask::class) {
+            outputFormat = "html"
+            outputDirectory = "$buildDir/kdoc"
+            configuration {
+                sourceLink {
+                    path = "./"
+                    url = "https://github.com/code42/pipelinekt/tree/master"
+                    lineSuffix = "#L"
+                }
+            }
+        }
+
+        val kdocJar by tasks.creating(Jar::class) {
+            group = JavaBasePlugin.DOCUMENTATION_GROUP
+            dependsOn(dokkaKdoc)
+            classifier = "javadoc"
+            from("$buildDir/kdoc")
+        }
+
+        artifacts {
+            add("archives", sourcesJar)
+            add("archives", kdocJar)
+        }
 
         tasks.withType<JacocoReport> {
             reports {
@@ -119,6 +141,22 @@ subprojects {
 
         tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
             exclude(".*/resources/.*,.*/build/.*")
+        }
+
+        publishing {
+            publications {
+                create<MavenPublication>("maven") {
+                    groupId = group.toString()
+                    version = project.version.toString()
+                    artifactId = base.archivesBaseName
+                    from(components["java"])
+                    artifact(sourcesJar)
+                    artifact(kdocJar)
+                }
+            }
+            repositories {
+                mavenLocal()
+            }
         }
     }
 }
