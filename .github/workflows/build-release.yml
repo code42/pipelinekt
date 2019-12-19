@@ -1,0 +1,55 @@
+name: Build Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11.0.5
+      - name: Gradle Build
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: build
+      - name: Version
+        run: echo "##[set-output name=version;]v$(cat version.txt)"
+        id: release_version
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ steps.release_version.outputs.version }}
+          release_name: Release ${{ steps.release_version.outputs.version }}
+          body: |
+            Release ${{ steps.release_version.outputs.version }}
+          draft: false
+          prerelease: false
+      - name: Gradle Publish And Increment
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: publish incrementVersion
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #Post Release
+      - name: Commit version increment
+        run: |
+          git config --local user.email "code42.release.automation@github.com"
+          git config --local user.name "Release Automation"
+          git add version.txt
+          git commit -m "Update version"
+      - name: Push Version increment
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
