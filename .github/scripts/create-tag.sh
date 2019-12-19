@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 version=`cat version.txt`
 git tag "v$version"

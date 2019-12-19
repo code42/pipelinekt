@@ -23,12 +23,16 @@ jobs:
           arguments: build
       - name: Create Tag
         run: ./.github/scripts/create-tag.sh
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Gradle Publish And Increment
         uses: eskatos/gradle-command-action@v1
         with:
           arguments: publish incrementVersion
       - name: Commit files
         run: |
+          git config --local user.email "code42.release.automation@github.com"
+          git config --local user.name "Release Automation"
           git add docs
           git add version.txt
           git commit -m "Update version and docs" -a
