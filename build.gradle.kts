@@ -14,7 +14,7 @@ plugins {
     id("io.gitlab.arturbosch.detekt").version("1.2.2")
     jacoco
 }
-
+val githubRepo = System.getenv("GITHUB_REPOSITORY") ?: "code42/pipelinekt"
 val groupName = "com.code42.jenkins"
 val baseProjectName = "pipelinekt"
 val publishedProjects = listOf("core", "internal", "dsl")
@@ -36,7 +36,7 @@ val dokka by tasks.getting(DokkaTask::class) {
     configuration {
         sourceLink {
             path = "./"
-            url = "https://github.com/code42/pipelinekt/tree/master"
+            url = "https://github.com/$githubRepo/tree/master"
             lineSuffix = "#L"
         }
 
@@ -91,7 +91,7 @@ subprojects {
             configuration {
                 sourceLink {
                     path = "./"
-                    url = "https://github.com/code42/pipelinekt/tree/master"
+                    url = "https://github.com/$githubRepo/tree/master"
                     lineSuffix = "#L"
                 }
             }
@@ -158,7 +158,8 @@ subprojects {
                 mavenLocal()
                 maven {
                     name = "GitHubPackages"
-                    url = uri("https://maven.pkg.github.com/code42/pipelinekt")
+                    
+                    url = uri("https://maven.pkg.github.com/$githubRepo")
                     credentials(HttpHeaderCredentials::class) {
                         name = "Authorization"
                         value = "Bearer ${System.getenv("GITHUB_TOKEN")}"
