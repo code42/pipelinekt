@@ -6,6 +6,13 @@ Please see [the examples subproject](https://github.com/code42/pipelinekt/tree/m
 Pipelinekt is made to integrate with gradle, so it can run anywhere that the jvm exists without additional infrastructure needed for dependency management or having
 to rely on loading new classes into the jenkins runtime.
 
+0. create a github access token that can read from packages, add the configuration to `~/.gradle/gradle.properties`
+
+```
+systemProp.github.packages.username=yourusername
+systemProp.github.packages.token=yourtoken
+```
+
 1. create a gradle project in a subdirectory called `ci` in your git repo. The project should be an application with a gradle run task.
     * Add a dependency on pipelinekt-code42
 
@@ -21,7 +28,27 @@ to rely on loading new classes into the jenkins runtime.
         application
     }
     repositories {
-        jcenter()
+         maven {
+            name = "Github Packages"
+            url = uri("https://maven.pkg.github.com/code42/pipelinekt")
+            //Use github token if it is available (used in github actions)
+            //otherwise fall back to system properties or environment variables
+            val token = System.getenv("GITHUB_TOKEN")
+            if(token != null) {
+               credentials(HttpHeaderCredentials::class) {
+                   name = "Authorization"
+                   value = "Bearer ${token}"
+               }
+               authentication {
+                   create<HttpHeaderAuthentication>("header")
+               }
+            } else {
+               credentials {
+                   username = System.getProperty("github.packages.username") ?: System.getenv("GITHUBUSER")
+                   password = System.getProperty("github.packages.token") ?: System.getenv("GITHUBTOKEN")
+               }
+            }
+        }
     }
 
     application {
