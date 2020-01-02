@@ -23,7 +23,7 @@ pipelinekt is a kotlin library that generates Jenkinsfiles.
 
 # Documentation
 
-* [Examples](examples/src/main/kotlin)
+* [Examples](https://github.com/code42/pipelinekt/tree/master/examples/src/main/kotlin)
 * [The Docs](docs/index.md)
 
 # getting started 
