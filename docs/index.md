@@ -2,6 +2,8 @@
 
 [Quick Start](quickstart.md)
 
+[The Story](the-story.md)
+
 [Design Concepts 1](concepts-01-defining-the-dsl.md)
 
 [Design Concepts 2](concepts-02-implementing-the-dsl.md)
