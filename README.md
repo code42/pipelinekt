@@ -1,18 +1,23 @@
 # Dynamic Declarative Jenkinsfile in Kotlin
 
-pipelinekt is a kotlin library that generates Jenkinsfiles.
+pipelinekt is a kotlin library that improves the Jenkinsfile development experience, especially for large projects.
 
 ## Why:
 
-1. Generate Jenkins Declarative Pipelines dynamically, a feature which is not supported by Jenkins
-2. Use Kotlin to build your pipeline models
-    1. IDE integration
-    2. Tab Completion
-    3. Compile time validation
-3. Share code with sane defaults
-    1. for example, cleanWs on each stage that defines an agent by default.
-    2. dynamic stage definitions means any part of the pipeline can be pulled out into a method, and that means more 
-    shared configuration and less code duplication
+1. Remove several limitations imposed by the declarative syntax, for example:
+   1. No longer need to statically define stages
+      1. create stages in loops or by iterating over collections
+   2. move any block of code into a separate function
+   3. standard code sharing with actual classes
+      1. no need to call `load` to dynamically interpret groovy scripts)
+2. IDE integration
+   1. native kotlin + gradle - no custom groovy compiler
+   2. Code completion
+   3. Auto complete
+3. Configure sane defaults
+   1. Shared steps before and after stages
+   2. default pipeline configurations
+   3. default `post` stage actions
 
 ## Subprojects
 
