@@ -7,6 +7,6 @@ import java.util.concurrent.TimeUnit
 
 data class Timeout(val time: Var.Literal.Int, val unit: TimeUnit) : StageOption {
     override fun toGroovy(writer: GroovyWriter) {
-        writer.writeln("timeout(time: ${time.toGroovy()}, unit: '$unit'")
+        writer.writeln("timeout(time: ${time.toGroovy()}, unit: '$unit')")
     }
 }
