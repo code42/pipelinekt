@@ -1,8 +1,8 @@
 package com.code42.jenkins.pipelinekt.internal.step.declarative
 
 import com.code42.jenkins.pipelinekt.GroovyScriptTest
-import org.junit.Test
 import kotlin.test.assertEquals
+import org.junit.Test
 
 class CleanWsTest : GroovyScriptTest() {
     @Test
