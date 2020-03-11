@@ -19,6 +19,28 @@ class JenkinsCredentialsTest {
         assertEquals(expected, actual)
     }
 
+    @Test fun text() {
+        val credentialsId = "my-creds".strSingle()
+        val variable = "CREDS_USERNAME".strSingle()
+        val expected = listOf(
+                "\$class: 'StringBinding',",
+                "credentialsId: ${credentialsId.toGroovy()},",
+                "variable: ${variable.toGroovy()}")
+        val actual = Text(credentialsId, variable).toGroovy()
+        assertEquals(expected, actual)
+    }
+
+    @Test fun file() {
+        val credentialsId = "my-creds".strSingle()
+        val variable = "CREDS_USERNAME".strSingle()
+        val expected = listOf(
+                "\$class: 'FileBinding',",
+                "credentialsId: ${credentialsId.toGroovy()},",
+                "variable: ${variable.toGroovy()}")
+        val actual = File(credentialsId, variable).toGroovy()
+        assertEquals(expected, actual)
+    }
+
     @Test fun userSshKey() {
         val credentialsId = "my-creds".strSingle()
         val usernameVariable = "CREDS_USERNAME".environmentVar()
