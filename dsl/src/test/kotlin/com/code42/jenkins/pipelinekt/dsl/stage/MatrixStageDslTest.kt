@@ -114,7 +114,7 @@ class MatrixStageDslTest {
                                     always = Sh("./stage-always.sh".strDouble())))),
                 methods = listOf(PipelineMethod("nested_stage", Sh("./call.sh".strDouble()))),
                 post = Post(
-                        cleanup = CleanWs))
+                        cleanup = CleanWs(deleteDirs = false, disableDeferredWipeout = false)))
 
         assertEquals(expected, pipeline)
     }
