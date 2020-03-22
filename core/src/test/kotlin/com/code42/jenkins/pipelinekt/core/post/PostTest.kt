@@ -23,4 +23,37 @@ class PostTest : GroovyScriptTest() {
                 "}\n"
         assertEquals(expected, out.toString())
     }
+
+    @Test fun postWithSuccess() {
+        val post = Post(success = TestStep("hello"))
+        post.toGroovy(writer)
+        val expected = "post {\n" +
+                "\tsuccess {\n" +
+                "\t\thello\n" +
+                "\t}\n" +
+                "}\n"
+        assertEquals(expected, out.toString())
+    }
+
+    @Test fun postWithFailure() {
+        val post = Post(failure = TestStep("hello"))
+        post.toGroovy(writer)
+        val expected = "post {\n" +
+                "\tfailure {\n" +
+                "\t\thello\n" +
+                "\t}\n" +
+                "}\n"
+        assertEquals(expected, out.toString())
+    }
+
+    @Test fun postWithCleanup() {
+        val post = Post(cleanup = TestStep("hello"))
+        post.toGroovy(writer)
+        val expected = "post {\n" +
+                "\tcleanup {\n" +
+                "\t\thello\n" +
+                "\t}\n" +
+                "}\n"
+        assertEquals(expected, out.toString())
+    }
 }
