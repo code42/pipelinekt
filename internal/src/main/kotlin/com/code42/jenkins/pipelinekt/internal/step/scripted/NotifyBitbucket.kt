@@ -12,3 +12,11 @@ object NotifyBitbucket : ScriptedStep, SingletonStep {
         writer.writeln("notifyBitbucket()")
     }
 }
+
+data class NotifyBitbucketSha1 (
+        val sha1: String
+) : ScriptedStep, SingletonStep {
+    override fun scriptedGroovy(writer: GroovyWriter) {
+        writer.writeln("notifyBitbucket(${sha1})")
+    }
+}
