@@ -2,7 +2,7 @@
 
 # RTDownload
 
-`data class RTDownload : `[`RTBase`](../-r-t-base/index.md)`, `[`DeclarativeStep`](../../com.code42.jenkins.pipelinekt.core.step/-declarative-step.md)`, `[`SingletonStep`](../../com.code42.jenkins.pipelinekt.core.step/-singleton-step/index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/step/declarative/RTDownload.kt#L21)
+`data class RTDownload : `[`RTBase`](../-r-t-base/index.md)`, `[`DeclarativeStep`](../../com.code42.jenkins.pipelinekt.core.step/-declarative-step.md)`, `[`SingletonStep`](../../com.code42.jenkins.pipelinekt.core.step/-singleton-step/index.md)
 
 Generates the necessary code to download artifacts to Artifactory
 

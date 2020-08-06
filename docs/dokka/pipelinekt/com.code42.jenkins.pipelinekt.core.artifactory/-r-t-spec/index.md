@@ -2,7 +2,7 @@
 
 # RTSpec
 
-`data class RTSpec` [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/artifactory/RTSpec.kt#L3)
+`data class RTSpec`
 
 ### Constructors
 

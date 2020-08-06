@@ -2,4 +2,4 @@
 
 # reportFiles
 
-`val reportFiles: Str` [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/step/declarative/PublishHtml.kt#L11)
+`val reportFiles: Str`

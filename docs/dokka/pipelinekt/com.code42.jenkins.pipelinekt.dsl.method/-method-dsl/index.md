@@ -2,7 +2,7 @@
 
 # MethodDsl
 
-`interface MethodDsl` [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/method/MethodDsl.kt#L9)
+`interface MethodDsl`
 
 ### Properties
 

@@ -2,7 +2,7 @@
 
 # Timeout
 
-`data class Timeout : `[`StageOption`](../../com.code42.jenkins.pipelinekt.core/-stage-option.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/option/Timeout.kt#L8)
+`data class Timeout : `[`StageOption`](../../com.code42.jenkins.pipelinekt.core/-stage-option.md)
 
 ### Constructors
 

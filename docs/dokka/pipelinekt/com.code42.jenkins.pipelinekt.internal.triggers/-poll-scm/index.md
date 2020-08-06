@@ -2,7 +2,7 @@
 
 # PollScm
 
-`data class PollScm : `[`Trigger`](../../com.code42.jenkins.pipelinekt.core/-trigger.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/triggers/PollScm.kt#L7)
+`data class PollScm : `[`Trigger`](../../com.code42.jenkins.pipelinekt.core/-trigger.md)
 
 ### Constructors
 

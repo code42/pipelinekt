@@ -2,7 +2,7 @@
 
 # AllOf
 
-`data class AllOf : `[`When`](../../com.code42.jenkins.pipelinekt.core/-when.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/when/AllOf.kt#L7)
+`data class AllOf : `[`When`](../../com.code42.jenkins.pipelinekt.core/-when.md)
 
 ### Constructors
 

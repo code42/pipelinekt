@@ -2,7 +2,7 @@
 
 # MatrixExclude
 
-`data class MatrixExclude : `[`GroovyScript`](../../com.code42.jenkins.pipelinekt.core.writer/-groovy-script/index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/stage/MatrixExclude.kt#L7)
+`data class MatrixExclude : `[`GroovyScript`](../../com.code42.jenkins.pipelinekt.core.writer/-groovy-script/index.md)
 
 ### Constructors
 

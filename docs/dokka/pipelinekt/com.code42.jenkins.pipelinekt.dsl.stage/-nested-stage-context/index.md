@@ -2,7 +2,7 @@
 
 # NestedStageContext
 
-`open class NestedStageContext : `[`StageContext`](../-stage-context/index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/stage/NestedStageContext.kt#L15)
+`open class NestedStageContext : `[`StageContext`](../-stage-context/index.md)
 
 ### Constructors
 

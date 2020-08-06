@@ -2,4 +2,4 @@
 
 # AuthorEmail
 
-`object AuthorEmail : `[`ChangeRequestType`](index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/when/ChangeRequestType.kt#L12)
+`object AuthorEmail : `[`ChangeRequestType`](index.md)

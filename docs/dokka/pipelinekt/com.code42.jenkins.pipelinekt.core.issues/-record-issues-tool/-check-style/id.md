@@ -2,4 +2,4 @@
 
 # id
 
-`val id: Str` [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/issues/RecordIssuesTool.kt#L14)
+`val id: Str`

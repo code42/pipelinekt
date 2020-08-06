@@ -2,7 +2,7 @@
 
 # Void
 
-`object Void : `[`DeclarativeStep`](../-declarative-step.md)`, `[`SingletonStep`](../-singleton-step/index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/step/Void.kt#L8)
+`object Void : `[`DeclarativeStep`](../-declarative-step.md)`, `[`SingletonStep`](../-singleton-step/index.md)
 
 An empty step
 

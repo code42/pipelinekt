@@ -2,7 +2,7 @@
 
 # Bool
 
-`data class Bool : Literal` [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/vars/Var.kt#L89)
+`data class Bool : Literal`
 
 Literal boolean in groovy
 

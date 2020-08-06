@@ -2,6 +2,7 @@ package com.code42.jenkins.pipelinekt.core
 
 import com.code42.jenkins.pipelinekt.core.method.PipelineMethod
 import com.code42.jenkins.pipelinekt.core.stage.Stage
+import com.code42.jenkins.pipelinekt.core.writer.Context
 import com.code42.jenkins.pipelinekt.core.writer.GroovyScript
 import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
 import com.code42.jenkins.pipelinekt.core.writer.ext.toGroovy
@@ -15,6 +16,8 @@ fun generatePipeline(pipeline: Pipeline, outFile: String, indentStr: String = " 
 }
 
 data class Pipeline(
+    val libraries: List<PipelineLibrary> = emptyList(),
+    val preamble: GroovyScript? = null,
     val agent: Agent? = null,
     val tools: List<Tool> = emptyList(),
     val options: List<Option> = emptyList(),
@@ -25,8 +28,13 @@ data class Pipeline(
     val post: Post = Post()
 ) : GroovyScript {
     override fun toGroovy(writer: GroovyWriter) {
-        if (methods.isNotEmpty()) {
-            methods.toGroovy(writer)
+        libraries.forEach {
+            writer.copy(context = Context.Scripted).scripted(it::toGroovy)
+            writer.writeln("")
+        }
+        preamble?.let {
+            writer.copy(context = Context.Scripted).scripted(it::toGroovy)
+            writer.writeln("")
         }
 
         writer.closure("pipeline") { writer ->
@@ -45,6 +53,10 @@ data class Pipeline(
             }
             writer.closure("stages", stages::toGroovy)
             post.toGroovy(writer)
+        }
+
+        if (methods.isNotEmpty()) {
+            methods.toGroovy(writer)
         }
     }
 }

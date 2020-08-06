@@ -2,7 +2,7 @@
 
 # spec
 
-`val spec: `[`RTSpec`](../../com.code42.jenkins.pipelinekt.core.artifactory/-r-t-spec/index.md)`?` [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/step/declarative/RTDownload.kt#L26)
+`val spec: `[`RTSpec`](../../com.code42.jenkins.pipelinekt.core.artifactory/-r-t-spec/index.md)`?`
 
 an object representing File spec(s), which specifies the files that should be downloaded
 

@@ -2,4 +2,4 @@
 
 # runCommand
 
-`abstract val runCommand: Str?` [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/step/custom/DockerDsl.kt#L19)
+`abstract val runCommand: Str?`

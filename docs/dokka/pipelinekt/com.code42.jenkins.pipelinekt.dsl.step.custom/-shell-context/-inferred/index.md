@@ -2,7 +2,7 @@
 
 # Inferred
 
-`data class Inferred : `[`ShellContext`](../index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/step/custom/GradleBuildDsl.kt#L21)
+`data class Inferred : `[`ShellContext`](../index.md)
 
 ### Constructors
 

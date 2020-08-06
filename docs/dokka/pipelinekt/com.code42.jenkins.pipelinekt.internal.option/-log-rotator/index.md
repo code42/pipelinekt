@@ -2,7 +2,7 @@
 
 # LogRotator
 
-`data class LogRotator : `[`BuildDiscarder`](../../com.code42.jenkins.pipelinekt.core.option/-build-discarder.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/option/LogRotator.kt#L6)
+`data class LogRotator : `[`BuildDiscarder`](../../com.code42.jenkins.pipelinekt.core.option/-build-discarder.md)
 
 ### Constructors
 

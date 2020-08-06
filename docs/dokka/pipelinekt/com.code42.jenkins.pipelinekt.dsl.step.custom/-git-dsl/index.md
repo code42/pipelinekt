@@ -2,7 +2,7 @@
 
 # GitDsl
 
-`data class GitDsl` [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/step/custom/GitDsl.kt#L11)
+`data class GitDsl`
 
 ### Constructors
 

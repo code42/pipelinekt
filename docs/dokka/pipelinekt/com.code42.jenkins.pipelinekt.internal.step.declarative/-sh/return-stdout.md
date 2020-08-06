@@ -2,4 +2,7 @@
 
 # returnStdout
 
-`val returnStdout: Bool` [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/step/declarative/Sh.kt#L15)
+`val returnStdout: Bool`
+
+If checked, standard output from the task is returned as the step value as a String, rather than being printed to the build log. (Standard error, if any, will still be printed to the log.) You will often want to call .trim() on the result to strip off a trailing newline.
+

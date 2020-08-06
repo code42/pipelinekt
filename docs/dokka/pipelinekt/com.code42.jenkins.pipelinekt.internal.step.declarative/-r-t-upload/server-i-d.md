@@ -2,7 +2,7 @@
 
 # serverID
 
-`val serverID: Str` [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/step/declarative/RTUpload.kt#L22)
+`val serverID: Str`
 
 the server id to upload to
 

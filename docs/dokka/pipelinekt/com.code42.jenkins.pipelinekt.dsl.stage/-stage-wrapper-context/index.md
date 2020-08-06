@@ -2,7 +2,7 @@
 
 # StageWrapperContext
 
-`data class StageWrapperContext<I : `[`StageContext`](../-stage-context/index.md)`> : `[`DslContext`](../../com.code42.jenkins.pipelinekt.dsl/-dsl-context/index.md)`<`[`Stage`](../../com.code42.jenkins.pipelinekt.core.stage/-stage/index.md)`>, `[`MethodDsl`](../../com.code42.jenkins.pipelinekt.dsl.method/-method-dsl/index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/stage/StageWrapperContext.kt#L17)
+`data class StageWrapperContext<I : `[`StageContext`](../-stage-context/index.md)`> : `[`DslContext`](../../com.code42.jenkins.pipelinekt.dsl/-dsl-context/index.md)`<`[`Stage`](../../com.code42.jenkins.pipelinekt.core.stage/-stage/index.md)`>, `[`MethodDsl`](../../com.code42.jenkins.pipelinekt.dsl.method/-method-dsl/index.md)
 
 ### Constructors
 

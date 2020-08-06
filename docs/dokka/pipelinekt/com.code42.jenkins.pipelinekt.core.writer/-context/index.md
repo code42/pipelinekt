@@ -2,7 +2,7 @@
 
 # Context
 
-`sealed class Context` [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/writer/GroovyWriter.kt#L17)
+`sealed class Context`
 
 Jenkinsfile context.  The Jenkinsfile has rules for what can happen in either context
 

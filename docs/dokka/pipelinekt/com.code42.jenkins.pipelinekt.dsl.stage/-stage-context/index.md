@@ -2,7 +2,7 @@
 
 # StageContext
 
-`interface StageContext` [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/stage/StageContext.kt#L13)
+`interface StageContext`
 
 ### Functions
 

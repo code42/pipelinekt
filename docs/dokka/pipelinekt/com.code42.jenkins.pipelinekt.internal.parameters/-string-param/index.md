@@ -2,7 +2,7 @@
 
 # StringParam
 
-`data class StringParam : `[`Parameter`](../../com.code42.jenkins.pipelinekt.core/-parameter/index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/parameters/StringParam.kt#L10)
+`data class StringParam : `[`Parameter`](../../com.code42.jenkins.pipelinekt.core/-parameter/index.md)
 
 String Param
 

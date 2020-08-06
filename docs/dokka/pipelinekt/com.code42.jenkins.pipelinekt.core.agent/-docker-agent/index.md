@@ -2,7 +2,7 @@
 
 # DockerAgent
 
-`sealed class DockerAgent : `[`Agent`](../../com.code42.jenkins.pipelinekt.core/-agent.md) [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/agent/DockerAgent.kt#L7)
+`sealed class DockerAgent : `[`Agent`](../../com.code42.jenkins.pipelinekt.core/-agent.md)
 
 ### Types
 

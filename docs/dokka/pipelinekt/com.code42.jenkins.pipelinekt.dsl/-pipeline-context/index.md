@@ -2,7 +2,7 @@
 
 # PipelineContext
 
-`data class PipelineContext` [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/PipelineContext.kt#L13)
+`data class PipelineContext`
 
 ### Constructors
 

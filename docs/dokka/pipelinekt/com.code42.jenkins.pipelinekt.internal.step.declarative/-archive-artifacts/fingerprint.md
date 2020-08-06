@@ -2,7 +2,7 @@
 
 # fingerprint
 
-`val fingerprint: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/step/declarative/ArchiveArtifacts.kt#L14)
+`val fingerprint: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
 
 whether the artifact is part of the archives fingerprints
 

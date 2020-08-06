@@ -2,7 +2,7 @@
 
 # MatrixContext
 
-`data class MatrixContext` [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/stage/MatrixContext.kt#L17)
+`data class MatrixContext`
 
 ### Constructors
 

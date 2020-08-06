@@ -2,7 +2,7 @@
 
 # environmentVar
 
-`fun `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`.environmentVar(): Environment` [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/vars/ext/Ext.kt#L8)
+`fun `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`.environmentVar(): Environment`
 
 convert to a Jenkinsfile environment var
 

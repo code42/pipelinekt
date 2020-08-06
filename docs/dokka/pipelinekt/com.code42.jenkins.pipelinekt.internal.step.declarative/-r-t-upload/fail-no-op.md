@@ -2,7 +2,7 @@
 
 # failNoOp
 
-`val failNoOp: Bool` [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/step/declarative/RTUpload.kt#L25)
+`val failNoOp: Bool`
 
 specifies whether to fail the build in case no files are uploaded or downloaded
 

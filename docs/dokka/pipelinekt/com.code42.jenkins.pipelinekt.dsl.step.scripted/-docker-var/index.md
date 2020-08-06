@@ -2,7 +2,7 @@
 
 # DockerVar
 
-`data class DockerVar : External` [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/step/scripted/DockerDsl.kt#L13)
+`data class DockerVar : External`
 
 ### Constructors
 

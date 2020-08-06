@@ -2,7 +2,7 @@
 
 # PipelineMethodRegistry
 
-`class PipelineMethodRegistry` [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/method/PipelineMethodRegistry.kt#L4)
+`class PipelineMethodRegistry`
 
 ### Constructors
 

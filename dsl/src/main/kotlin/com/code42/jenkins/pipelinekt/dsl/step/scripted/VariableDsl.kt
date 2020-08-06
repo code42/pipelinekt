@@ -20,8 +20,15 @@ fun DslContext<Step>.def(variableName: String, steps: DslContext<Step>.() -> Uni
 
 fun DslContext<Step>.def(value: Var): Var.Variable =
         def(generateVariableName(), value)
+
 fun DslContext<Step>.def(variableName: String, value: Var): Var.Variable =
         def(variableName, { literal(value.toGroovy()) })
+
+fun DslContext<Step>.def(variableName: String): Var.Variable {
+    val variable = variableName.groovyVariable()
+    add(Literal("def ${variable.name}"))
+    return variable
+}
 
 fun DslContext<Step>.assign(variable: Var.Variable, steps: DslContext<Step>.() -> Unit): Var.Variable {
     add(VariableAssignment(variable, DslContext.into(steps).toStep()))

@@ -2,7 +2,7 @@
 
 # And
 
-`data class And : BinaryOperator` [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/conditional/BooleanStatement.kt#L38)
+`data class And : BinaryOperator`
 
 ### Constructors
 

@@ -2,7 +2,7 @@
 
 # Str
 
-`sealed class Str : Literal` [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/vars/Var.kt#L47)
+`sealed class Str : Literal`
 
 ### Types
 

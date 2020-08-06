@@ -2,4 +2,4 @@
 
 # parametersContext
 
-`val parametersContext: `[`DslContext`](../-dsl-context/index.md)`<`[`Parameter`](../../com.code42.jenkins.pipelinekt.core/-parameter/index.md)`>` [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/PipelineContext.kt#L16)
+`val parametersContext: `[`DslContext`](../-dsl-context/index.md)`<`[`Parameter`](../../com.code42.jenkins.pipelinekt.core/-parameter/index.md)`>`
