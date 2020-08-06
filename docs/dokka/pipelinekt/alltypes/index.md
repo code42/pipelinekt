@@ -169,6 +169,11 @@ Jenkinsfile context.  The Jenkinsfile has rules for what can happen in either co
 
 |
 
+##### [com.code42.jenkins.pipelinekt.internal.step.declarative.DeleteDir](../com.code42.jenkins.pipelinekt.internal.step.declarative/-delete-dir/index.md)
+
+
+|
+
 ##### [com.code42.jenkins.pipelinekt.internal.step.declarative.Dir](../com.code42.jenkins.pipelinekt.internal.step.declarative/-dir/index.md)
 
 
@@ -239,6 +244,11 @@ Inject email into steps
 |
 
 ##### [com.code42.jenkins.pipelinekt.internal.when.Expression](../com.code42.jenkins.pipelinekt.internal.when/-expression/index.md)
+
+
+|
+
+##### [com.code42.jenkins.pipelinekt.core.credentials.File](../com.code42.jenkins.pipelinekt.core.credentials/-file/index.md)
 
 
 |
@@ -334,6 +344,13 @@ Define arbitrary scripted Jenkinsfile code blocks
 ##### [com.code42.jenkins.pipelinekt.internal.option.LogRotator](../com.code42.jenkins.pipelinekt.internal.option/-log-rotator/index.md)
 
 
+|
+
+##### [com.code42.jenkins.pipelinekt.internal.step.declarative.Mail](../com.code42.jenkins.pipelinekt.internal.step.declarative/-mail/index.md)
+
+Simple step for sending email.
+
+
 | (extensions in package com.code42.jenkins.pipelinekt.core.method.ext)
 
 ##### [kotlin.collections.Map](../com.code42.jenkins.pipelinekt.core.method.ext/kotlin.collections.-map/index.md)
@@ -422,6 +439,11 @@ Notify Bitbucket server of build status.  Use at the beginning and end of a pipe
 
 |
 
+##### [com.code42.jenkins.pipelinekt.internal.step.scripted.NotifyBitbucketSha1](../com.code42.jenkins.pipelinekt.internal.step.scripted/-notify-bitbucket-sha1/index.md)
+
+
+|
+
 ##### [com.code42.jenkins.pipelinekt.core.Option](../com.code42.jenkins.pipelinekt.core/-option.md)
 
 
@@ -448,6 +470,11 @@ Notify Bitbucket server of build status.  Use at the beginning and end of a pipe
 |
 
 ##### [com.code42.jenkins.pipelinekt.dsl.PipelineDsl](../com.code42.jenkins.pipelinekt.dsl/-pipeline-dsl/index.md)
+
+
+|
+
+##### [com.code42.jenkins.pipelinekt.core.PipelineLibrary](../com.code42.jenkins.pipelinekt.core/-pipeline-library/index.md)
 
 
 |
@@ -673,6 +700,11 @@ String Param
 |
 
 ##### [com.code42.jenkins.pipelinekt.internal.when.Tag](../com.code42.jenkins.pipelinekt.internal.when/-tag/index.md)
+
+
+|
+
+##### [com.code42.jenkins.pipelinekt.core.credentials.Text](../com.code42.jenkins.pipelinekt.core.credentials/-text/index.md)
 
 
 |

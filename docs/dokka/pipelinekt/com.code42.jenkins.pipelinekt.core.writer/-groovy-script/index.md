@@ -2,7 +2,7 @@
 
 # GroovyScript
 
-`interface GroovyScript` [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/writer/GroovyWriter.kt#L10)
+`interface GroovyScript`
 
 A class that can be mapped to a jenkinsfile
 
@@ -24,6 +24,7 @@ A class that can be mapped to a jenkinsfile
 | [Option](../../com.code42.jenkins.pipelinekt.core/-option.md) | `interface Option : `[`GroovyScript`](./index.md) |
 | [Parameter](../../com.code42.jenkins.pipelinekt.core/-parameter/index.md) | `interface Parameter : `[`GroovyScript`](./index.md) |
 | [Pipeline](../../com.code42.jenkins.pipelinekt.core/-pipeline/index.md) | `data class Pipeline : `[`GroovyScript`](./index.md) |
+| [PipelineLibrary](../../com.code42.jenkins.pipelinekt.core/-pipeline-library/index.md) | `data class PipelineLibrary : `[`GroovyScript`](./index.md) |
 | [PipelineMethod](../../com.code42.jenkins.pipelinekt.core.method/-pipeline-method/index.md) | `data class PipelineMethod : `[`GroovyScript`](./index.md) |
 | [Post](../../com.code42.jenkins.pipelinekt.core/-post/index.md) | `data class Post : `[`GroovyScript`](./index.md) |
 | [Stage](../../com.code42.jenkins.pipelinekt.core.stage/-stage/index.md) | A declarative Jenkinsfile Stage`sealed class Stage : `[`GroovyScript`](./index.md) |

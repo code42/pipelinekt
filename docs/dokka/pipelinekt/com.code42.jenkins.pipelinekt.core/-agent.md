@@ -2,7 +2,7 @@
 
 # Agent
 
-`interface Agent : `[`GroovyScript`](../com.code42.jenkins.pipelinekt.core.writer/-groovy-script/index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/Agent.kt#L5)
+`interface Agent : `[`GroovyScript`](../com.code42.jenkins.pipelinekt.core.writer/-groovy-script/index.md)
 
 ### Inheritors
 

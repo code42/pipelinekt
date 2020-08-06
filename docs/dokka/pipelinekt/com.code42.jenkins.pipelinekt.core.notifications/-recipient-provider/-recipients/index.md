@@ -2,7 +2,7 @@
 
 # Recipients
 
-`object Recipients : `[`RecipientProvider`](../index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/notifications/RecipientProvider.kt#L17)
+`object Recipients : `[`RecipientProvider`](../index.md)
 
 ### Functions
 

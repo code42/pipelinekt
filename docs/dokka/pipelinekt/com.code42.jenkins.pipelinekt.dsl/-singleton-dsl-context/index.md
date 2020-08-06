@@ -2,7 +2,7 @@
 
 # SingletonDslContext
 
-`open class SingletonDslContext<T>` [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/DslContext.kt#L30)
+`open class SingletonDslContext<T>`
 
 ### Constructors
 

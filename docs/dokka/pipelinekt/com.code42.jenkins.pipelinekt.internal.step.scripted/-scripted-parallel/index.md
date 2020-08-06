@@ -2,7 +2,7 @@
 
 # ScriptedParallel
 
-`data class ScriptedParallel : `[`ScriptedStep`](../../com.code42.jenkins.pipelinekt.core.step/-scripted-step/index.md)`, `[`Step`](../../com.code42.jenkins.pipelinekt.core.step/-step/index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/step/scripted/ScriptedParallel.kt#L18)
+`data class ScriptedParallel : `[`ScriptedStep`](../../com.code42.jenkins.pipelinekt.core.step/-scripted-step/index.md)`, `[`Step`](../../com.code42.jenkins.pipelinekt.core.step/-step/index.md)
 
 This is not the preferred way to do parallel work.  Hover, pipelines support a limited amount of parallelism
 in declarative stages.  Do NOT use this unless you have exceeded the max parallelism in declarative stages.

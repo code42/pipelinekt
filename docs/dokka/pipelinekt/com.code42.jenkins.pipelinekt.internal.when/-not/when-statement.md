@@ -2,4 +2,4 @@
 
 # whenStatement
 
-`val whenStatement: `[`When`](../../com.code42.jenkins.pipelinekt.core/-when.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/when/Not.kt#L6)
+`val whenStatement: `[`When`](../../com.code42.jenkins.pipelinekt.core/-when.md)

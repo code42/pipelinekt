@@ -2,7 +2,7 @@
 
 # Spotbugs
 
-`data class Spotbugs : `[`RecordIssuesTool`](../index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/issues/RecordIssuesTool.kt#L8)
+`data class Spotbugs : `[`RecordIssuesTool`](../index.md)
 
 ### Constructors
 

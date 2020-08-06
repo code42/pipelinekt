@@ -2,4 +2,4 @@
 
 # ignoreMissing
 
-`val ignoreMissing: Bool?` [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/step/declarative/SshAgent.kt#L9)
+`val ignoreMissing: Bool?`

@@ -2,7 +2,7 @@
 
 # Author
 
-`data class Author : `[`ChangeRequest`](../index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/when/ChangeRequest.kt#L35)
+`data class Author : `[`ChangeRequest`](../index.md)
 
 ### Constructors
 

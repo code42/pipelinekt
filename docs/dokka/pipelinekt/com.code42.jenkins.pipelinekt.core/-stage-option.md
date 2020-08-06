@@ -2,7 +2,7 @@
 
 # StageOption
 
-`interface StageOption : `[`Option`](-option.md) [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/StageOption.kt#L3)
+`interface StageOption : `[`Option`](-option.md)
 
 ### Inheritors
 

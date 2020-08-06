@@ -2,7 +2,7 @@
 
 # CheckStyle
 
-`data class CheckStyle : `[`RecordIssuesTool`](../index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/issues/RecordIssuesTool.kt#L14)
+`data class CheckStyle : `[`RecordIssuesTool`](../index.md)
 
 ### Constructors
 

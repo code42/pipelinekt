@@ -2,7 +2,7 @@
 
 # SingletonStep
 
-`interface SingletonStep : `[`Step`](../-step/index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/step/SingletonStep.kt#L3)
+`interface SingletonStep : `[`Step`](../-step/index.md)
 
 ### Functions
 
@@ -19,8 +19,9 @@
 | [ArchiveArtifacts](../../com.code42.jenkins.pipelinekt.internal.step.declarative/-archive-artifacts/index.md) | Execute archive artifacts command`data class ArchiveArtifacts : `[`DeclarativeStep`](../-declarative-step.md)`, `[`SingletonStep`](./index.md) |
 | [Bat](../../com.code42.jenkins.pipelinekt.internal.step.declarative/-bat/index.md) | Execute a shell command`data class Bat : `[`DeclarativeStep`](../-declarative-step.md)`, `[`SingletonStep`](./index.md) |
 | [Build](../../com.code42.jenkins.pipelinekt.internal.step.declarative/-build/index.md) | `data class Build : `[`DeclarativeStep`](../-declarative-step.md)`, `[`SingletonStep`](./index.md) |
-| [CleanWs](../../com.code42.jenkins.pipelinekt.internal.step.declarative/-clean-ws/index.md) | `object CleanWs : `[`DeclarativeStep`](../-declarative-step.md)`, `[`SingletonStep`](./index.md) |
+| [CleanWs](../../com.code42.jenkins.pipelinekt.internal.step.declarative/-clean-ws/index.md) | `data class CleanWs : `[`DeclarativeStep`](../-declarative-step.md)`, `[`SingletonStep`](./index.md) |
 | [ClosureInvocation](../../com.code42.jenkins.pipelinekt.internal.step.declarative/-closure-invocation/index.md) | `data class ClosureInvocation : `[`DeclarativeStep`](../-declarative-step.md)`, `[`SingletonStep`](./index.md) |
+| [DeleteDir](../../com.code42.jenkins.pipelinekt.internal.step.declarative/-delete-dir/index.md) | `object DeleteDir : `[`DeclarativeStep`](../-declarative-step.md)`, `[`SingletonStep`](./index.md) |
 | [Echo](../../com.code42.jenkins.pipelinekt.internal.step.declarative/-echo/index.md) | Echo a string to the terminal`data class Echo : `[`DeclarativeStep`](../-declarative-step.md)`, `[`SingletonStep`](./index.md) |
 | [EmailExt](../../com.code42.jenkins.pipelinekt.internal.step.declarative/-email-ext/index.md) | Inject email into steps`data class EmailExt : `[`DeclarativeStep`](../-declarative-step.md)`, `[`SingletonStep`](./index.md) |
 | [Error](../../com.code42.jenkins.pipelinekt.internal.step.declarative/-error/index.md) | `data class Error : `[`SingletonStep`](./index.md)`, `[`DeclarativeStep`](../-declarative-step.md) |
@@ -28,7 +29,9 @@
 | [JUnit](../../com.code42.jenkins.pipelinekt.internal.step.declarative/-j-unit/index.md) | `data class JUnit : `[`DeclarativeStep`](../-declarative-step.md)`, `[`SingletonStep`](./index.md) |
 | [Literal](../../com.code42.jenkins.pipelinekt.internal.step.declarative/-literal/index.md) | Define arbitrary Declarative Jenkinsfile code blocks`data class Literal : `[`DeclarativeStep`](../-declarative-step.md)`, `[`SingletonStep`](./index.md) |
 | [Literal](../../com.code42.jenkins.pipelinekt.internal.step.scripted/-literal/index.md) | Define arbitrary scripted Jenkinsfile code blocks`data class Literal : `[`ScriptedStep`](../-scripted-step/index.md)`, `[`SingletonStep`](./index.md) |
+| [Mail](../../com.code42.jenkins.pipelinekt.internal.step.declarative/-mail/index.md) | Simple step for sending email.`data class Mail : `[`DeclarativeStep`](../-declarative-step.md)`, `[`SingletonStep`](./index.md) |
 | [NotifyBitbucket](../../com.code42.jenkins.pipelinekt.internal.step.scripted/-notify-bitbucket/index.md) | Notify Bitbucket server of build status.  Use at the beginning and end of a pipeline.`object NotifyBitbucket : `[`ScriptedStep`](../-scripted-step/index.md)`, `[`SingletonStep`](./index.md) |
+| [NotifyBitbucketSha1](../../com.code42.jenkins.pipelinekt.internal.step.scripted/-notify-bitbucket-sha1/index.md) | `data class NotifyBitbucketSha1 : `[`ScriptedStep`](../-scripted-step/index.md)`, `[`SingletonStep`](./index.md) |
 | [PipelineMethodInvocation](../../com.code42.jenkins.pipelinekt.core.method/-pipeline-method-invocation/index.md) | `data class PipelineMethodInvocation : `[`DeclarativeStep`](../-declarative-step.md)`, `[`SingletonStep`](./index.md) |
 | [PublishHtml](../../com.code42.jenkins.pipelinekt.internal.step.declarative/-publish-html/index.md) | `data class PublishHtml : `[`DeclarativeStep`](../-declarative-step.md)`, `[`SingletonStep`](./index.md) |
 | [ReadProperties](../../com.code42.jenkins.pipelinekt.internal.step.scripted/-read-properties/index.md) | `data class ReadProperties : `[`ScriptedStep`](../-scripted-step/index.md)`, `[`SingletonStep`](./index.md) |

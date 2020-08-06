@@ -2,7 +2,7 @@
 
 # DuplicateMethod
 
-`data class DuplicateMethod : `[`PipelineMethodError`](../index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/method/PipelineMethodError.kt#L8)
+`data class DuplicateMethod : `[`PipelineMethodError`](../index.md)
 
 ### Constructors
 

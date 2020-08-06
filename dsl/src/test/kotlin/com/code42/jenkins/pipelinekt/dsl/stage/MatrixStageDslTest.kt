@@ -9,6 +9,7 @@ import com.code42.jenkins.pipelinekt.core.stage.MatrixAxis
 import com.code42.jenkins.pipelinekt.core.stage.MatrixBody
 import com.code42.jenkins.pipelinekt.core.stage.MatrixExclude
 import com.code42.jenkins.pipelinekt.core.stage.Stage
+import com.code42.jenkins.pipelinekt.core.step.Void
 import com.code42.jenkins.pipelinekt.core.vars.Var
 import com.code42.jenkins.pipelinekt.core.vars.ext.parameter
 import com.code42.jenkins.pipelinekt.core.vars.ext.strDouble
@@ -79,6 +80,7 @@ class MatrixStageDslTest {
         }
 
         val expected = Pipeline(
+                preamble = Void,
                 stages = listOf(
                     Stage.Matrix(
                             name = "matrix".strDouble(),

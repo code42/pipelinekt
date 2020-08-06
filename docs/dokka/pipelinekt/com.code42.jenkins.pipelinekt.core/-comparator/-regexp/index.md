@@ -2,7 +2,7 @@
 
 # Regexp
 
-`object Regexp : `[`Comparator`](../index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/Comparator.kt#L8)
+`object Regexp : `[`Comparator`](../index.md)
 
 ### Functions
 

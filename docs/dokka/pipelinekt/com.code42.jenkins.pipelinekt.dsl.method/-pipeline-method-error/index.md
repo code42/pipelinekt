@@ -2,7 +2,7 @@
 
 # PipelineMethodError
 
-`sealed class PipelineMethodError : `[`RuntimeException`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-runtime-exception/index.html) [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/method/PipelineMethodError.kt#L4)
+`sealed class PipelineMethodError : `[`RuntimeException`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-runtime-exception/index.html)
 
 ### Exceptions
 

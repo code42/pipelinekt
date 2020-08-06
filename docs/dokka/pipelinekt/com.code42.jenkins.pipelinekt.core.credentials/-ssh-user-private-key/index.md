@@ -2,7 +2,7 @@
 
 # SshUserPrivateKey
 
-`data class SshUserPrivateKey : `[`JenkinsCredentials`](../-jenkins-credentials/index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/credentials/SshUserPrivateKey.kt#L5)
+`data class SshUserPrivateKey : `[`JenkinsCredentials`](../-jenkins-credentials/index.md)
 
 ### Constructors
 

@@ -2,7 +2,7 @@
 
 # Parameter
 
-`interface Parameter : `[`GroovyScript`](../../com.code42.jenkins.pipelinekt.core.writer/-groovy-script/index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/Parameter.kt#L6)
+`interface Parameter : `[`GroovyScript`](../../com.code42.jenkins.pipelinekt.core.writer/-groovy-script/index.md)
 
 ### Properties
 

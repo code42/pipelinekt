@@ -2,4 +2,4 @@
 
 # triggersContext
 
-`val triggersContext: `[`DslContext`](../-dsl-context/index.md)`<`[`Trigger`](../../com.code42.jenkins.pipelinekt.core/-trigger.md)`>` [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/PipelineContext.kt#L15)
+`val triggersContext: `[`DslContext`](../-dsl-context/index.md)`<`[`Trigger`](../../com.code42.jenkins.pipelinekt.core/-trigger.md)`>`

@@ -2,7 +2,7 @@
 
 # JDK
 
-`data class JDK : `[`Tool`](../../com.code42.jenkins.pipelinekt.core/-tool.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/tools/JDK.kt#L7)
+`data class JDK : `[`Tool`](../../com.code42.jenkins.pipelinekt.core/-tool.md)
 
 ### Constructors
 

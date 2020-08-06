@@ -2,7 +2,7 @@
 
 # CommonVars
 
-`object CommonVars` [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/vars/CommonVars.kt#L3)
+`object CommonVars`
 
 ### Properties
 

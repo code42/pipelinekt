@@ -2,7 +2,7 @@
 
 # Node
 
-`data class Node : `[`ScriptedStep`](../../com.code42.jenkins.pipelinekt.core.step/-scripted-step/index.md)`, `[`NestedStep`](../../com.code42.jenkins.pipelinekt.core.step/-nested-step/index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/step/scripted/Node.kt#L20)
+`data class Node : `[`ScriptedStep`](../../com.code42.jenkins.pipelinekt.core.step/-scripted-step/index.md)`, `[`NestedStep`](../../com.code42.jenkins.pipelinekt.core.step/-nested-step/index.md)
 
 You should not have to use this step.  This is from the old scripted pipelines.  However, this is present for users
 who require this functionality; for example parallelism that exceeds the max allowed by declarative stages, see

@@ -12,6 +12,7 @@
 | [Option](-option.md) | `interface Option : `[`GroovyScript`](../com.code42.jenkins.pipelinekt.core.writer/-groovy-script/index.md) |
 | [Parameter](-parameter/index.md) | `interface Parameter : `[`GroovyScript`](../com.code42.jenkins.pipelinekt.core.writer/-groovy-script/index.md) |
 | [Pipeline](-pipeline/index.md) | `data class Pipeline : `[`GroovyScript`](../com.code42.jenkins.pipelinekt.core.writer/-groovy-script/index.md) |
+| [PipelineLibrary](-pipeline-library/index.md) | `data class PipelineLibrary : `[`GroovyScript`](../com.code42.jenkins.pipelinekt.core.writer/-groovy-script/index.md) |
 | [Post](-post/index.md) | `data class Post : `[`GroovyScript`](../com.code42.jenkins.pipelinekt.core.writer/-groovy-script/index.md) |
 | [StageOption](-stage-option.md) | `interface StageOption : `[`Option`](-option.md) |
 | [Tool](-tool.md) | `interface Tool : `[`GroovyScript`](../com.code42.jenkins.pipelinekt.core.writer/-groovy-script/index.md) |

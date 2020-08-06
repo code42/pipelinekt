@@ -2,7 +2,7 @@
 
 # Agent
 
-`data class Agent : `[`Before`](../index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/when/Before.kt#L12)
+`data class Agent : `[`Before`](../index.md)
 
 ### Constructors
 

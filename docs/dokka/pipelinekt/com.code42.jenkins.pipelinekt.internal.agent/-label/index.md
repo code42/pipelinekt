@@ -2,7 +2,7 @@
 
 # Label
 
-`data class Label : `[`Agent`](../../com.code42.jenkins.pipelinekt.core/-agent.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/agent/Label.kt#L7)
+`data class Label : `[`Agent`](../../com.code42.jenkins.pipelinekt.core/-agent.md)
 
 ### Constructors
 

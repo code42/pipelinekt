@@ -2,7 +2,7 @@
 
 # SkipDefaultCheckout
 
-`object SkipDefaultCheckout : `[`StageOption`](../../com.code42.jenkins.pipelinekt.core/-stage-option.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/option/SkipDefaultCheckout.kt#L6)
+`object SkipDefaultCheckout : `[`StageOption`](../../com.code42.jenkins.pipelinekt.core/-stage-option.md)
 
 ### Functions
 

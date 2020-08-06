@@ -2,4 +2,4 @@
 
 # reuseNode
 
-`val reuseNode: Bool?` [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/agent/DockerAgent.kt#L48)
+`val reuseNode: Bool?`

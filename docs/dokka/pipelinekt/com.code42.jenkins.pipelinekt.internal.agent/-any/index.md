@@ -2,7 +2,7 @@
 
 # Any
 
-`object Any : `[`Agent`](../../com.code42.jenkins.pipelinekt.core/-agent.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/agent/Any.kt#L6)
+`object Any : `[`Agent`](../../com.code42.jenkins.pipelinekt.core/-agent.md)
 
 ### Functions
 

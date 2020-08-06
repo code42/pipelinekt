@@ -2,7 +2,7 @@
 
 # EndsWith
 
-`data class EndsWith : StringOperator` [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/conditional/BooleanStatement.kt#L59)
+`data class EndsWith : StringOperator`
 
 ### Constructors
 

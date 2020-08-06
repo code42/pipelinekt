@@ -2,7 +2,7 @@
 
 # Tool
 
-`interface Tool : `[`GroovyScript`](../com.code42.jenkins.pipelinekt.core.writer/-groovy-script/index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/Tool.kt#L5)
+`interface Tool : `[`GroovyScript`](../com.code42.jenkins.pipelinekt.core.writer/-groovy-script/index.md)
 
 ### Inheritors
 

@@ -2,4 +2,4 @@
 
 # toParameterDefintion
 
-`abstract fun toParameterDefintion(): `[`Parameter`](../../com.code42.jenkins.pipelinekt.core/-parameter/index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/buildParameter/BuildParameterValue.kt#L7)
+`abstract fun toParameterDefintion(): `[`Parameter`](../../com.code42.jenkins.pipelinekt.core/-parameter/index.md)

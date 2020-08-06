@@ -2,7 +2,7 @@
 
 # DisableConcurrentBuilds
 
-`object DisableConcurrentBuilds : `[`Option`](../../com.code42.jenkins.pipelinekt.core/-option.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/option/DisableConcurrentBuilds.kt#L6)
+`object DisableConcurrentBuilds : `[`Option`](../../com.code42.jenkins.pipelinekt.core/-option.md)
 
 ### Functions
 

@@ -2,7 +2,7 @@
 
 # MatrixAxisContext
 
-`data class MatrixAxisContext : `[`DslContext`](../../com.code42.jenkins.pipelinekt.dsl/-dsl-context/index.md)`<`[`MatrixAxis`](../../com.code42.jenkins.pipelinekt.core.stage/-matrix-axis/index.md)`>` [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/stage/MatrixAxisContext.kt#L10)
+`data class MatrixAxisContext : `[`DslContext`](../../com.code42.jenkins.pipelinekt.dsl/-dsl-context/index.md)`<`[`MatrixAxis`](../../com.code42.jenkins.pipelinekt.core.stage/-matrix-axis/index.md)`>`
 
 ### Constructors
 

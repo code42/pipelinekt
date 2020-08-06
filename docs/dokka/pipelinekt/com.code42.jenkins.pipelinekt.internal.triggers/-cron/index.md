@@ -2,7 +2,7 @@
 
 # Cron
 
-`data class Cron : `[`Trigger`](../../com.code42.jenkins.pipelinekt.core/-trigger.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/triggers/Cron.kt#L7)
+`data class Cron : `[`Trigger`](../../com.code42.jenkins.pipelinekt.core/-trigger.md)
 
 ### Constructors
 

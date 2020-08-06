@@ -2,7 +2,7 @@
 
 # RecipientProvider
 
-`sealed class RecipientProvider` [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/notifications/RecipientProvider.kt#L3)
+`sealed class RecipientProvider`
 
 ### Types
 

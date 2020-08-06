@@ -3,6 +3,7 @@ package com.code42.jenkins.pipelinekt.dsl
 import com.code42.jenkins.pipelinekt.core.Agent
 import com.code42.jenkins.pipelinekt.core.Option
 import com.code42.jenkins.pipelinekt.core.Pipeline
+import com.code42.jenkins.pipelinekt.core.PipelineLibrary
 import com.code42.jenkins.pipelinekt.core.Post
 import com.code42.jenkins.pipelinekt.core.StageOption
 import com.code42.jenkins.pipelinekt.core.stage.Stage
@@ -34,12 +35,14 @@ fun <T, Dsl : MethodDsl> Dsl.withConfigurationContext(applyConfiguration: Dsl.()
 }
 
 data class PipelineDsl(
+    val libraries: List<PipelineLibrary> = emptyList(),
+    val preamble: DslContext<Step>.() -> Unit = { },
     val defaultBuildOptions: DslContext<Option>.() -> Unit = {
-    buildDiscarder(logRotator(10, 10, 10, 10))
-    ansiColor("xterm")
-    timestamps()
-    disableConcurrentBuilds()
-},
+        buildDiscarder(logRotator(10, 10, 10, 10))
+        ansiColor("xterm")
+        timestamps()
+        disableConcurrentBuilds()
+    },
     val beforePrepSteps: DslContext<Step>.() -> Unit = { },
     val afterPrepSteps: DslContext<Step>.() -> Unit = { },
     val beforeLocalStage: DslContext<Step>.() -> Unit = { },
@@ -49,17 +52,17 @@ data class PipelineDsl(
     val beforePipelinePost: PostContext.() -> Unit = { },
     val afterPipelinePost: PostContext.() -> Unit = {
     cleanup {
-        cleanWs()
-    }
-},
+            cleanWs()
+        }
+    },
     val beforeLocalStagePost: PostContext.() -> Unit = { },
     val afterLocalStagePost: PostContext.() -> Unit = { },
     val beforeRemoteStagePost: PostContext.() -> Unit = { },
     val afterRemoteStagePost: PostContext.() -> Unit = {
-      cleanup {
+        cleanup {
           cleanWs()
-      }
-},
+        }
+    },
     val remoteStageOptions: DslContext<StageOption>.() -> Unit = { },
     val defaultAgent: SingletonDslContext<Agent>.() -> Unit = { },
     override val pipelineMethodRegistry: PipelineMethodRegistry = PipelineMethodRegistry(),
@@ -75,6 +78,8 @@ data class PipelineDsl(
 
     fun pipeline(
         prepSteps: DslContext<Step>.() -> Unit = { },
+        libraries: List<PipelineLibrary> = emptyList(),
+        preamble: DslContext<Step>.() -> Unit = { },
         pipelineBlock: PipelineContext.() -> Unit
     ): Pipeline {
         val context = PipelineContext(
@@ -83,6 +88,8 @@ data class PipelineDsl(
         context.pipelineBlock()
 
         val pipeline = Pipeline(
+                libraries = libraries,
+                preamble = DslContext.into(preamble).toStep(),
                 agent = context.agentContext.drainAll().firstOrNull() ?: SingletonDslContext.into(defaultAgent),
                 tools = context.toolContext.drainAll(),
                 parameters = context.parametersContext.drainAll(),

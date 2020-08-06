@@ -2,4 +2,4 @@
 
 # booleanStatement
 
-`val booleanStatement: `[`BooleanStatement`](../../../com.code42.jenkins.pipelinekt.core.conditional/-boolean-statement/index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/dsl/src/main/kotlin/com/code42/jenkins/pipelinekt/dsl/step/custom/GradleBuildDsl.kt#L21)
+`val booleanStatement: `[`BooleanStatement`](../../../com.code42.jenkins.pipelinekt.core.conditional/-boolean-statement/index.md)

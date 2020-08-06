@@ -2,7 +2,7 @@
 
 # NotValues
 
-`data class NotValues : `[`ExcludeAxis`](../index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/stage/ExcludeAxis.kt#L19)
+`data class NotValues : `[`ExcludeAxis`](../index.md)
 
 ### Constructors
 

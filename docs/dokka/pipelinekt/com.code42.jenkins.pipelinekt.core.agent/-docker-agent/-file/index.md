@@ -2,7 +2,7 @@
 
 # File
 
-`data class File : `[`DockerAgent`](../index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/agent/DockerAgent.kt#L39)
+`data class File : `[`DockerAgent`](../index.md)
 
 ### Constructors
 

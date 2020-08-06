@@ -2,7 +2,7 @@
 
 # UserIdCause
 
-`data class UserIdCause : `[`Cause`](../index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/Cause.kt#L17)
+`data class UserIdCause : `[`Cause`](../index.md)
 
 ### Constructors
 

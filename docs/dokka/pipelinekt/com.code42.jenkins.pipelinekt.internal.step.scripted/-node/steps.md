@@ -2,7 +2,7 @@
 
 # steps
 
-`val steps: `[`Step`](../../com.code42.jenkins.pipelinekt.core.step/-step/index.md) [(source)](https://github.com/code42/pipelinekt/tree/master/internal/src/main/kotlin/com/code42/jenkins/pipelinekt/internal/step/scripted/Node.kt#L20)
+`val steps: `[`Step`](../../com.code42.jenkins.pipelinekt.core.step/-step/index.md)
 
 the steps to execute on the node
 

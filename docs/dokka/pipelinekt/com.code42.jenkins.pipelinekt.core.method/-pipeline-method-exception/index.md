@@ -2,7 +2,7 @@
 
 # PipelineMethodException
 
-`data class PipelineMethodException : `[`Exception`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-exception/index.html) [(source)](https://github.com/code42/pipelinekt/tree/master/core/src/main/kotlin/com/code42/jenkins/pipelinekt/core/method/PipelineMethodException.kt#L5)
+`data class PipelineMethodException : `[`Exception`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-exception/index.html)
 
 ### Constructors
 
