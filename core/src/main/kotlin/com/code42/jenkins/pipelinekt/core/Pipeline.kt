@@ -15,6 +15,7 @@ fun generatePipeline(pipeline: Pipeline, outFile: String, indentStr: String = " 
 }
 
 data class Pipeline(
+    val environment: List<Environment> = emptyList(),
     val agent: Agent? = null,
     val tools: List<Tool> = emptyList(),
     val options: List<Option> = emptyList(),
@@ -30,6 +31,9 @@ data class Pipeline(
         }
 
         writer.closure("pipeline") { writer ->
+            if (environment.isNotEmpty()) {
+                writer.closure("environment", environment::toGroovy)
+            }
             agent?.toGroovy(writer)
             if (tools.isNotEmpty()) {
                 writer.closure("tools", tools::toGroovy)

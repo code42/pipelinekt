@@ -1,6 +1,7 @@
 package com.code42.jenkins.pipelinekt.dsl
 
 import com.code42.jenkins.pipelinekt.core.Agent
+import com.code42.jenkins.pipelinekt.core.Environment
 import com.code42.jenkins.pipelinekt.core.Option
 import com.code42.jenkins.pipelinekt.core.Parameter
 import com.code42.jenkins.pipelinekt.core.Tool
@@ -11,6 +12,7 @@ import com.code42.jenkins.pipelinekt.dsl.stage.StageWrapperContext
 import com.code42.jenkins.pipelinekt.dsl.stage.TopLevelStageContext
 
 data class PipelineContext(
+    val environmentContext: DslContext<Environment> = DslContext(),
     val agentContext: SingletonDslContext<Agent> = SingletonDslContext(),
     val triggersContext: DslContext<Trigger> = DslContext(),
     val parametersContext: DslContext<Parameter> = DslContext(),
@@ -45,7 +47,11 @@ data class PipelineContext(
         agentContext.agentBlock()
     }
 
-    fun post(postBlocck: PostContext.() -> Unit) {
-        postContext.postBlocck()
+    fun post(postBlock: PostContext.() -> Unit) {
+        postContext.postBlock()
+    }
+
+    fun environment(environmentBlock: DslContext<Environment>.() -> Unit) {
+        environmentContext.environmentBlock()
     }
 }
