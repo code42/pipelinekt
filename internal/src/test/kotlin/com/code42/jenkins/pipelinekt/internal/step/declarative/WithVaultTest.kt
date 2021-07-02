@@ -4,8 +4,8 @@ import com.code42.jenkins.pipelinekt.GroovyScriptTest
 import com.code42.jenkins.pipelinekt.core.secrets.VaultSecret
 import com.code42.jenkins.pipelinekt.core.secrets.VaultSecrets
 import com.code42.jenkins.pipelinekt.core.vars.ext.strDouble
-import org.junit.Test
 import kotlin.test.assertEquals
+import org.junit.Test
 
 class WithVaultTest : GroovyScriptTest() {
     @Test
