@@ -7,9 +7,9 @@ import com.code42.jenkins.pipelinekt.core.step.Step
 import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
 
 /**
- * Inject secrets to some steps
+ * Make Secrets from Vault available to steps within the block.
  *
- * @param secrets the secrets to inject
+ * @param secrets the list secrets made available to the steps
  * @param steps the steps to inject
  */
 data class WithVault(val secrets: Secrets, override val steps: Step) : DeclarativeStep, NestedStep {
