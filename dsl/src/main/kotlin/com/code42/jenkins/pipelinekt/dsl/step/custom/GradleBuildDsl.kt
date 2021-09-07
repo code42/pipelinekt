@@ -46,14 +46,14 @@ data class GradleBuildDsl(
 
     fun DslContext<Step>.gradleCommandSh(command: String, additionalBuildArgs: Var.Literal.Str) =
             withEnv(mapOf("GRADLE_USER_HOME" to "${"WORKSPACE".environmentVar()}/.gradle-home-tmp")) { artifactoryAuthenticated {
-                sh(("./gradlew --no-daemon --stacktrace --build-cache " +
+                sh(("./gradlew --stacktrace --build-cache " +
                         (gradleCredentials?.let { "-D$gradleUserProperty=\\\"\\\${${it.usernameVariable.value}}\\\" -D$gradlePasswordProperty=\\\"\\\${${it.passwordVariable.value}}\\\" " } ?: "") +
                         "$additionalBuildArgs $command").strDouble())
             } }
 
     fun DslContext<Step>.gradleCommandBat(command: String, additionalBuildArgs: Var.Literal.Str) =
             withEnv(mapOf("GRADLE_USER_HOME" to "${"WORKSPACE".environmentVar()}/.gradle-home-tmp")) { artifactoryAuthenticated {
-                bat(("call gradlew.bat --no-daemon --stacktrace --build-cache " +
+                bat(("call gradlew.bat --stacktrace --build-cache " +
                         (gradleCredentials?.let { "-D$gradleUserProperty=%${it.usernameVariable.value}% -D$gradlePasswordProperty=%${it.passwordVariable.value}% " } ?: "") +
                         "$additionalBuildArgs $command").strDouble())
             } }
