@@ -1,41 +1,47 @@
 def Build() {
   withEnv([
-  	"GRADLE_USER_HOME=${env.WORKSPACE}/.gradle-home-tmp"
+  	"GRADLE_USER_HOME=${env.WORKSPACE}/.gradle-home-tmp",
+    "JENKINS_NODE_COOKIE=dontKillMe"
   ]) {
     sh (script: "./gradlew --stacktrace --build-cache ${""} build -DmyArg=myArgValue", returnStdout: false)
   }
 }
 def api_Test() {
   withEnv([
-  	"GRADLE_USER_HOME=${env.WORKSPACE}/.gradle-home-tmp"
+  	"GRADLE_USER_HOME=${env.WORKSPACE}/.gradle-home-tmp",
+    "JENKINS_NODE_COOKIE=dontKillMe"
   ]) {
     sh (script: "./gradlew --stacktrace --build-cache ${""} :api:systemTest -DmyArg=myArgValue", returnStdout: false)
   }
 }
 def ext_Test() {
   withEnv([
-  	"GRADLE_USER_HOME=${env.WORKSPACE}/.gradle-home-tmp"
+  	"GRADLE_USER_HOME=${env.WORKSPACE}/.gradle-home-tmp",
+    "JENKINS_NODE_COOKIE=dontKillMe"
   ]) {
     sh (script: "./gradlew --stacktrace --build-cache ${""} :ext:systemTest -DmyArg=myArgValue", returnStdout: false)
   }
 }
 def shared_Test() {
   withEnv([
-  	"GRADLE_USER_HOME=${env.WORKSPACE}/.gradle-home-tmp"
+  	"GRADLE_USER_HOME=${env.WORKSPACE}/.gradle-home-tmp",
+    "JENKINS_NODE_COOKIE=dontKillMe"
   ]) {
     sh (script: "./gradlew --stacktrace --build-cache ${""} :shared:systemTest -DmyArg=myArgValue", returnStdout: false)
   }
 }
 def mod1_Test() {
   withEnv([
-  	"GRADLE_USER_HOME=${env.WORKSPACE}/.gradle-home-tmp"
+  	"GRADLE_USER_HOME=${env.WORKSPACE}/.gradle-home-tmp",
+    "JENKINS_NODE_COOKIE=dontKillMe"
   ]) {
     sh (script: "./gradlew --stacktrace --build-cache ${""} :mod1:systemTest -DmyArg=myArgValue", returnStdout: false)
   }
 }
 def Publish() {
   withEnv([
-  	"GRADLE_USER_HOME=${env.WORKSPACE}/.gradle-home-tmp"
+  	"GRADLE_USER_HOME=${env.WORKSPACE}/.gradle-home-tmp",
+    "JENKINS_NODE_COOKIE=dontKillMe"
   ]) {
     sh (script: "./gradlew --stacktrace --build-cache ${""} publish -DmyArg=myArgValue", returnStdout: false)
   }
