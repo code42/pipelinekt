@@ -15,7 +15,7 @@ class SecretsTest : GroovyScriptTest() {
             )
         )
 
-        val expected = "  vaultSecrets: [[path: 'some/vault/path', engineVersion: 1, secretValues: [\n" +
+        val expected = "  vaultSecrets: [[path: \"some/vault/path\", engineVersion: 1, secretValues: [\n" +
                 "    [envVar: 'VAR_1', vaultKey: 'KEY_1']\n" +
                 "  ]]]"
         val out = secrets1.toGroovy()
@@ -33,7 +33,7 @@ class SecretsTest : GroovyScriptTest() {
             )
         )
 
-        val expected = "  vaultSecrets: [[path: 'some/vault/path', engineVersion: 1, secretValues: [\n" +
+        val expected = "  vaultSecrets: [[path: \"some/vault/path\", engineVersion: 1, secretValues: [\n" +
                 "    [envVar: 'VAR_1', vaultKey: 'KEY_1'],\n" +
                 "    [envVar: 'VAR_2', vaultKey: 'KEY_2']\n" +
                 "  ]]]"

@@ -11,7 +11,7 @@ class WithVaultTest : GroovyScriptTest() {
     @Test
     fun withVaultBlockTest_singleVar() {
         val expected1 = "withVault([\n" +
-                "  vaultSecrets: [[path: 'some/vault/path', engineVersion: 1, secretValues: [\n" +
+                "  vaultSecrets: [[path: \"some/vault/path\", engineVersion: 1, secretValues: [\n" +
                 "    [envVar: 'ENV_VAR', vaultKey: 'VAULT_KEY']\n" +
                 "  ]]]\n" +
                 "]) {\n" +
@@ -31,7 +31,7 @@ class WithVaultTest : GroovyScriptTest() {
     @Test
     fun withVaultBlockTest_multipleVars() {
         val expected1 = "withVault([\n" +
-                "  vaultSecrets: [[path: 'some/vault/path', engineVersion: 1, secretValues: [\n" +
+                "  vaultSecrets: [[path: \"some/vault/path\", engineVersion: 1, secretValues: [\n" +
                 "    [envVar: 'ENV_VAR1', vaultKey: 'VAULT_KEY1'],\n" +
                 "    [envVar: 'ENV_VAR2', vaultKey: 'VAULT_KEY2']\n" +
                 "  ]]]\n" +
