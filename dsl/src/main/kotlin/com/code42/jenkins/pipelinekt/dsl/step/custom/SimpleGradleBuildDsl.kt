@@ -13,7 +13,6 @@ import com.code42.jenkins.pipelinekt.dsl.step.declarative.bat
 import com.code42.jenkins.pipelinekt.dsl.step.declarative.sh
 import com.code42.jenkins.pipelinekt.dsl.step.declarative.withEnv
 
-
 data class SimpleGradleBuildDsl(
     val shellContext: ShellContext = ShellContext.Sh,
     val gradleUserProperty: String = "gradle.wrapperUser",
@@ -43,9 +42,9 @@ data class SimpleGradleBuildDsl(
             mapOf(
                 "GRADLE_USER_HOME" to "${"WORKSPACE".environmentVar()}/.gradle-home-tmp",
                 "JENKINS_NODE_COOKIE" to "dontKillMe",
-                "GRADLE_OPTS" to "-D$gradleUserProperty=$gradleUserPropertyValue -D$gradlePasswordPropertyValue=$gradlePasswordPropertyValue"
-
-                )
+                "GRADLE_OPTS" to "-D$gradleUserProperty=$gradleUserPropertyValue " +
+                        "-D$gradlePasswordPropertyValue=$gradlePasswordPropertyValue"
+            )
         ) {
             sh(("./gradlew --stacktrace --build-cache $additionalBuildArgs $command").strDouble())
         }
@@ -54,7 +53,9 @@ data class SimpleGradleBuildDsl(
         withEnv(
             mapOf(
                 "GRADLE_USER_HOME" to "${"WORKSPACE".environmentVar()}/.gradle-home-tmp",
-                "JENKINS_NODE_COOKIE" to "dontKillMe"
+                "JENKINS_NODE_COOKIE" to "dontKillMe",
+                "GRADLE_OPTS" to "-D$gradleUserProperty=$gradleUserPropertyValue " +
+                        "-D$gradlePasswordPropertyValue=$gradlePasswordPropertyValue"
             )
         ) {
             bat(("call gradlew.bat --stacktrace --build-cache $additionalBuildArgs $command").strDouble())
