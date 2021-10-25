@@ -42,8 +42,8 @@ data class SimpleGradleBuildDsl(
             mapOf(
                 "GRADLE_USER_HOME" to "${"WORKSPACE".environmentVar()}/.gradle-home-tmp",
                 "JENKINS_NODE_COOKIE" to "dontKillMe",
-                "GRADLE_OPTS" to "-D$gradleUserProperty=\"$gradleUserPropertyValue\" " +
-                        "-D$gradlePasswordPropertyValue=\"$gradlePasswordPropertyValue\""
+                "GRADLE_OPTS" to "-D$gradleUserProperty=\'$gradleUserPropertyValue\' " +
+                        "-D$gradlePasswordProperty=\'$gradlePasswordPropertyValue\'"
             )
         ) {
             sh(("./gradlew --stacktrace --build-cache $additionalBuildArgs $command").strDouble())
