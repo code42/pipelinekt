@@ -49,6 +49,7 @@ data class GradleBuildDsl(
                 mapOf("GRADLE_USER_HOME" to "${"WORKSPACE".environmentVar()}/.gradle-home-tmp",
                 "JENKINS_NODE_COOKIE" to "dontKillMe")
             ) { artifactoryAuthenticated {
+                sh ("./gradlew --status")
                 sh(("./gradlew --stacktrace --build-cache " +
                         (gradleCredentials?.let { "-D$gradleUserProperty=\\\"\\\${${it.usernameVariable.value}}\\\" -D$gradlePasswordProperty=\\\"\\\${${it.passwordVariable.value}}\\\" " } ?: "") +
                         "$additionalBuildArgs $command").strDouble())
@@ -59,6 +60,7 @@ data class GradleBuildDsl(
                     mapOf("GRADLE_USER_HOME" to "${"WORKSPACE".environmentVar()}/.gradle-home-tmp",
                     "JENKINS_NODE_COOKIE" to "dontKillMe")
             ) { artifactoryAuthenticated {
+                bat(("call gradlew.bat --status")
                 bat(("call gradlew.bat --stacktrace --build-cache " +
                         (gradleCredentials?.let { "-D$gradleUserProperty=%${it.usernameVariable.value}% -D$gradlePasswordProperty=%${it.passwordVariable.value}% " } ?: "") +
                         "$additionalBuildArgs $command").strDouble())
