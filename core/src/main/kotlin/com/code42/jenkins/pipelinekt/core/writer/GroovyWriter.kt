@@ -119,7 +119,7 @@ data class GroovyWriter(val writer: PrintWriter, val indent: Int = 0, val contex
      */
     private fun PrintWriter.printIndent() {
         if (indent > 0) {
-            for (i in 1..indent) {
+            (1..indent).forEach {
                 this.append(indentStr)
             }
         }

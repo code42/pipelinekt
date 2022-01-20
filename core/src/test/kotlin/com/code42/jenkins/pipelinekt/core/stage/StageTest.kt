@@ -3,7 +3,6 @@ package com.code42.jenkins.pipelinekt.core.stage
 import com.code42.jenkins.pipelinekt.core.GroovyScriptTest
 import com.code42.jenkins.pipelinekt.core.TestStep
 import com.code42.jenkins.pipelinekt.core.When
-import com.code42.jenkins.pipelinekt.core.conditional.BooleanStatement
 import com.code42.jenkins.pipelinekt.core.vars.ext.strSingle
 import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
 import kotlin.test.Test
@@ -156,8 +155,6 @@ class StageTest : GroovyScriptTest() {
     @Test
     fun stageWithWhen() {
         val name = "before".strSingle()
-        val enabled = true
-        val booleanDoTesting = BooleanStatement.Literal("Params.DO_TESTING")
 
         val stage1 = Stage.Steps(
                 name = name,

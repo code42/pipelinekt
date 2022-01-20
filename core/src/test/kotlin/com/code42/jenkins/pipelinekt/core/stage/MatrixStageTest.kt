@@ -15,7 +15,8 @@ import org.junit.Test
 class MatrixStageTest : GroovyScriptTest() {
 
     @Test
-    fun matrixStage_() {
+    @Suppress("LongMethod")
+    fun matrixStage() {
         Stage.Matrix(
                 name = "matrix stage".strDouble(),
                 matrixBody = MatrixBody(
