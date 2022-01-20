@@ -26,7 +26,6 @@ allprojects {
     repositories {
         mavenCentral()
     }
-
 }
 
 val dokka by tasks.getting(DokkaTask::class) {
@@ -83,6 +82,9 @@ subprojects {
             from(sourceSets.main.get().allSource)
         }
 
+        jacoco {
+            toolVersion = "0.8.7"
+        }
 
         val dokkaKdoc by tasks.creating(DokkaTask::class) {
             outputFormat = "html"

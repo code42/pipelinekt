@@ -13,6 +13,7 @@ import com.code42.jenkins.pipelinekt.dsl.DslContext
 import com.code42.jenkins.pipelinekt.dsl.SingletonDslContext
 import com.code42.jenkins.pipelinekt.dsl.post.PostContext
 
+@Suppress("LongParameterList")
 open class TopLevelStageContext(
     val agentContext: SingletonDslContext<Agent> = SingletonDslContext(),
     val stepContext: DslContext<Step> = DslContext(),

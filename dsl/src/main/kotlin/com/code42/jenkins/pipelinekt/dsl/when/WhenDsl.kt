@@ -80,7 +80,11 @@ fun DslContext<When>.changeRequest(changeRequestType: ChangeRequestType, value: 
     changeRequest(changeRequestType, value.strDouble(), comparator)
 }
 
-fun DslContext<When>.changeRequest(changeRequestType: ChangeRequestType, value: Var.Literal.Str, comparator: Comparator) {
+fun DslContext<When>.changeRequest(
+    changeRequestType: ChangeRequestType,
+    value: Var.Literal.Str,
+    comparator: Comparator
+) {
     add(when (changeRequestType) {
         ChangeRequestType.Id -> ChangeRequest.Id(value, comparator)
         ChangeRequestType.Target -> ChangeRequest.Target(value, comparator)

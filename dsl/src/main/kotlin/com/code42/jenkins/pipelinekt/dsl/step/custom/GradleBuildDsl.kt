@@ -49,7 +49,7 @@ data class GradleBuildDsl(
                 mapOf("GRADLE_USER_HOME" to "${"WORKSPACE".environmentVar()}/.gradle-home-tmp",
                 "JENKINS_NODE_COOKIE" to "dontKillMe")
             ) { artifactoryAuthenticated {
-                sh ("./gradlew --status")
+                sh(("./gradlew --status").strDouble())
                 sh(("./gradlew --stacktrace --build-cache " +
                         (gradleCredentials?.let { "-D$gradleUserProperty=\\\"\\\${${it.usernameVariable.value}}\\\" -D$gradlePasswordProperty=\\\"\\\${${it.passwordVariable.value}}\\\" " } ?: "") +
                         "$additionalBuildArgs $command").strDouble())
@@ -60,12 +60,16 @@ data class GradleBuildDsl(
                     mapOf("GRADLE_USER_HOME" to "${"WORKSPACE".environmentVar()}/.gradle-home-tmp",
                     "JENKINS_NODE_COOKIE" to "dontKillMe")
             ) { artifactoryAuthenticated {
-                bat(("call gradlew.bat --status")
+                bat(("call gradlew.bat --status").strDouble())
                 bat(("call gradlew.bat --stacktrace --build-cache " +
-                        (gradleCredentials?.let { "-D$gradleUserProperty=%${it.usernameVariable.value}% -D$gradlePasswordProperty=%${it.passwordVariable.value}% " } ?: "") +
+                        (gradleCredentials?.let
+                        { "-D$gradleUserProperty=%${it.usernameVariable.value}% " +
+                                "-D$gradlePasswordProperty=%${it.passwordVariable.value}% "
+                        } ?: "") +
                         "$additionalBuildArgs $command").strDouble())
             } }
 
+    @Suppress("MaxLineLength")
     fun DslContext<Step>.gradleCommandMultiPlatform(command: String, additionalBuildArgs: Var.Literal.Str, booleanStatement: BooleanStatement = "PATH".environmentVar().containsSubstring("C:".strSingle())) =
             condition({ booleanStatement },
                         { gradleCommandBat(command, additionalBuildArgs) },

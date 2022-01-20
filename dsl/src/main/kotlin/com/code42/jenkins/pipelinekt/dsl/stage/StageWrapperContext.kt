@@ -1,3 +1,5 @@
+@file:Suppress("TooManyFunctions")
+
 package com.code42.jenkins.pipelinekt.dsl.stage
 
 import com.code42.jenkins.pipelinekt.core.Agent
@@ -45,10 +47,6 @@ data class StageWrapperContext<I : StageContext>(
 
     fun SingletonDslContext<Agent>.defaultAgent() { defaultAgent.invoke(this) }
 
-    private fun getDefaultAgent(): Agent? {
-        return SingletonDslContext.into(defaultAgent)
-    }
-
     // TODO, move remote stage and local stage into stage
     fun stage(
         name: String,
@@ -84,7 +82,12 @@ data class StageWrapperContext<I : StageContext>(
         val context = DslContext<StageOption>()
         context.remoteStageOptions()
         val defaultOptions = context.drainAll()
-                .filter { defaultOption -> stageOptions.none { userOption -> userOption.javaClass == defaultOption.javaClass } }
+                .filter {
+                    defaultOption ->
+                    stageOptions.none { userOption ->
+                        userOption.javaClass == defaultOption.javaClass
+                    }
+                }
         return stageOptions + defaultOptions
     }
 

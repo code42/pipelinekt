@@ -32,6 +32,14 @@ data class Mail(
     val charset: Var.Literal.Str = "".strSingle()
 ) : DeclarativeStep, SingletonStep {
     override fun toGroovy(writer: GroovyWriter) {
-        writer.writeln("mail to: ${to.toGroovy()}, subject: ${subject.toGroovy()}, body: ${body.toGroovy()}, from: ${from.toGroovy()}, cc: ${cc.toGroovy()}, bcc: ${bcc.toGroovy()}, replyTo: ${replyTo.toGroovy()}, mimeType: ${mimeType.toGroovy()}, charset: ${charset.toGroovy()}")
+        writer.writeln("mail to: ${to.toGroovy()}," +
+                " subject: ${subject.toGroovy()}," +
+                " body: ${body.toGroovy()}," +
+                " from: ${from.toGroovy()}," +
+                " cc: ${cc.toGroovy()}," +
+                " bcc: ${bcc.toGroovy()}," +
+                " replyTo: ${replyTo.toGroovy()}," +
+                " mimeType: ${mimeType.toGroovy()}," +
+                " charset: ${charset.toGroovy()}")
     }
 }

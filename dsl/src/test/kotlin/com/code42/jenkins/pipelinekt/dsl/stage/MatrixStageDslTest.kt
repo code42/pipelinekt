@@ -35,6 +35,7 @@ import org.junit.Test
 
 class MatrixStageDslTest {
     @Test
+    @Suppress("LongMethod")
     fun matrixStage_objectEquivalence() {
         val pipelineDsl = PipelineDsl(defaultEnvironment = {
             envVar("FOO", "BAR")

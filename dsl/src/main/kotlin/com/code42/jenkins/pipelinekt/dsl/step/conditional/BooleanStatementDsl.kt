@@ -9,6 +9,7 @@ import com.code42.jenkins.pipelinekt.core.writer.ext.toStep
 import com.code42.jenkins.pipelinekt.dsl.DslContext
 import com.code42.jenkins.pipelinekt.internal.step.scripted.If
 
+@Suppress("UnusedPrivateMember")
 fun DslContext<Step>.`if`(
     statement: BooleanStatement,
     then: DslContext<Step>.() -> Unit,
@@ -16,6 +17,7 @@ fun DslContext<Step>.`if`(
 ) {
     condition(statement, then, `else`)
 }
+@Suppress("UnusedPrivateMember")
 fun DslContext<Step>.`if`(
     statement: () -> BooleanStatement,
     then: DslContext<Step>.() -> Unit,
