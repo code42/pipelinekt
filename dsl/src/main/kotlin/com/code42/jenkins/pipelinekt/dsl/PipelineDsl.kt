@@ -1,3 +1,5 @@
+@file:Suppress("TooManyFunctions")
+
 package com.code42.jenkins.pipelinekt.dsl
 
 import com.code42.jenkins.pipelinekt.core.Agent

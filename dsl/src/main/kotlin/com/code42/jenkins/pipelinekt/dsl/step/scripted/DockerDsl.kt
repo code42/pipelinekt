@@ -1,3 +1,5 @@
+@file:Suppress("TooManyFunctions", "MatchingDeclarationName")
+
 package com.code42.jenkins.pipelinekt.dsl.step.scripted
 
 import com.code42.jenkins.pipelinekt.core.step.Step
@@ -20,12 +22,25 @@ data class DockerVar(val name: String, val context: DslContext<Step>) : Var.Exte
         context.add(Docker.ImageOps.Inside(args.strDouble(), DslContext.into(steps).toStep()))
     }
 
-    fun withRun(args: String = "", command: String = "", containerVariable: Var.Variable = "container".groovyVariable(), steps: DslContext<Step>.() -> Unit) {
+    fun withRun(
+        args: String = "",
+        command: String = "",
+        containerVariable: Var.Variable = "container".groovyVariable(),
+        steps: DslContext<Step>.() -> Unit
+    ) {
         context.literal(this.name)
-        context.add(Docker.ImageOps.WithRun(args.strDouble(), command.strDouble(), DslContext.into(steps).toStep(), containerVariable))
+        context.add(Docker.ImageOps.WithRun(args.strDouble(),
+                command.strDouble(),
+                DslContext.into(steps).toStep(),
+                containerVariable))
     }
 
-    fun withRun(args: Literal.Str, command: Literal.Str?, containerVariable: Var.Variable, steps: DslContext<Step>.() -> Unit) {
+    fun withRun(
+        args: Literal.Str,
+        command: Literal.Str?,
+        containerVariable: Var.Variable,
+        steps: DslContext<Step>.() -> Unit
+    ) {
         context.literal(this.name)
         context.add(Docker.ImageOps.WithRun(args, command, DslContext.into(steps).toStep(), containerVariable))
     }

@@ -1,17 +1,17 @@
 import org.jetbrains.dokka.gradle.DokkaTask
 import com.code42.version.Version
 
-val kotlinVersion = "1.3.61"
+val kotlinVersion = "1.5.31"
 
 plugins {
     base
-    kotlin("jvm") version "1.3.61"
+    kotlin("jvm") version "1.5.31"
     id("idea")
     maven
     `maven-publish`
     id("com.diffplug.gradle.spotless").version("3.26.1")
     id("org.jetbrains.dokka").version("0.10.0")
-    id("io.gitlab.arturbosch.detekt").version("1.2.2")
+    id("io.gitlab.arturbosch.detekt").version("1.18.1")
     jacoco
 }
 val githubRepo = System.getenv("GITHUB_REPOSITORY") ?: "code42/pipelinekt"
@@ -24,10 +24,8 @@ allprojects {
     version = Version.getVersion()
 
     repositories {
-        jcenter()
         mavenCentral()
     }
-
 }
 
 val dokka by tasks.getting(DokkaTask::class) {
@@ -84,6 +82,9 @@ subprojects {
             from(sourceSets.main.get().allSource)
         }
 
+        jacoco {
+            toolVersion = "0.8.7"
+        }
 
         val dokkaKdoc by tasks.creating(DokkaTask::class) {
             outputFormat = "html"
@@ -135,7 +136,7 @@ subprojects {
         }
 
         detekt {
-            input = files("src/main/kotlin", "src/test/kotlin")
+            source = files("src/main/kotlin", "src/test/kotlin")
             baseline = file("detekt-${project.name}-baseline.xml") // Just if you want to create a baseline file.
         }
 

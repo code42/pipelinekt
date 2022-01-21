@@ -19,7 +19,16 @@ data class Post(
 ) : GroovyScript {
 
     override fun toGroovy(writer: GroovyWriter) {
-        if (listOf(always, success, cleanup, changed, fixed, regression, aborted, unstable, unstable, failure).any { !it.isEmpty() }) {
+        if (listOf(always,
+                    success,
+                    cleanup,
+                    changed,
+                    fixed,
+                    regression,
+                    aborted,
+                    unstable,
+                    unstable,
+                    failure).any { !it.isEmpty() }) {
             writer.closure("post") { writer ->
                 toGroovy("success", success, writer)
                 toGroovy("always", always, writer)
