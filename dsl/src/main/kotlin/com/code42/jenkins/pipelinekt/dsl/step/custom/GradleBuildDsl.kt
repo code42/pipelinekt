@@ -63,8 +63,8 @@ data class GradleBuildDsl(
                 bat(("call gradlew.bat --status").strDouble())
                 bat(("call gradlew.bat --stacktrace --build-cache " +
                         (gradleCredentials?.let
-                        { "-D$gradleUserProperty=%${it.usernameVariable.value}% " +
-                                "-D$gradlePasswordProperty=%${it.passwordVariable.value}% "
+                        { "-D$gradleUserProperty=\\\"%${it.usernameVariable.value}%\\\" " +
+                                "-D$gradlePasswordProperty=\\\"%${it.passwordVariable.value}%\\\" "
                         } ?: "") +
                         "$additionalBuildArgs $command").strDouble())
             } }
