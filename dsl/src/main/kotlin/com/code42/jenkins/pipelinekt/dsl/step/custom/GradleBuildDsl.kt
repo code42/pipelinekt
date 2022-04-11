@@ -50,7 +50,7 @@ data class GradleBuildDsl(
                 "JENKINS_NODE_COOKIE" to "dontKillMe")
             ) { artifactoryAuthenticated {
                 sh(("./gradlew --stacktrace --build-cache " +
-                        (gradleCredentials?.let { "-D$gradleUserProperty=\\\"\\\${${it.usernameVariable.value}}\\\" -D$gradlePasswordProperty=\\\"\\\${${it.passwordVariable.value}}\\\" " } ?: "") +
+                        (gradleCredentials?.let { "-D$gradleUserProperty='\\\${${it.usernameVariable.value}}\\\' -D$gradlePasswordProperty='\\\${${it.passwordVariable.value}}' " } ?: "") +
                         "$additionalBuildArgs $command").strDouble())
             } }
 
