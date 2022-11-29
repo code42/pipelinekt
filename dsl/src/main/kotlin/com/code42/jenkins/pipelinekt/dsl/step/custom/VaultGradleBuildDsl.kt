@@ -71,8 +71,8 @@ data class VaultGradleBuildDsl(
                 withVault(secrets = serviceAccountSecrets) {
                     bat(
                         ("gradlew.bat --stacktrace --build-cache " +
-                                "-D$gradleUserProperty=\\\"%\\\${ARTIFACTORY_USERNAME}%\\\" " +
-                                "-D$gradlePasswordProperty=\\\"%\\\${ARTIFACTORY_PASSWORD}%\\\" " +
+                                "-D$gradleUserProperty=\\\"%ARTIFACTORY_USERNAME%\\\" " +
+                                "-D$gradlePasswordProperty=\\\"%ARTIFACTORY_PASSWORD%\\\" " +
                                 "$additionalBuildArgs $command").strDouble()
                     )
                 }
