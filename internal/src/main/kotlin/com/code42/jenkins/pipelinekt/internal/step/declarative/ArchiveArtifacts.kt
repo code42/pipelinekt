@@ -13,6 +13,8 @@ import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
  */
 data class ArchiveArtifacts(val artifacts: Var.Literal.Str, val fingerprint: Boolean = false, val allowEmptyArchive: Boolean = false) : DeclarativeStep, SingletonStep {
     override fun toGroovy(writer: GroovyWriter) {
-        writer.writeln("archiveArtifacts artifacts: ${artifacts.toGroovy()}, fingerprint: $fingerprint, allowEmptyArchive: $allowEmptyArchive")
+        writer.writeln("archiveArtifacts artifacts: ${artifacts.toGroovy()}, " +
+                "fingerprint: $fingerprint, " +
+                "allowEmptyArchive: $allowEmptyArchive")
     }
 }
