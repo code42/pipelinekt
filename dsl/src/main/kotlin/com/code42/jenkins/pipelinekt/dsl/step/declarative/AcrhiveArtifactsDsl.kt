@@ -12,6 +12,9 @@ fun DslContext<Step>.archiveArtifacts(artifacts: String, fingerprint: Boolean) =
 fun DslContext<Step>.archiveArtifacts(artifacts: String, fingerprint: Boolean, allowEmptyArchive: Boolean) =
     archiveArtifacts(artifacts.strDouble(), fingerprint, allowEmptyArchive)
 
+fun DslContext<Step>.archiveArtifacts(artifacts: Var.Literal.Str, fingerprint: Boolean) {
+    add(ArchiveArtifacts(artifacts, fingerprint, false))
+}
 fun DslContext<Step>.archiveArtifacts(artifacts: Var.Literal.Str, fingerprint: Boolean, allowEmptyArchive: Boolean) {
     add(ArchiveArtifacts(artifacts, fingerprint, allowEmptyArchive))
 }
