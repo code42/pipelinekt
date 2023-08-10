@@ -5,8 +5,12 @@ import com.code42.jenkins.pipelinekt.core.step.SingletonStep
 import com.code42.jenkins.pipelinekt.core.vars.Var
 import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
 
-data class JUnit(val testResults: Var.Literal.Str, val allowEmptyResults: Boolean = false) : DeclarativeStep, SingletonStep {
+data class JUnit(
+    val testResults: Var.Literal.Str,
+    val allowEmptyResults: Boolean = false
+) : DeclarativeStep, SingletonStep {
     override fun toGroovy(writer: GroovyWriter) {
-        writer.writeln("junit ${testResults.toGroovy()}, allowEmptyResults: $allowEmptyResults")
+        writer.writeln("junit ${testResults.toGroovy()}," +
+                " allowEmptyResults: $allowEmptyResults")
     }
 }

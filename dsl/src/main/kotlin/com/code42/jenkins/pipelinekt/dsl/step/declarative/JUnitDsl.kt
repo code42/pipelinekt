@@ -10,9 +10,9 @@ fun DslContext<Step>.junit(testResults: String) =
         junit(testResults = testResults.strDouble(), false)
 
 fun DslContext<Step>.junit(testResults: String, allowEmptyResults: Boolean) =
-        junit(testResults = testResults.strDouble())
+        junit(testResults = testResults.strDouble(), allowEmptyResults)
 
 fun DslContext<Step>.junit(testResults: Var.Literal.Str) =
-        add(JUnit(testResults = testResults. false))
+        add(JUnit(testResults = testResults, false))
 fun DslContext<Step>.junit(testResults: Var.Literal.Str, allowEmptyResults: Boolean) =
-        add(JUnit(testResults = testResults. allowEmptyResults=allowEmptyResults))
+        add(JUnit(testResults = testResults, allowEmptyResults))
