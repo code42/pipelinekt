@@ -11,8 +11,8 @@ import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
  * @param artifacts the artifacts to archive, blob pattern
  * @param fingerprint whether the artifact is part of the archives fingerprints
  */
-data class ArchiveArtifacts(val artifacts: Var.Literal.Str, val fingerprint: Boolean = false) : DeclarativeStep, SingletonStep {
+data class ArchiveArtifacts(val artifacts: Var.Literal.Str, val fingerprint: Boolean = false, val allowEmptyArchive: Boolean = false) : DeclarativeStep, SingletonStep {
     override fun toGroovy(writer: GroovyWriter) {
-        writer.writeln("archiveArtifacts artifacts: ${artifacts.toGroovy()}, fingerprint: $fingerprint")
+        writer.writeln("archiveArtifacts artifacts: ${artifacts.toGroovy()}, fingerprint: $fingerprint, allowEmptyArchive: $allowEmptyArchive")
     }
 }
