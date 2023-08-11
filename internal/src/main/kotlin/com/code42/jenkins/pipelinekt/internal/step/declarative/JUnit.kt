@@ -10,7 +10,7 @@ data class JUnit(
     val allowEmptyResults: Boolean = false
 ) : DeclarativeStep, SingletonStep {
     override fun toGroovy(writer: GroovyWriter) {
-        writer.writeln("junit ${testResults.toGroovy()}," +
+        writer.writeln("junit testResults: ${testResults.toGroovy()}," +
                 " allowEmptyResults: $allowEmptyResults")
     }
 }
