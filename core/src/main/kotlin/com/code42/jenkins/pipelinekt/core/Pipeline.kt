@@ -8,10 +8,10 @@ import com.code42.jenkins.pipelinekt.core.writer.ext.toGroovy
 import java.io.File
 
 fun generatePipeline(
-    imports: List<String> = emptyList(),
     pipeline: Pipeline,
     outFile: String,
-    indentStr: String = "  "
+    indentStr: String = "  ",
+    imports: List<String> = emptyList()
 ) {
     val dir = outFile.substringBeforeLast('/')
     File(dir).mkdirs()
