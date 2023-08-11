@@ -7,10 +7,18 @@ import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
 import com.code42.jenkins.pipelinekt.core.writer.ext.toGroovy
 import java.io.File
 
-fun generatePipeline(pipeline: Pipeline, outFile: String, indentStr: String = "  ") {
+fun generatePipeline(
+    imports: List<String> = emptyList(),
+    pipeline: Pipeline,
+    outFile: String,
+    indentStr: String = "  "
+) {
     val dir = outFile.substringBeforeLast('/')
     File(dir).mkdirs()
     val writer = GroovyWriter.forFile(File(outFile), indentStr)
+    for (import in imports) {
+        writer.writeln("import $import")
+    }
     pipeline.toGroovy(writer)
 }
 
