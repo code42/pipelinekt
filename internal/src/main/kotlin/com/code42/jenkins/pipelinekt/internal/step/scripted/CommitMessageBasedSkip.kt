@@ -6,7 +6,7 @@ import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
 
 /**
  * Use this to abort a job based on a regex pattern match in the latest commit message.
- * 
+ *
  * This requires approval of the following signature which isn't normally allowed in the Groovy sandbox.
  * new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException hudson.model.Result jenkins.model.CauseOfInterruption[]
  */
