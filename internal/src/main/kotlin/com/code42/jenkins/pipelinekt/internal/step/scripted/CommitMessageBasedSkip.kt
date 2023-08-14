@@ -21,7 +21,7 @@ data class CommitMessageBasedSkip(
             """
                 script {
                     try {
-                        sh "git log --oneline -1 | grep -qE '$regex' && false"
+                        sh "if git log --oneline -1 | grep -qE '$regex'; then exit 1; fi"
                     } catch(exc) {
                         throw new FlowInterruptedException(Result.$result)
                     }
