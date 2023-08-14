@@ -33,4 +33,14 @@ pipelinekt is a kotlin library that improves the Jenkinsfile development experie
 
 # getting started 
 Please see the [quickstart guide](docs/quickstart.md)
-    
+
+# Contributing
+1. Fork on GitHub
+2. Update minor or major as needed in [version.txt] per [Semantic Versioning 2.0.0](https://semver.org)
+3. Ensure all gradle tasks are successful
+
+       ./gradlew build detek examples:build
+4. Apply spotless before each commit
+
+       ./gradlew spotlessApply
+5. Create PR
