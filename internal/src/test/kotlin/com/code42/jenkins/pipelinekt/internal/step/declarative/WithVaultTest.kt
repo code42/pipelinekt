@@ -15,6 +15,7 @@ class WithVaultTest : GroovyScriptTest() {
                 "    [envVar: 'ENV_VAR', vaultKey: 'VAULT_KEY']\n" +
                 "  ]]]\n" +
                 "]) {\n" +
+                "${indentStr}sh (script: \"if [ ! \\\"\$ENV_VAR\\\" ]; then echo \\\"WARNING: environment variable 'ENV_VAR' was not set, or was empty. Getting secrets from vault may have failed. \\\"; fi\", returnStdout: false)\n" +
                 "${indentStr}sh (script: \"echo testing...\", returnStdout: false)\n" +
                 "}\n"
         val secrets1 = VaultSecrets(
@@ -36,6 +37,8 @@ class WithVaultTest : GroovyScriptTest() {
                 "    [envVar: 'ENV_VAR2', vaultKey: 'VAULT_KEY2']\n" +
                 "  ]]]\n" +
                 "]) {\n" +
+                "${indentStr}sh (script: \"if [ ! \\\"\$ENV_VAR1\\\" ]; then echo \\\"WARNING: environment variable 'ENV_VAR1' was not set, or was empty. Getting secrets from vault may have failed. \\\"; fi\", returnStdout: false)\n" +
+                "${indentStr}sh (script: \"if [ ! \\\"\$ENV_VAR2\\\" ]; then echo \\\"WARNING: environment variable 'ENV_VAR2' was not set, or was empty. Getting secrets from vault may have failed. \\\"; fi\", returnStdout: false)\n" +
                 "${indentStr}sh (script: \"echo testing...\", returnStdout: false)\n" +
                 "}\n"
         val secrets1 = VaultSecrets(

@@ -25,4 +25,8 @@ data class VaultSecrets(
         builder.append("  ]]]")
         return builder.toString()
     }
+
+    override fun getEnvironmentVariableNames(): List<String> {
+        return secrets.map { it.envVar }
+    }
 }
