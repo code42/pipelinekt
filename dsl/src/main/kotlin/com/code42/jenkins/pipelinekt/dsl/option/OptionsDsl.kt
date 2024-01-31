@@ -9,6 +9,7 @@ import com.code42.jenkins.pipelinekt.core.vars.ext.strDouble
 import com.code42.jenkins.pipelinekt.dsl.DslContext
 import com.code42.jenkins.pipelinekt.internal.option.AnsiColor
 import com.code42.jenkins.pipelinekt.internal.option.DisableConcurrentBuilds
+import com.code42.jenkins.pipelinekt.internal.option.DisableConcurrentBuildsWithAbortPrevious
 import com.code42.jenkins.pipelinekt.internal.option.LogRotator
 import com.code42.jenkins.pipelinekt.internal.option.Retry
 import com.code42.jenkins.pipelinekt.internal.option.SkipDefaultCheckout
@@ -25,6 +26,10 @@ fun DslContext<Option>.buildDiscarder(buildDiscarder: BuildDiscarder) {
 
 fun DslContext<Option>.disableConcurrentBuilds() {
     add(DisableConcurrentBuilds)
+}
+
+fun DslContext<Option>.disableConcurrentBuildsWithAbortPrevious() {
+    add(DisableConcurrentBuildsWithAbortPrevious)
 }
 
 fun DslContext<Option>.ansiColor(colorMapName: String) {
