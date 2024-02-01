@@ -157,9 +157,6 @@ subprojects {
             }
             repositories {
                 mavenLocal()
-                maven{
-                    url = uri("https://jitpack.io")
-                }
                 maven {
                     name = "GitHubPackages"
                     
