@@ -181,9 +181,6 @@ subprojects {
                     }
                 }
             }
-            dependencies {
-               implementation 'com.github.code42:pipelinekt:Tag'
-            }
         }
     }
 }
