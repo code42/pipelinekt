@@ -157,6 +157,7 @@ subprojects {
             }
             repositories {
                 mavenLocal()
+                maven { url 'https://jitpack.io' }
                 maven {
                     name = "GitHubPackages"
                     
@@ -177,6 +178,9 @@ subprojects {
                         }
                     }
                 }
+            }
+            dependencies {
+               implementation 'com.github.code42:pipelinekt:Tag'
             }
         }
     }
