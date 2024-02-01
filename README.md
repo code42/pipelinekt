@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/code42/pipelinekt.svg)](https://jitpack.io/#code42/pipelinekt)
+
 # Dynamic Declarative Jenkinsfile in Kotlin
 
 pipelinekt is a kotlin library that improves the Jenkinsfile development experience, especially for large projects.
