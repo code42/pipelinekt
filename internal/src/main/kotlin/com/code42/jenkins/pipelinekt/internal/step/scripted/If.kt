@@ -12,6 +12,8 @@ data class If(
     val ifTrue: Step,
     val otherwise: Step? = null
 ) : ScriptedStep, NestedStep {
+
+    // I suspect that `steps` is only used by `isEmpty()`, that's why ifTrue and otherwise bodies are concatenated
     override val steps: Step
         get() = ifTrue.andThen(otherwise ?: Void)
 
