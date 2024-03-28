@@ -8,9 +8,9 @@ import com.code42.jenkins.pipelinekt.internal.step.scripted.Try
 @Suppress("UnusedPrivateMember")
 fun DslContext<Step>.`try`(
         trySteps: DslContext<Step>.() -> Unit,
-        `catch`: (DslContext<Step>.() -> Unit)?
+        catchSteps: (DslContext<Step>.() -> Unit)?
 ) {
-    tryCatch(trySteps, `catch`)
+    tryCatch(trySteps, catchSteps)
 }
 
 fun DslContext<Step>.tryCatch(
