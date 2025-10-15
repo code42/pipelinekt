@@ -96,7 +96,9 @@ data class PipelineDsl(
 
     fun pipeline(
         prepSteps: DslContext<Step>.() -> Unit = { },
-        pipelineBlock: PipelineContext.() -> Unit
+        pipelineBlock: PipelineContext.() -> Unit,
+        customWorkspace: String? = null,
+        useMultibranchWorkspace: Boolean = true
     ): Pipeline {
         val context = PipelineContext(
             topLevelStageContext = topLevelStageWrapperContext(),
@@ -113,7 +115,9 @@ data class PipelineDsl(
             triggers = context.triggersContext.drainAll(),
             stages = prepStage(prepSteps) + context.topLevelStageContext.drainAll(),
             post = applyBeforeAndAfterPipelinePost(context.postContext.toPost()),
-            methods = pipelineMethodRegistry.methods()
+            methods = pipelineMethodRegistry.methods(),
+            customWorkspace = customWorkspace,
+            useMultibranchWorkspace = useMultibranchWorkspace
         )
         pipelineMethodRegistry.reset()
         return pipeline
