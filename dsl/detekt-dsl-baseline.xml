@@ -48,6 +48,28 @@
     <ID>MaxLineLength:PostContext.kt$PostContext$fun toPost(): Post</ID>
     <ID>MaxLineLength:PublishHtmlDsl.kt$add(PublishHtml(reportDir = reportDir, reportFiles = reportFiles, reportName = reportName, allowMissing = allowMissing, alwaysLinkToLastBuild = alwaysLinkToLastBuild, keepAll = keepAll))</ID>
     <ID>MaxLineLength:RtUpload.kt$rtDownload(serverId.strDouble(), buildName?.strDouble(), buildNumber?.strDouble(), failNoOp.boolVar(), spec, specPath?.strDouble())</ID>
+    <ID>FunctionNaming:MatrixContext.kt$MatrixContext$fun Axes(body: AxesContext.() -> Unit): Unit</ID>
+    <ID>FunctionNaming:StageContext.kt$StageContext$fun Matrix(body: MatrixContext.() -> Unit): Unit</ID>
+    <ID>FunctionNaming:TryCatchDsl.kt$fun DslContext<Step>.Try(body: DslContext<Step>.() -> Unit): TryCatchBuilder</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$fun Not(statement: BooleanStatement): BooleanStatement</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$fun And(left: BooleanStatement, right: BooleanStatement): BooleanStatement</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$infix fun BooleanStatement.AND(right: BooleanStatement): BooleanStatement</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$infix fun Var.AND(right: Var): BooleanStatement</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$fun Or(left: BooleanStatement, right: BooleanStatement): BooleanStatement</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$infix fun BooleanStatement.OR(right: BooleanStatement): BooleanStatement</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$infix fun Var.OR(right: Var): BooleanStatement</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$fun Equal(left: Var, right: Var): BooleanStatement</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$fun NotEqual(left: Var, right: Var): BooleanStatement</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$infix fun Var.EQ(right: Var): BooleanStatement</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$infix fun Var.NE(right: Var): BooleanStatement</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$infix fun Var.LT(right: Var): BooleanStatement</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$infix fun Var.GT(right: Var): BooleanStatement</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$infix fun BooleanStatement.LT(right: BooleanStatement): BooleanStatement</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$infix fun BooleanStatement.GT(right: BooleanStatement): BooleanStatement</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$fun TRUE(): BooleanStatement</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$fun FALSE(): BooleanStatement</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$infix fun Var.IN(collection: Var.Literal.Str): BooleanStatement</ID>
+    <ID>FunctionNaming:BooleanStatementDsl.kt$infix fun Var.NOT_IN(collection: Var.Literal.Str): BooleanStatement</ID>
     <ID>MaxLineLength:RtUpload.kt$rtUpload(serverId.strDouble(), buildName?.strDouble(), buildNumber?.strDouble(), failNoOp.boolVar(), spec, specPath?.strDouble())</ID>
     <ID>MaxLineLength:ShellDsl.kt$fun DslContext&lt;Step&gt;.bat(script: Var.Literal.Str, returnStdout: Var.Literal.Bool = false.boolVar(), label: Var.Literal.Str? = null)</ID>
     <ID>MaxLineLength:ShellDsl.kt$fun DslContext&lt;Step&gt;.sh(script: Var.Literal.Str, returnStdout: Var.Literal.Bool = false.boolVar(), label: Var.Literal.Str? = null)</ID>

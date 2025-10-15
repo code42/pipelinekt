@@ -35,7 +35,7 @@ tasks.named<DokkaTask>("dokkaGfm") {
         named("main") {
             sourceLink {
                 localDirectory.set(file("./"))
-                remoteUrl.set(URL("https://github.com/$githubRepo/tree/master"))
+                remoteUrl.set(java.net.URI("https://github.com/$githubRepo/tree/master").toURL())
                 remoteLineSuffix.set("#L")
             }
         }
@@ -120,13 +120,13 @@ subprojects {
         // }
 
         detekt {
-            source = files("src/main/kotlin", "src/test/kotlin")
+            source.setFrom(files("src/main/kotlin", "src/test/kotlin"))
             baseline = file("detekt-${project.name}-baseline.xml") // Just if you want to create a baseline file.
         }
 
         tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
             exclude(".*/resources/.*,.*/build/.*")
-            jvmTarget = "19"
+            jvmTarget = "21"
         }
 
         publishing {

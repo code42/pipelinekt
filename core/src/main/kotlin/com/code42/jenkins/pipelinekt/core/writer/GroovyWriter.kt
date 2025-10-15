@@ -110,7 +110,7 @@ data class GroovyWriter(val writer: PrintWriter, val indent: Int = 0, val contex
      */
     fun writeln(string: String) {
         writer.printIndent()
-        writer.appendln(string.replace("\n", "\n${this.indentStr.repeat(this.indent)}"))
+        writer.appendLine(string.replace("\n", "\n${this.indentStr.repeat(this.indent)}"))
         writer.flush()
     }
 
