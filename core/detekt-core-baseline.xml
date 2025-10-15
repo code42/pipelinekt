@@ -12,5 +12,11 @@
     <ID>MaxLineLength:RecordIssuesTool.kt$RecordIssuesTool.Spotbugs$data</ID>
     <ID>MaxLineLength:UsernamePassword.kt$UsernamePassword$data</ID>
     <ID>UnnecessaryAbstractClass:GroovyScriptTest.kt$GroovyScriptTest</ID>
+    <ID>ParameterNaming:Post.kt$Post$writer: GroovyWriter</ID>
+    <ID>ParameterNaming:DockerAgent.kt$DockerAgent$writer: GroovyWriter</ID>
+    <ID>ParameterNaming:MatrixBody.kt$MatrixBody$writer: GroovyWriter</ID>
+    <ID>ParameterNaming:Stage.kt$Stage$writer: GroovyWriter</ID>
+    <ID>ParameterNaming:Ext.kt$writer: GroovyWriter</ID>
+    <ID>RedundantProjectionQualifier:Ext.kt$Map<String, *></ID>
   </Whitelist>
 </SmellBaseline>

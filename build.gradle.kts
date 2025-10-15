@@ -126,7 +126,7 @@ subprojects {
 
         tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
             exclude(".*/resources/.*,.*/build/.*")
-            jvmTarget = "21"
+            jvmTarget = "19"
         }
 
         publishing {
