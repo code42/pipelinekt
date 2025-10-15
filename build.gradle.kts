@@ -35,7 +35,7 @@ tasks.named<DokkaTask>("dokkaGfm") {
         named("main") {
             sourceLink {
                 localDirectory.set(file("./"))
-                remoteUrl.set(uri("https://github.com/$githubRepo/tree/master"))
+                remoteUrl.set(URL("https://github.com/$githubRepo/tree/master"))
                 remoteLineSuffix.set("#L")
             }
         }

@@ -22,16 +22,15 @@ jobs:
         with:
           arguments: build
       - name: Version
-        run: echo "##[set-output name=version;]v$(cat version.txt)"
+        run: echo "version=v$(cat version.txt)" >> $GITHUB_OUTPUT
         id: release_version
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
+          token: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
           tag_name: ${{ steps.release_version.outputs.version }}
-          release_name: Release ${{ steps.release_version.outputs.version }}
+          name: Release ${{ steps.release_version.outputs.version }}
           body: |
             Release ${{ steps.release_version.outputs.version }}
           draft: false
