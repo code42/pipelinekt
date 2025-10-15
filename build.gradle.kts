@@ -35,7 +35,7 @@ tasks.named<DokkaTask>("dokkaGfm") {
         named("main") {
             sourceLink {
                 localDirectory.set(file("./"))
-                remoteUrl.set(java.net.URI("https://github.com/$githubRepo/tree/master").toURL())
+                remoteUrl.set(uri("https://github.com/$githubRepo/tree/master"))
                 remoteLineSuffix.set("#L")
             }
         }
@@ -101,7 +101,7 @@ subprojects {
                 xml.required.set(false)
                 csv.required.set(false)
                 html.required.set(true)
-                html.outputLocation.set(file("$buildDir/reports/coverage"))
+                html.outputLocation.set(layout.buildDirectory.dir("reports/coverage").get().asFile)
             }
         }
 
