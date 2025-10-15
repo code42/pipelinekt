@@ -121,12 +121,17 @@ subprojects {
 
         detekt {
             source.setFrom(files("src/main/kotlin", "src/test/kotlin"))
-            baseline = file("detekt-${project.name}-baseline.xml") // Just if you want to create a baseline file.
+            baseline = file("detekt-${project.name}-baseline.xml")
+            allRules = false
+            config = files("${project.rootDir}/detekt-config.yml")
         }
 
         tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
             exclude(".*/resources/.*,.*/build/.*")
             jvmTarget = "19"
+            baseline.set(file("detekt-${project.name}-baseline.xml"))
+            basePath = rootProject.projectDir.absolutePath
+            config.setFrom(files("${project.rootDir}/detekt-config.yml"))
         }
 
         publishing {
