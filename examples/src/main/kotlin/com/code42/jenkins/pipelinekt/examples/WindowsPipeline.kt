@@ -5,14 +5,12 @@ import com.code42.jenkins.pipelinekt.dsl.agent.label
 import com.code42.jenkins.pipelinekt.dsl.step.declarative.bat
 
 fun PipelineDsl.windowsPipeline() =
-        pipeline {
+        pipeline(pipelineBlock = {
             agent { label("windows") }
-            stages {
-                stage("Build") {
-                    steps {
-                        bat("echo 'Hello, World'")
-                    }
+            stage("Build") {
+                steps {
+                    bat("echo 'Hello, World'")
                 }
             }
-        }
+        })
 
