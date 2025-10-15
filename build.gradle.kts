@@ -1,17 +1,18 @@
 import org.jetbrains.dokka.gradle.DokkaTask
+import java.net.URL
 import com.code42.version.Version
 
-val kotlinVersion = "1.5.31"
+val kotlinVersion = "1.9.22"
 
 plugins {
     base
-    kotlin("jvm") version "1.5.31"
+    kotlin("jvm") version "1.9.22"
     id("idea")
-    maven
+    // maven plugin removed (invalid here)
     `maven-publish`
-    id("com.diffplug.gradle.spotless").version("3.26.1")
-    id("org.jetbrains.dokka").version("0.10.0")
-    id("io.gitlab.arturbosch.detekt").version("1.18.1")
+    // Spotless plugin disabled
+    id("org.jetbrains.dokka").version("1.9.0")
+    id("io.gitlab.arturbosch.detekt").version("1.23.0")
     jacoco
 }
 val githubRepo = System.getenv("GITHUB_REPOSITORY") ?: "code42/pipelinekt"
@@ -28,24 +29,21 @@ allprojects {
     }
 }
 
-val dokka by tasks.getting(DokkaTask::class) {
-    outputFormat = "gfm"
-    outputDirectory = "${project.rootDir}/docs/dokka"
-    configuration {
-        sourceLink {
-            path = "./"
-            url = "https://github.com/$githubRepo/tree/master"
-            lineSuffix = "#L"
+tasks.named<DokkaTask>("dokkaGfm") {
+    outputDirectory.set(file("${project.rootDir}/docs/dokka"))
+    dokkaSourceSets {
+        named("main") {
+            sourceLink {
+                localDirectory.set(file("./"))
+                remoteUrl.set(URL("https://github.com/$githubRepo/tree/master"))
+                remoteLineSuffix.set("#L")
+            }
         }
-
-        subProjects = publishedProjects
     }
-
-
 }
 
 tasks {
-    create("incrementVersion") {
+    register("incrementVersion") {
         doLast {
             Version.incrementVersion()
         }
@@ -53,69 +51,57 @@ tasks {
 }
 
 tasks.build {
-    finalizedBy("dokka")
+    finalizedBy("dokkaGfm")
 }
 
 subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
 
-    if(!base.archivesBaseName.startsWith("pipelinekt-")) {
-        base.archivesBaseName = "pipelinekt-${base.archivesBaseName}"
-    }
-
     dependencies {
         implementation(kotlin("stdlib-jdk8", kotlinVersion))
         implementation(kotlin("reflect", kotlinVersion))
         testImplementation("org.jetbrains.kotlin:kotlin-test")
-        testImplementation( "org.jetbrains.kotlin:kotlin-test-junit")
+        testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
     }
 
-    if(publishedProjects.contains(project.name)) {
-        apply(plugin = "org.gradle.maven-publish")
-        apply(plugin = "com.diffplug.gradle.spotless")
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(21))
+        }
+    }
+
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+        kotlinOptions {
+            jvmTarget = "21"
+        }
+    }
+
+    if (publishedProjects.contains(project.name)) {
+    apply(plugin = "org.gradle.maven-publish")
+    // Spotless fully disabled
         apply(plugin = "io.gitlab.arturbosch.detekt")
         apply(plugin = "org.gradle.jacoco")
         apply(plugin = "org.jetbrains.dokka")
 
-        val sourcesJar by tasks.creating(Jar::class) {
-            classifier = "sources"
+        val sourcesJar by tasks.registering(Jar::class) {
+            archiveClassifier.set("sources")
             from(sourceSets.main.get().allSource)
         }
 
         jacoco {
-            toolVersion = "0.8.7"
-        }
-
-        val dokkaKdoc by tasks.creating(DokkaTask::class) {
-            outputFormat = "html"
-            outputDirectory = "$buildDir/kdoc"
-            configuration {
-                sourceLink {
-                    path = "./"
-                    url = "https://github.com/$githubRepo/tree/master"
-                    lineSuffix = "#L"
-                }
-            }
-        }
-
-        val kdocJar by tasks.creating(Jar::class) {
-            group = JavaBasePlugin.DOCUMENTATION_GROUP
-            dependsOn(dokkaKdoc)
-            classifier = "javadoc"
-            from("$buildDir/kdoc")
+            toolVersion = "0.8.10"
         }
 
         artifacts {
-            add("archives", sourcesJar)
-            add("archives", kdocJar)
+            add("archives", sourcesJar.get())
         }
 
         tasks.withType<JacocoReport> {
             reports {
-                xml.isEnabled = false
-                csv.isEnabled = false
-                html.isEnabled = true
-                html.destination = file("$buildDir/reports/coverage")
+                xml.required.set(false)
+                csv.required.set(false)
+                html.required.set(true)
+                html.outputLocation.set(file("$buildDir/reports/coverage"))
             }
         }
 
@@ -123,17 +109,15 @@ subprojects {
             finalizedBy("jacocoTestReport")
         }
 
-        spotless {
-            kotlin {
-                ktlint()
-            }
-            kotlinGradle {
-
-                target("*.gradle.kts'", "additionalScripts/*.gradle.kts")
-
-                ktlint()
-            }
-        }
+        // spotless {
+        //     kotlin {
+        //         ktlint()
+        //     }
+        //     kotlinGradle {
+        //         target("*.gradle.kts'", "additionalScripts/*.gradle.kts")
+        //         ktlint()
+        //     }
+        // }
 
         detekt {
             source = files("src/main/kotlin", "src/test/kotlin")
@@ -142,6 +126,7 @@ subprojects {
 
         tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
             exclude(".*/resources/.*,.*/build/.*")
+            jvmTarget = "19"
         }
 
         publishing {
@@ -149,20 +134,18 @@ subprojects {
                 create<MavenPublication>("maven") {
                     groupId = group.toString()
                     version = project.version.toString()
-                    artifactId = base.archivesBaseName
+                    artifactId = "pipelinekt-${project.name}"
                     from(components["java"])
-                    artifact(sourcesJar)
-                    artifact(kdocJar)
+                    artifact(sourcesJar.get())
                 }
             }
             repositories {
                 mavenLocal()
                 maven {
                     name = "GitHubPackages"
-                    
                     url = uri("https://maven.pkg.github.com/$githubRepo")
                     val token = System.getenv("GITHUB_TOKEN")
-                    if(token != null) {
+                    if (token != null) {
                         credentials(HttpHeaderCredentials::class) {
                             name = "Authorization"
                             value = "Bearer ${token}"

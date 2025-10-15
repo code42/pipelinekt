@@ -46,8 +46,8 @@ data class DockerDsl(
         sideCars: List<SideCar> = emptyList(),
         steps: DslContext<Step>.() -> Unit
     ) {
-        val dockerAgent = SingletonDslContext.into(dockerAgent)
-                ?: throw IllegalStateException("Must define a docker agent")
+    val dockerAgent = SingletonDslContext.into(dockerAgent)
+        ?: error("Must define a docker agent")
 
         val sideCarArgs = sideCars
                 .map { "--link ${it.containerVariable.accessMember("id")}:${it.containerLinkName}" }
