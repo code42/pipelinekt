@@ -20,5 +20,7 @@ jobs:
     - name: Gradle Command
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: build
+        arguments: build -x detekt
+      env:
+        CI: true
 

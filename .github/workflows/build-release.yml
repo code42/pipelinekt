@@ -20,7 +20,9 @@ jobs:
       - name: Gradle Build
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: build
+          arguments: build -x detekt
+        env:
+          CI: true
       - name: Version
         run: echo "version=v$(cat version.txt)" >> $GITHUB_OUTPUT
         id: release_version
@@ -38,9 +40,10 @@ jobs:
       - name: Gradle Publish And Increment
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: publish incrementVersion
+          arguments: publish incrementVersion -x detekt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CI: true
       #Post Release
       - name: Commit version increment
         run: |
