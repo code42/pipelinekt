@@ -31,7 +31,9 @@ data class Pipeline(
     val parameters: List<Parameter> = emptyList(),
     val stages: List<Stage> = emptyList(),
     val methods: List<PipelineMethod> = emptyList(),
-    val post: Post = Post()
+    val post: Post = Post(),
+    val customWorkspace: String? = null,
+    val useMultibranchWorkspace: Boolean = true
 ) : GroovyScript {
     override fun toGroovy(writer: GroovyWriter) {
         if (methods.isNotEmpty()) {
@@ -55,8 +57,33 @@ data class Pipeline(
             if (parameters.isNotEmpty()) {
                 writer.closure("parameters", parameters::toGroovy)
             }
-            writer.closure("stages", stages::toGroovy)
-            post.toGroovy(writer)
+            
+            // Handle custom workspace logic
+            if (customWorkspace != null || useMultibranchWorkspace) {
+                // If a specific custom workspace is provided, use it directly
+                if (customWorkspace != null) {
+                    writer.writeln("def customPath = \"$customWorkspace\"")
+                    writer.closure("ws(customPath)") { wsWriter ->
+                        wsWriter.writeln("checkout scm")
+                        wsWriter.closure("stages", stages::toGroovy)
+                        post.toGroovy(wsWriter)
+                    }
+                } else if (useMultibranchWorkspace) {
+                    // Generate multibranch workspace path calculation
+                    writer.writeln("def rootDir = new File(env.WORKSPACE).parentFile.parent")
+                    writer.writeln("def safeBranch = (env.BRANCH_NAME ?: 'unknown').replaceAll(/[^A-Za-z0-9._-]/, '_')")
+                    writer.writeln("def customPath = \"${"\${rootDir}/${"\${env.JOB_NAME}-\${safeBranch}"}"}\"")
+                    writer.closure("ws(customPath)") { wsWriter ->
+                        wsWriter.writeln("checkout scm")
+                        wsWriter.closure("stages", stages::toGroovy)
+                        post.toGroovy(wsWriter)
+                    }
+                }
+            } else {
+                // Regular pipeline without custom workspace
+                writer.closure("stages", stages::toGroovy)
+                post.toGroovy(writer)
+            }
         }
     }
 }

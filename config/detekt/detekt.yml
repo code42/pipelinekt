@@ -1,0 +1,14 @@
+build:
+  maxIssues: 0
+  excludeCorrectable: false
+
+naming:
+  FunctionParameterNaming:
+    active: true
+  MatchingDeclarationName:
+    active: true
+
+style:
+  MaxLineLength:
+    active: true
+    maxLineLength: 120
