@@ -14,7 +14,7 @@ data class VaultSecrets(
     Secrets {
     override fun toGroovy(): String {
         val builder = StringBuilder()
-        builder.appendln("  vaultSecrets: [[path: \"$path\", engineVersion: $engineVersion, secretValues: [")
+        builder.appendLine("  vaultSecrets: [[path: \"$path\", engineVersion: $engineVersion, secretValues: [")
         val listIterator = secrets.listIterator()
         while (listIterator.hasNext()) {
             builder.append(

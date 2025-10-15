@@ -11,36 +11,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - name: Set up JDK
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v3
         with:
-          java-version: 11.0.5
+          java-version: '21'
+          distribution: 'temurin'
       - name: Gradle Build
-        uses: eskatos/gradle-command-action@v1
+        uses: gradle/gradle-build-action@v2
         with:
-          arguments: build
+          arguments: build -x detekt
+        env:
+          CI: true
       - name: Version
-        run: echo "##[set-output name=version;]v$(cat version.txt)"
+        run: echo "version=v$(cat version.txt)" >> $GITHUB_OUTPUT
         id: release_version
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        uses: softprops/action-gh-release@v1
         with:
+          token: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
           tag_name: ${{ steps.release_version.outputs.version }}
-          release_name: Release ${{ steps.release_version.outputs.version }}
+          name: Release ${{ steps.release_version.outputs.version }}
           body: |
             Release ${{ steps.release_version.outputs.version }}
           draft: false
           prerelease: false
       - name: Gradle Publish And Increment
-        uses: eskatos/gradle-command-action@v1
+        uses: gradle/gradle-build-action@v2
         with:
-          arguments: publish incrementVersion
+          arguments: publish incrementVersion -x detekt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CI: true
       #Post Release
       - name: Commit version increment
         run: |
@@ -49,7 +52,7 @@ jobs:
           git add version.txt
           git commit -m "Update version"
       - name: Push Version increment
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@v0.8.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}

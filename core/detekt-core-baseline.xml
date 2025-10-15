@@ -1,7 +1,8 @@
 <?xml version="1.0" ?>
 <SmellBaseline>
-  <Blacklist></Blacklist>
-  <Whitelist>
+  <ManuallySuppressedIssues>
+  </ManuallySuppressedIssues>
+  <CurrentIssues>
     <ID>EmptyFunctionBlock:Void.kt$Void${}</ID>
     <ID>MaxLineLength:BooleanStatement.kt$BooleanStatement.BinaryOperator.Equals$data</ID>
     <ID>MaxLineLength:GroovyWriter.kt$GroovyWriter$data</ID>
@@ -12,5 +13,5 @@
     <ID>MaxLineLength:RecordIssuesTool.kt$RecordIssuesTool.Spotbugs$data</ID>
     <ID>MaxLineLength:UsernamePassword.kt$UsernamePassword$data</ID>
     <ID>UnnecessaryAbstractClass:GroovyScriptTest.kt$GroovyScriptTest</ID>
-  </Whitelist>
+  </CurrentIssues>
 </SmellBaseline>
