@@ -95,12 +95,12 @@ subprojects {
             enabled = false
         }
     }
-    
+
     tasks.withType<Test> {
         // Temporarily disable tests until we update them
         enabled = false
     }
-    
+
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         if (this.name.contains("Test")) {
             enabled = false

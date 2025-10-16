@@ -26,29 +26,28 @@ val myConfiguredPipeline = pipelineDsl.pipeline(
                 sh("./build.sh")
             }
         }
-    }
-    stage("Validation") {
-        parallel {
-            stage("Unit Test") {
-                steps {
-                    sh("./unitTest.sh")
+        stage("Validation") {
+            parallel {
+                stage("Unit Test") {
+                    steps {
+                        sh("./unitTest.sh")
+                    }
                 }
-            }
-            stage("Integration Test") {
-                agent(defaultAgent)
-                steps {
-                    sh("./integrationTest.sh")
-                }
-            }
-
-            stage("Acceptance") {
-                agent {
-                    label("acceptance && linux")
+                stage("Integration Test") {
+                    agent(defaultAgent)
+                    steps {
+                        sh("./integrationTest.sh")
+                    }
                 }
 
-                steps {
-                    sh("./acceptanceTest.sh")
-                }
+                stage("Acceptance") {
+                    agent {
+                        label("acceptance && linux")
+                    }
+
+                    steps {
+                        sh("./acceptanceTest.sh")
+                    }
                 }
             }
         }
