@@ -15,9 +15,17 @@ fun SingletonDslContext<in DockerAgent>.dockerImage(
     customWorkspace: String? = null,
     registryUrl: String? = null,
     registryCredentialsId: String? = null,
-    reuseNode: Boolean? = null
+    reuseNode: Boolean? = null,
 ) {
-    dockerImage(image.strDouble(), args?.strDouble(), label?.strDouble(), customWorkspace?.strDouble(), registryUrl?.strDouble(), registryCredentialsId?.strDouble(), reuseNode?.boolVar())
+    dockerImage(
+        image.strDouble(),
+        args?.strDouble(),
+        label?.strDouble(),
+        customWorkspace?.strDouble(),
+        registryUrl?.strDouble(),
+        registryCredentialsId?.strDouble(),
+        reuseNode?.boolVar(),
+    )
 }
 
 fun SingletonDslContext<in DockerAgent>.dockerImage(
@@ -27,7 +35,7 @@ fun SingletonDslContext<in DockerAgent>.dockerImage(
     customWorkspace: Var.Literal.Str? = null,
     registryUrl: Var.Literal.Str? = null,
     registryCredentialsId: Var.Literal.Str? = null,
-    reuseNode: Var.Literal.Bool? = null
+    reuseNode: Var.Literal.Bool? = null,
 ) {
     add(DockerAgent.Image(image, args, label, customWorkspace, registryUrl, registryCredentialsId, reuseNode))
 }
@@ -41,10 +49,12 @@ fun SingletonDslContext<in DockerAgent>.dockerFile(
     customWorkspace: String? = null,
     registryUrl: String? = null,
     registryCredentialsId: String? = null,
-    reuseNode: Boolean? = null
+    reuseNode: Boolean? = null,
 ) {
-    dockerFile(filename.strDouble(), dir?.strDouble(), additionalBuildArgs?.strDouble(), args?.strDouble(),
-            label?.strDouble(), customWorkspace?.strDouble(), registryUrl?.strDouble(), registryCredentialsId?.strDouble(), reuseNode?.boolVar())
+    dockerFile(
+        filename.strDouble(), dir?.strDouble(), additionalBuildArgs?.strDouble(), args?.strDouble(),
+        label?.strDouble(), customWorkspace?.strDouble(), registryUrl?.strDouble(), registryCredentialsId?.strDouble(), reuseNode?.boolVar(),
+    )
 }
 
 fun SingletonDslContext<in DockerAgent>.dockerFile(
@@ -56,7 +66,7 @@ fun SingletonDslContext<in DockerAgent>.dockerFile(
     customWorkspace: Var.Literal.Str? = null,
     registryUrl: Var.Literal.Str? = null,
     registryCredentialsId: Var.Literal.Str? = null,
-    reuseNode: Var.Literal.Bool? = null
+    reuseNode: Var.Literal.Bool? = null,
 ) {
     add(DockerAgent.File(filename, dir, additionalBuildArgs, args, label, customWorkspace, registryUrl, registryCredentialsId, reuseNode))
 }

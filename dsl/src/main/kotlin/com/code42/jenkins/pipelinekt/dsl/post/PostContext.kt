@@ -9,7 +9,7 @@ class PostContext(
     val alwaysContext: DslContext<Step> = DslContext(),
     val successContext: DslContext<Step> = DslContext(),
     val failureContext: DslContext<Step> = DslContext(),
-    val cleanupContext: DslContext<Step> = DslContext()
+    val cleanupContext: DslContext<Step> = DslContext(),
 ) {
     fun always(alwaysBlock: DslContext<Step>.() -> Unit) {
         alwaysContext.alwaysBlock()
@@ -27,5 +27,10 @@ class PostContext(
         cleanupContext.cleanupBlock()
     }
 
-    fun toPost(): Post = Post(always = alwaysContext.drainAll().toStep(), success = successContext.drainAll().toStep(), failure = failureContext.drainAll().toStep(), cleanup = cleanupContext.drainAll().toStep())
+    fun toPost(): Post = Post(
+        always = alwaysContext.drainAll().toStep(),
+        success = successContext.drainAll().toStep(),
+        failure = failureContext.drainAll().toStep(),
+        cleanup = cleanupContext.drainAll().toStep(),
+    )
 }

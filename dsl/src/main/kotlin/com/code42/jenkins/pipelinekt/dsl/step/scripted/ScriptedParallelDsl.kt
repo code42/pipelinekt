@@ -18,10 +18,10 @@ import com.code42.jenkins.pipelinekt.internal.step.scripted.ScriptedParallel
  */
 fun DslContext<Step>.inParallel(scriptedStages: Map<String, DslContext<Step>.() -> Unit>) {
     val steps = scriptedStages
-            .map { (k, v) ->
-                k.strDouble() to DslContext.into(v).toStep()
-            }
-            .toMap()
+        .map { (k, v) ->
+            k.strDouble() to DslContext.into(v).toStep()
+        }
+        .toMap()
 
     add(ScriptedParallel(steps))
 }

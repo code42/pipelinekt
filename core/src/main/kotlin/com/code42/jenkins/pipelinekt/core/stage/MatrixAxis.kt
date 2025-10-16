@@ -6,7 +6,7 @@ import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
 
 data class MatrixAxis(
     val name: Var.Literal.Str,
-    val values: List<Var.Literal.Str>
+    val values: List<Var.Literal.Str>,
 ) : GroovyScript {
     override fun toGroovy(writer: GroovyWriter) {
         writer.closure("axis") {

@@ -1,9 +1,9 @@
 package com.code42.jenkins.pipelinekt.core
 
 import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
+import org.junit.Before
 import java.io.PrintWriter
 import java.io.StringWriter
-import org.junit.Before
 
 abstract class GroovyScriptTest {
     var out: StringWriter = StringWriter()

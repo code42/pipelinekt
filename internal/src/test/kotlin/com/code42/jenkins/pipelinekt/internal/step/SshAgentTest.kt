@@ -4,8 +4,8 @@ import com.code42.jenkins.pipelinekt.GroovyScriptTest
 import com.code42.jenkins.pipelinekt.core.vars.ext.strSingle
 import com.code42.jenkins.pipelinekt.internal.step.declarative.Literal
 import com.code42.jenkins.pipelinekt.internal.step.declarative.SshAgent
-import kotlin.test.assertEquals
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class SshAgentTest : GroovyScriptTest() {
     @Test
@@ -19,8 +19,8 @@ class SshAgentTest : GroovyScriptTest() {
             sshagent(credentials: ['id1','id2']) {
             ${writer.indentStr}${steps.codeBlock}
             }
-            
-            """.trimIndent()
+
+        """.trimIndent()
         SshAgent(listOf(credId1, credid2), steps).toGroovy(writer)
         assertEquals(expected, out.toString())
     }

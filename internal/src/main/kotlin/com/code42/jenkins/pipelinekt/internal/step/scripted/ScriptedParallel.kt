@@ -18,8 +18,7 @@ import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
 data class ScriptedParallel(val scriptedStages: Map<out Var.Literal.Str, Step>) : ScriptedStep, Step {
     override fun isEmpty(): Boolean = scriptedStages.isEmpty() || scriptedStages.all { it.value.isEmpty() }
 
-    override fun contains(other: Step): Boolean =
-            this.equals(other) || this.scriptedStages.any { (k, v) -> v.contains(other) }
+    override fun contains(other: Step): Boolean = this.equals(other) || this.scriptedStages.any { (k, v) -> v.contains(other) }
 
     override fun any(fn: (Step) -> Boolean): Boolean = fn(this) || this.scriptedStages.any { (k, v) -> v.any(fn) }
 

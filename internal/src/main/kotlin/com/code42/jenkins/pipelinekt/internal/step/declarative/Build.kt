@@ -9,7 +9,7 @@ import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
 data class Build(
     val job: Var,
     val parameters: List<BuildParameterValue>,
-    val wait: Var.Literal.Bool
+    val wait: Var.Literal.Bool,
 ) : DeclarativeStep, SingletonStep {
     override fun toGroovy(writer: GroovyWriter) {
         writer.writeln("build([")

@@ -1,10 +1,9 @@
 package com.code42.jenkins.pipelinekt.core.utils
 
-import com.code42.jenkins.pipelinekt.core.vars.Var
-import com.code42.jenkins.pipelinekt.core.vars.ext.strSingle
-import com.code42.jenkins.pipelinekt.core.vars.ext.strDouble
 import com.code42.jenkins.pipelinekt.core.vars.Var.Environment
 import com.code42.jenkins.pipelinekt.core.vars.Var.Literal.Str
+import com.code42.jenkins.pipelinekt.core.vars.ext.strDouble
+import com.code42.jenkins.pipelinekt.core.vars.ext.strSingle
 
 /**
  * Utility functions for working with workspace paths
@@ -20,7 +19,7 @@ object WorkspacePath {
         val branchVar = Environment(branchEnvVar)
         return "\${basePath}-\${${branchVar.toGroovy()}}".strDouble()
     }
-    
+
     /**
      * Generates a workspace path for a specific directory
      * @param basePath The base path to use

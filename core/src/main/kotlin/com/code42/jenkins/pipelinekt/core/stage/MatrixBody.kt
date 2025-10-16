@@ -17,7 +17,7 @@ data class MatrixBody(
     val whenBlock: List<When> = emptyList(),
     val tools: List<Tool> = emptyList(),
     val options: List<StageOption> = emptyList(),
-    val post: Post = Post()
+    val post: Post = Post(),
 ) : GroovyScript {
     override fun toGroovy(writer: GroovyWriter) {
         writer.closure("matrix") { writer ->

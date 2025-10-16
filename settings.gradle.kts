@@ -1,7 +1,7 @@
 pluginManagement {
-  repositories {
-    gradlePluginPortal()
-  }
+    repositories {
+        gradlePluginPortal()
+    }
 }
 
 include("core", "internal", "dsl")

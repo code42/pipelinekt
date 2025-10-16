@@ -1,3 +1,5 @@
+@file:Suppress("PackageName")
+
 package com.code42.jenkins.pipelinekt.internal.`when`
 
 import com.code42.jenkins.pipelinekt.GroovyScriptTest
@@ -126,9 +128,11 @@ class WhenTest : GroovyScriptTest() {
         var left = 1
         var right = 2
 
-        val whenBlock = AllOf(listOf(
-                Expression(BooleanStatement.StringOperator.EndsWith(left.intVar(), right.intVar()))
-        ))
+        val whenBlock = AllOf(
+            listOf(
+                Expression(BooleanStatement.StringOperator.EndsWith(left.intVar(), right.intVar())),
+            ),
+        )
         val expected = """
             ${indentStr.repeat(2)}allOf {
             ${indentStr.repeat(3)}expression {
@@ -146,10 +150,12 @@ class WhenTest : GroovyScriptTest() {
         var left = 1
         var right = 2
 
-        val whenBlock = AnyOf(listOf(
+        val whenBlock = AnyOf(
+            listOf(
                 Expression(BooleanStatement.StringOperator.EndsWith(left.intVar(), right.intVar())),
-                Branch.Name("Master".strSingle())
-        ))
+                Branch.Name("Master".strSingle()),
+            ),
+        )
         val expected = """
             ${indentStr.repeat(2)}anyOf {
             ${indentStr.repeat(3)}expression {
@@ -166,7 +172,7 @@ class WhenTest : GroovyScriptTest() {
     @Test
     fun whenTriggeredByTimerTrigger() {
         val whenBlock = TriggeredBy(
-                Cause.TimerTrigger
+            Cause.TimerTrigger,
         )
 
         val expected = """
@@ -180,7 +186,7 @@ class WhenTest : GroovyScriptTest() {
     @Test
     fun whenTriggeredByUpstreamCause() {
         val whenBlock = TriggeredBy(
-                Cause.UpstreamCause
+            Cause.UpstreamCause,
         )
 
         val expected = """
@@ -194,7 +200,7 @@ class WhenTest : GroovyScriptTest() {
     @Test
     fun whenTriggeredBySCMTrigger() {
         val whenBlock = TriggeredBy(
-                Cause.SCMTrigger
+            Cause.SCMTrigger,
         )
 
         val expected = """
@@ -211,8 +217,9 @@ class WhenTest : GroovyScriptTest() {
         val booleanDoTesting = BooleanStatement.Literal("Params.DO_TESTING")
 
         val whenBlock = listOf(
-                Before.Agent(enabled),
-                Expression(booleanDoTesting))
+            Before.Agent(enabled),
+            Expression(booleanDoTesting),
+        )
 
         val expected = """
             ${indentStr.repeat(2)}beforeAgent true
@@ -220,7 +227,7 @@ class WhenTest : GroovyScriptTest() {
             ${indentStr.repeat(3)}Params.DO_TESTING
             ${indentStr.repeat(2)}}
 
-            """.trimIndent().replace("\n", System.getProperty("line.separator"))
+        """.trimIndent().replace("\n", System.getProperty("line.separator"))
         whenBlock.toGroovy(writer)
         assertEquals(expected, out.toString())
     }
@@ -231,8 +238,9 @@ class WhenTest : GroovyScriptTest() {
         val booleanDoTesting = BooleanStatement.Literal("Params.DO_TESTING")
 
         val whenBlock = listOf(
-                Before.Input(enabled),
-                Expression(booleanDoTesting))
+            Before.Input(enabled),
+            Expression(booleanDoTesting),
+        )
 
         val expected = """
             ${indentStr.repeat(2)}beforeInput true
@@ -240,7 +248,7 @@ class WhenTest : GroovyScriptTest() {
             ${indentStr.repeat(3)}Params.DO_TESTING
             ${indentStr.repeat(2)}}
 
-            """.trimIndent().replace("\n", System.getProperty("line.separator"))
+        """.trimIndent().replace("\n", System.getProperty("line.separator"))
         whenBlock.toGroovy(writer)
         assertEquals(expected, out.toString())
     }

@@ -1,8 +1,8 @@
 package com.code42.jenkins.pipelinekt.internal.environment
 
 import com.code42.jenkins.pipelinekt.GroovyScriptTest
-import kotlin.test.assertEquals
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class EnvironmentTest : GroovyScriptTest() {
     @Test

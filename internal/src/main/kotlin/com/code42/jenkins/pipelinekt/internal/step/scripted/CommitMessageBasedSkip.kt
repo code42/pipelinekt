@@ -14,7 +14,7 @@ import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
 @Suppress("MaxLineLength")
 data class CommitMessageBasedSkip(
     val regex: String = "\\\\[ci skip\\\\]",
-    val result: String = "SUCCESS"
+    val result: String = "SUCCESS",
 ) : ScriptedStep, SingletonStep {
     override fun scriptedGroovy(writer: GroovyWriter) {
         writer.writeln(
@@ -26,7 +26,7 @@ data class CommitMessageBasedSkip(
                         throw new FlowInterruptedException(Result.$result)
                     }
                 }
-            """.trimIndent()
+            """.trimIndent(),
         )
     }
 }

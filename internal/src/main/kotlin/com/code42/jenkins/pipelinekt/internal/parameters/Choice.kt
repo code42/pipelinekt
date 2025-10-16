@@ -7,7 +7,7 @@ import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
 data class Choice(
     override val name: Var.Literal.Str,
     val choices: List<Var.Literal.Str>,
-    val description: Var.Literal.Str
+    val description: Var.Literal.Str,
 ) : Parameter {
     override fun toXml(): String {
         return """

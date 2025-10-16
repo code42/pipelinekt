@@ -9,8 +9,8 @@ import com.code42.jenkins.pipelinekt.core.Tool
 import com.code42.jenkins.pipelinekt.core.When
 import com.code42.jenkins.pipelinekt.core.vars.ext.strDouble
 import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
-import kotlin.test.assertEquals
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class MatrixStageTest : GroovyScriptTest() {
 
@@ -18,37 +18,45 @@ class MatrixStageTest : GroovyScriptTest() {
     @Suppress("LongMethod")
     fun matrixStage() {
         Stage.Matrix(
-                name = "matrix stage".strDouble(),
-                matrixBody = MatrixBody(
-                        axes = listOf(
-                                MatrixAxis(
-                                        "OS".strDouble(),
-                                        listOf("mac", "windows", "linux").map { it.strDouble() }),
-                                MatrixAxis(
-                                        "BROWSER".strDouble(),
-                                        listOf("ie", "safari", "chrome", "firefox").map { it.strDouble() })
-                        ),
-                        excludes = listOf(
-                                MatrixExclude(listOf(
-                                        ExcludeAxis.Values("OS".strDouble(), listOf("linux".strDouble())),
-                                        ExcludeAxis.NotValues(
-                                                "BROWSER".strDouble(),
-                                                listOf("chrome".strDouble(), "firefox".strDouble()))
-                                ))
-                        ),
-                        stages = listOf(Stage.Steps(
-                                name = "nested stage".strDouble(),
-                                steps = TestStep("nested")
-                        )),
-                        agent = TestAgent,
-                        whenBlock = listOf(TestWhen("matrix")),
-                        tools = listOf(TestTool),
-                        options = listOf(TestOption),
-                        post = Post(always = TestStep("postAlwaysMatrix()"))
+            name = "matrix stage".strDouble(),
+            matrixBody = MatrixBody(
+                axes = listOf(
+                    MatrixAxis(
+                        "OS".strDouble(),
+                        listOf("mac", "windows", "linux").map { it.strDouble() },
+                    ),
+                    MatrixAxis(
+                        "BROWSER".strDouble(),
+                        listOf("ie", "safari", "chrome", "firefox").map { it.strDouble() },
+                    ),
                 ),
-                whenBlock = listOf(TestWhen("stage")),
+                excludes = listOf(
+                    MatrixExclude(
+                        listOf(
+                            ExcludeAxis.Values("OS".strDouble(), listOf("linux".strDouble())),
+                            ExcludeAxis.NotValues(
+                                "BROWSER".strDouble(),
+                                listOf("chrome".strDouble(), "firefox".strDouble()),
+                            ),
+                        ),
+                    ),
+                ),
+                stages = listOf(
+                    Stage.Steps(
+                        name = "nested stage".strDouble(),
+                        steps = TestStep("nested"),
+                    ),
+                ),
+                agent = TestAgent,
+                whenBlock = listOf(TestWhen("matrix")),
+                tools = listOf(TestTool),
                 options = listOf(TestOption),
-                post = Post(always = TestStep("postAlways()"))).toGroovy(writer)
+                post = Post(always = TestStep("postAlwaysMatrix()")),
+            ),
+            whenBlock = listOf(TestWhen("stage")),
+            options = listOf(TestOption),
+            post = Post(always = TestStep("postAlways()")),
+        ).toGroovy(writer)
 
         val expected = """
             stage("matrix stage") {
@@ -110,7 +118,7 @@ class MatrixStageTest : GroovyScriptTest() {
             ${writer.indentStr.repeat(2)}}
             ${writer.indentStr}}
             }
-            
+
         """.trimIndent()
         assertEquals(expected, out.toString())
     }

@@ -9,7 +9,7 @@ package com.code42.jenkins.pipelinekt.core.secrets
 data class VaultSecrets(
     val path: String,
     val engineVersion: String,
-    val secrets: List<VaultSecret>
+    val secrets: List<VaultSecret>,
 ) :
     Secrets {
     override fun toGroovy(): String {
@@ -19,7 +19,7 @@ data class VaultSecrets(
         while (listIterator.hasNext()) {
             builder.append(
                 "    " + listIterator.next().toGroovy() +
-                        (if (listIterator.hasNext()) ",\n" else "\n")
+                    (if (listIterator.hasNext()) ",\n" else "\n"),
             )
         }
         builder.append("  ]]]")

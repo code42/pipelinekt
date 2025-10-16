@@ -12,7 +12,7 @@ data class PublishHtml(
     val reportName: Var.Literal.Str,
     val allowMissing: Var.Literal.Bool = true.boolVar(),
     val alwaysLinkToLastBuild: Var.Literal.Bool = true.boolVar(),
-    val keepAll: Var.Literal.Bool = true.boolVar()
+    val keepAll: Var.Literal.Bool = true.boolVar(),
 ) : DeclarativeStep, SingletonStep {
     override fun toGroovy(writer: GroovyWriter) {
         writer.writeln("publishHTML target: [")

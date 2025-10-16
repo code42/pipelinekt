@@ -11,19 +11,21 @@ import kotlin.test.assertEquals
 class StageTest : GroovyScriptTest() {
     @Test fun nestedSequenceTest() {
         val stage1 = Stage.Steps(
-                "my stage".strSingle(),
-                steps = TestStep("hello there")
+            "my stage".strSingle(),
+            steps = TestStep("hello there"),
         )
         val stage2 = Stage.Sequence(
-                "my sequence".strSingle(),
-                stages = listOf(
-                        Stage.Steps("sequence 1".strSingle(), steps = TestStep("hello again")),
-                        Stage.Steps("sequence 2".strSingle(), steps = TestStep("hello again again")))
+            "my sequence".strSingle(),
+            stages = listOf(
+                Stage.Steps("sequence 1".strSingle(), steps = TestStep("hello again")),
+                Stage.Steps("sequence 2".strSingle(), steps = TestStep("hello again again")),
+            ),
         )
 
         val rootStage = Stage.Sequence(
-                "root".strSingle(),
-                listOf(stage1, stage2))
+            "root".strSingle(),
+            listOf(stage1, stage2),
+        )
 
         val expected = """
             stage('root') {
@@ -49,7 +51,7 @@ class StageTest : GroovyScriptTest() {
             ${indentStr.repeat(2)}}
             ${indentStr.repeat(1)}}
             }
-            
+
         """.trimIndent()
         rootStage.toGroovy(writer)
         assertEquals(expected, out.toString())
@@ -57,19 +59,21 @@ class StageTest : GroovyScriptTest() {
 
     @Test fun topLevelSequenceTest() {
         val stage1 = Stage.Steps(
-                "my stage".strSingle(),
-                steps = TestStep("hello there")
+            "my stage".strSingle(),
+            steps = TestStep("hello there"),
         )
         val stage2 = Stage.Sequence(
-                "my sequence".strSingle(),
-                stages = listOf(
-                        Stage.Steps("sequence 1".strSingle(), steps = TestStep("hello again")),
-                        Stage.Steps("sequence 2".strSingle(), steps = TestStep("hello again again")))
+            "my sequence".strSingle(),
+            stages = listOf(
+                Stage.Steps("sequence 1".strSingle(), steps = TestStep("hello again")),
+                Stage.Steps("sequence 2".strSingle(), steps = TestStep("hello again again")),
+            ),
         )
 
         val rootStage = Stage.Sequence(
-                "root".strSingle(),
-                listOf(stage1, stage2))
+            "root".strSingle(),
+            listOf(stage1, stage2),
+        )
 
         val expected = """
             stage('root') {
@@ -95,7 +99,7 @@ class StageTest : GroovyScriptTest() {
             ${indentStr.repeat(2)}}
             ${indentStr.repeat(1)}}
             }
-            
+
         """.trimIndent()
         rootStage.toGroovy(writer)
         assertEquals(expected, out.toString())
@@ -103,19 +107,21 @@ class StageTest : GroovyScriptTest() {
 
     @Test fun parallelTest() {
         val stage1 = Stage.Steps(
-                "my stage".strSingle(),
-                steps = TestStep("hello there")
+            "my stage".strSingle(),
+            steps = TestStep("hello there"),
         )
         val stage2 = Stage.Sequence(
-                "my sequence".strSingle(),
-                stages = listOf(
-                        Stage.Steps("sequence 1".strSingle(), steps = TestStep("hello again")),
-                        Stage.Steps("sequence 2".strSingle(), steps = TestStep("hello again again")))
+            "my sequence".strSingle(),
+            stages = listOf(
+                Stage.Steps("sequence 1".strSingle(), steps = TestStep("hello again")),
+                Stage.Steps("sequence 2".strSingle(), steps = TestStep("hello again again")),
+            ),
         )
 
         val rootStage = Stage.Parallel(
-                "root".strSingle(),
-                listOf(stage1, stage2))
+            "root".strSingle(),
+            listOf(stage1, stage2),
+        )
 
         val expected = """
             stage('root') {
@@ -141,7 +147,7 @@ class StageTest : GroovyScriptTest() {
             ${indentStr.repeat(2)}}
             ${indentStr.repeat(1)}}
             }
-            
+
         """.trimIndent()
         rootStage.toGroovy(writer)
         assertEquals(expected, out.toString())
@@ -152,19 +158,23 @@ class StageTest : GroovyScriptTest() {
             writer.writeln(text)
         }
     }
+
     @Test
     fun stageWithWhen() {
         val name = "before".strSingle()
 
         val stage1 = Stage.Steps(
-                name = name,
-                steps = TestStep("hello there"),
-                whenBlock = listOf(
-                        TestWhen("someStatement")))
+            name = name,
+            steps = TestStep("hello there"),
+            whenBlock = listOf(
+                TestWhen("someStatement"),
+            ),
+        )
 
         val rootStage = Stage.Parallel(
-                "root".strSingle(),
-                listOf(stage1))
+            "root".strSingle(),
+            listOf(stage1),
+        )
 
         val expected = """
             stage('root') {

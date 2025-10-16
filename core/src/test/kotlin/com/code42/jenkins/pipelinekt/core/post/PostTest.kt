@@ -3,8 +3,8 @@ package com.code42.jenkins.pipelinekt.core.post
 import com.code42.jenkins.pipelinekt.core.GroovyScriptTest
 import com.code42.jenkins.pipelinekt.core.Post
 import com.code42.jenkins.pipelinekt.core.TestStep
-import kotlin.test.assertEquals
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class PostTest : GroovyScriptTest() {
     @Test fun emptyPost() {
@@ -17,10 +17,10 @@ class PostTest : GroovyScriptTest() {
         val post = Post(always = TestStep("hello"))
         post.toGroovy(writer)
         val expected = "post {\n" +
-                "\talways {\n" +
-                "\t\thello\n" +
-                "\t}\n" +
-                "}\n"
+            "\talways {\n" +
+            "\t\thello\n" +
+            "\t}\n" +
+            "}\n"
         assertEquals(expected, out.toString())
     }
 
@@ -28,10 +28,10 @@ class PostTest : GroovyScriptTest() {
         val post = Post(success = TestStep("hello"))
         post.toGroovy(writer)
         val expected = "post {\n" +
-                "\tsuccess {\n" +
-                "\t\thello\n" +
-                "\t}\n" +
-                "}\n"
+            "\tsuccess {\n" +
+            "\t\thello\n" +
+            "\t}\n" +
+            "}\n"
         assertEquals(expected, out.toString())
     }
 
@@ -39,10 +39,10 @@ class PostTest : GroovyScriptTest() {
         val post = Post(failure = TestStep("hello"))
         post.toGroovy(writer)
         val expected = "post {\n" +
-                "\tfailure {\n" +
-                "\t\thello\n" +
-                "\t}\n" +
-                "}\n"
+            "\tfailure {\n" +
+            "\t\thello\n" +
+            "\t}\n" +
+            "}\n"
         assertEquals(expected, out.toString())
     }
 
@@ -50,10 +50,10 @@ class PostTest : GroovyScriptTest() {
         val post = Post(cleanup = TestStep("hello"))
         post.toGroovy(writer)
         val expected = "post {\n" +
-                "\tcleanup {\n" +
-                "\t\thello\n" +
-                "\t}\n" +
-                "}\n"
+            "\tcleanup {\n" +
+            "\t\thello\n" +
+            "\t}\n" +
+            "}\n"
         assertEquals(expected, out.toString())
     }
 }

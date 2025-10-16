@@ -1,7 +1,7 @@
 package com.code42.jenkins.pipelinekt.core.notifications
 
-import kotlin.test.assertEquals
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class RecipientProviderTest {
     @Test fun hasCulpritsAndRequester() {

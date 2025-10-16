@@ -10,7 +10,7 @@ import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
 data class BooleanParam(
     val defaultValue: kotlin.Boolean,
     val description: Var.Literal.Str,
-    override val name: Var.Literal.Str
+    override val name: Var.Literal.Str,
 ) : Parameter {
     override fun toXml(): String {
         return """

@@ -15,20 +15,23 @@ data class Post(
     val aborted: Step = Void,
     val unsuccessful: Step = Void,
     val unstable: Step = Void,
-    val failure: Step = Void
+    val failure: Step = Void,
 ) : GroovyScript {
 
     override fun toGroovy(writer: GroovyWriter) {
-        if (listOf(always,
-                    success,
-                    cleanup,
-                    changed,
-                    fixed,
-                    regression,
-                    aborted,
-                    unstable,
-                    unstable,
-                    failure).any { !it.isEmpty() }) {
+        if (listOf(
+                always,
+                success,
+                cleanup,
+                changed,
+                fixed,
+                regression,
+                aborted,
+                unstable,
+                unstable,
+                failure,
+            ).any { !it.isEmpty() }
+        ) {
             writer.closure("post") { writer ->
                 toGroovy("success", success, writer)
                 toGroovy("always", always, writer)
@@ -49,16 +52,16 @@ data class Post(
         }
     }
 
-    fun merge(other: Post): Post =
-        this.copy(
-                always = always.andThen(other.always),
-                success = success.andThen(other.success),
-                cleanup = cleanup.andThen(other.cleanup),
-                changed = changed.andThen(other.changed),
-                fixed = fixed.andThen(other.fixed),
-                regression = regression.andThen(other.regression),
-                aborted = aborted.andThen(other.aborted),
-                unsuccessful = unsuccessful.andThen(other.unsuccessful),
-                unstable = unstable.andThen(other.unstable),
-                failure = failure.andThen(other.failure))
+    fun merge(other: Post): Post = this.copy(
+        always = always.andThen(other.always),
+        success = success.andThen(other.success),
+        cleanup = cleanup.andThen(other.cleanup),
+        changed = changed.andThen(other.changed),
+        fixed = fixed.andThen(other.fixed),
+        regression = regression.andThen(other.regression),
+        aborted = aborted.andThen(other.aborted),
+        unsuccessful = unsuccessful.andThen(other.unsuccessful),
+        unstable = unstable.andThen(other.unstable),
+        failure = failure.andThen(other.failure),
+    )
 }

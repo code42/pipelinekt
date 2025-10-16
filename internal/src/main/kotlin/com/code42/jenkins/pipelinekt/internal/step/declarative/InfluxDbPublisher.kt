@@ -11,7 +11,7 @@ data class InfluxDbPublisher(
     val customDataTags: Map<String, Var.Literal.Str> = emptyMap(),
     val customDataMap: Map<String, Map<String, Var>> = emptyMap(),
     val customDataMapTags: Map<String, Map<String, Var.Literal.Str>> = emptyMap(),
-    val customPrefix: Var.Literal.Str? = null
+    val customPrefix: Var.Literal.Str? = null,
 ) : DeclarativeStep, SingletonStep {
     override fun toGroovy(writer: GroovyWriter) {
         writer.writeln("step([")

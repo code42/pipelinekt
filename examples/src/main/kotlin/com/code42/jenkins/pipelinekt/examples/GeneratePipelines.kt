@@ -1,7 +1,7 @@
 package com.code42.jenkins.pipelinekt.examples
 
-import com.code42.jenkins.pipelinekt.dsl.PipelineDsl
 import com.code42.jenkins.pipelinekt.core.generatePipeline
+import com.code42.jenkins.pipelinekt.dsl.PipelineDsl
 fun main() {
     val context = PipelineDsl()
     generatePipeline(context.helloWorldPipeline(), "examples/src/generated/ci/hello.Jenkinsfile")
@@ -11,5 +11,4 @@ fun main() {
     generatePipeline(context.parameterAsEnvironmentVariable(), "examples/src/generated/ci/envVar.Jenkinsfile")
     generatePipeline(context.conditionalPipeline(), "examples/src/generated/ci/conditional.Jenkinsfile")
     generatePipeline(context.dockerPipeline(), "examples/src/generated/ci/docker.Jenkinsfile")
-
 }

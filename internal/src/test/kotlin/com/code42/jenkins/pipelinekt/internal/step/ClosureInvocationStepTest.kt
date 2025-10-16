@@ -7,8 +7,8 @@ import com.code42.jenkins.pipelinekt.core.vars.ext.intVar
 import com.code42.jenkins.pipelinekt.core.vars.ext.strDouble
 import com.code42.jenkins.pipelinekt.core.vars.ext.strSingle
 import com.code42.jenkins.pipelinekt.internal.step.declarative.ClosureInvocation
-import kotlin.test.assertEquals
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class ClosureInvocationStepTest : GroovyScriptTest() {
     @Test

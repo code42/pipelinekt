@@ -13,14 +13,15 @@ fun DslContext<Step>.publishHtml(
     reportName: String,
     allowMissing: Boolean = true,
     alwaysLinkToLastBuild: Boolean = true,
-    keepAll: Boolean = true
-) =
-        publishHtml(reportDir = reportDir.strDouble(),
-                reportFiles = reportFiles.strDouble(),
-                reportName = reportName.strDouble(),
-                allowMissing = allowMissing.boolVar(),
-                alwaysLinkToLastBuild = alwaysLinkToLastBuild.boolVar(),
-                keepAll = keepAll.boolVar())
+    keepAll: Boolean = true,
+) = publishHtml(
+    reportDir = reportDir.strDouble(),
+    reportFiles = reportFiles.strDouble(),
+    reportName = reportName.strDouble(),
+    allowMissing = allowMissing.boolVar(),
+    alwaysLinkToLastBuild = alwaysLinkToLastBuild.boolVar(),
+    keepAll = keepAll.boolVar(),
+)
 
 fun DslContext<Step>.publishHtml(
     reportDir: Var.Literal.Str,
@@ -28,6 +29,14 @@ fun DslContext<Step>.publishHtml(
     reportName: Var.Literal.Str,
     allowMissing: Var.Literal.Bool = true.boolVar(),
     alwaysLinkToLastBuild: Var.Literal.Bool = true.boolVar(),
-    keepAll: Var.Literal.Bool = true.boolVar()
-) =
-        add(PublishHtml(reportDir = reportDir, reportFiles = reportFiles, reportName = reportName, allowMissing = allowMissing, alwaysLinkToLastBuild = alwaysLinkToLastBuild, keepAll = keepAll))
+    keepAll: Var.Literal.Bool = true.boolVar(),
+) = add(
+    PublishHtml(
+        reportDir = reportDir,
+        reportFiles = reportFiles,
+        reportName = reportName,
+        allowMissing = allowMissing,
+        alwaysLinkToLastBuild = alwaysLinkToLastBuild,
+        keepAll = keepAll,
+    ),
+)

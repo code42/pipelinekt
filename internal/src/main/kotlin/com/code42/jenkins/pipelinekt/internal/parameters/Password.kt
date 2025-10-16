@@ -7,7 +7,7 @@ import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
 data class Password(
     val defaultValue: Var.Literal.Str,
     val description: Var.Literal.Str,
-    override val name: Var.Literal.Str
+    override val name: Var.Literal.Str,
 ) : Parameter {
     override fun toXml(): String {
         return """

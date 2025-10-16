@@ -21,13 +21,15 @@ abstract class RTBase : DeclarativeStep, SingletonStep {
         val gson = GsonBuilder().setPrettyPrinting().create()
         val specJSON: String = gson.toJson(spec)
 
-        val rtContent = listOf("${writer.indentStr}serverID: ${serverID.toGroovy()}",
-                (buildName?.let { "buildName: ${it.toGroovy()}" }),
-                (buildNumber?.let { "buildNumber: ${it.toGroovy()}" }),
-                (failNoOp?.let { "faliNoOp: ${it.toGroovy()}" }),
-                (spec?.let { "spec: ${specJSON.multline().toGroovy()}" }),
-                (specPath?.let { "specPath: ${it.toGroovy()}" }))
-                .filterNotNull().joinToString(",\n${writer.indentStr}")
+        val rtContent = listOf(
+            "${writer.indentStr}serverID: ${serverID.toGroovy()}",
+            (buildName?.let { "buildName: ${it.toGroovy()}" }),
+            (buildNumber?.let { "buildNumber: ${it.toGroovy()}" }),
+            (failNoOp?.let { "faliNoOp: ${it.toGroovy()}" }),
+            (spec?.let { "spec: ${specJSON.multline().toGroovy()}" }),
+            (specPath?.let { "specPath: ${it.toGroovy()}" }),
+        )
+            .filterNotNull().joinToString(",\n${writer.indentStr}")
         writer.writeln("$rtCommand (\n${rtContent}\n)")
     }
 }

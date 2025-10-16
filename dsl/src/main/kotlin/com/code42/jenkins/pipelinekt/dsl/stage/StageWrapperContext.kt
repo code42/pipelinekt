@@ -31,27 +31,44 @@ data class StageWrapperContext<I : StageContext>(
     val defaultAgent: SingletonDslContext<Agent>.() -> Unit,
 
     val stageContext: () -> I,
-    val stages: Deque<Stage> = LinkedBlockingDeque()
+    val stages: Deque<Stage> = LinkedBlockingDeque(),
 ) : DslContext<Stage>(items = stages), MethodDsl {
-    fun DslContext<Step>.beforeLocalStage() { beforeLocalStage.invoke(this) }
-    fun DslContext<Step>.afterLocalStage() { afterLocalStage.invoke(this) }
-    fun DslContext<Step>.beforeRemoteStage() { beforeRemoteStage.invoke(this) }
-    fun DslContext<Step>.afterRemoteStage() { afterRemoteStage.invoke(this) }
+    fun DslContext<Step>.beforeLocalStage() {
+        beforeLocalStage.invoke(this)
+    }
+    fun DslContext<Step>.afterLocalStage() {
+        afterLocalStage.invoke(this)
+    }
+    fun DslContext<Step>.beforeRemoteStage() {
+        beforeRemoteStage.invoke(this)
+    }
+    fun DslContext<Step>.afterRemoteStage() {
+        afterRemoteStage.invoke(this)
+    }
 
-    fun PostContext.beforeLocalStagePost() { beforeLocalStagePost.invoke(this) }
-    fun PostContext.afterLocalStagePost() { afterLocalStagePost.invoke(this) }
-    fun PostContext.beforeRemoteStagePost() { beforeRemoteStagePost.invoke(this) }
-    fun PostContext.afterRemoteStagePost() { afterRemoteStagePost.invoke(this) }
+    fun PostContext.beforeLocalStagePost() {
+        beforeLocalStagePost.invoke(this)
+    }
+    fun PostContext.afterLocalStagePost() {
+        afterLocalStagePost.invoke(this)
+    }
+    fun PostContext.beforeRemoteStagePost() {
+        beforeRemoteStagePost.invoke(this)
+    }
+    fun PostContext.afterRemoteStagePost() {
+        afterRemoteStagePost.invoke(this)
+    }
 
-    fun DslContext<StageOption>.remoteStageOptions() { remoteStageOptions.invoke(this) }
+    fun DslContext<StageOption>.remoteStageOptions() {
+        remoteStageOptions.invoke(this)
+    }
 
-    fun SingletonDslContext<Agent>.defaultAgent() { defaultAgent.invoke(this) }
+    fun SingletonDslContext<Agent>.defaultAgent() {
+        defaultAgent.invoke(this)
+    }
 
     // TODO, move remote stage and local stage into stage
-    fun stage(
-        name: String,
-        stageBlock: I.() -> Unit
-    ) {
+    fun stage(name: String, stageBlock: I.() -> Unit) {
         val stageContext = stageContext()
         stageContext.stageBlock()
         val stage = stageContext.toStage(name)
@@ -60,17 +77,19 @@ data class StageWrapperContext<I : StageContext>(
             when (stage) {
                 is Stage.Steps ->
                     stage.copy(
-                            options = getRemoteStageOptions(stage.options),
-                            steps = applyBeforeAndAfterRemoteSteps(name, stage.steps),
-                            post = applyBeforeAndAfterRemotePost(stage.post))
-                    else -> stage
+                        options = getRemoteStageOptions(stage.options),
+                        steps = applyBeforeAndAfterRemoteSteps(name, stage.steps),
+                        post = applyBeforeAndAfterRemotePost(stage.post),
+                    )
+                else -> stage
             }
         } else {
             when (stage) {
                 is Stage.Steps ->
                     stage.copy(
-                            steps = applyBeforeAndAfterLocalSteps(name, stage.steps),
-                            post = applyBeforeAndAfterLocalPost(stage.post))
+                        steps = applyBeforeAndAfterLocalSteps(name, stage.steps),
+                        post = applyBeforeAndAfterLocalPost(stage.post),
+                    )
                 else -> stage
             }
         }
@@ -82,12 +101,12 @@ data class StageWrapperContext<I : StageContext>(
         val context = DslContext<StageOption>()
         context.remoteStageOptions()
         val defaultOptions = context.drainAll()
-                .filter {
+            .filter {
                     defaultOption ->
-                    stageOptions.none { userOption ->
-                        userOption.javaClass == defaultOption.javaClass
-                    }
+                stageOptions.none { userOption ->
+                    userOption.javaClass == defaultOption.javaClass
                 }
+            }
         return stageOptions + defaultOptions
     }
 

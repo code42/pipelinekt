@@ -17,7 +17,11 @@ import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
  * @param label Label to be displayed in the pipeline step view and blue ocean details for the
  *          step instead of the step type. So the view is more meaningful and domain specific instead of technical.
  */
-data class Sh(val script: Var.Literal.Str, val returnStdout: Var.Literal.Bool = false.boolVar(), val label: Var.Literal.Str? = null) : DeclarativeStep, SingletonStep {
+data class Sh(
+    val script: Var.Literal.Str,
+    val returnStdout: Var.Literal.Bool = false.boolVar(),
+    val label: Var.Literal.Str? = null,
+) : DeclarativeStep, SingletonStep {
     override fun toGroovy(writer: GroovyWriter) {
         writer.writeln("sh (script: ${script.toGroovy()}, returnStdout: ${returnStdout.toGroovy()}${labelGroovy()})")
     }

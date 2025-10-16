@@ -20,7 +20,7 @@ open class NestedStageContext(
     val postContext: PostContext = PostContext(),
     val whenContext: DslContext<When> = DslContext(),
     val toolContext: DslContext<Tool> = DslContext(),
-    val optionContext: DslContext<StageOption> = DslContext()
+    val optionContext: DslContext<StageOption> = DslContext(),
 ) : StageContext {
 
     override fun steps(stepBlock: DslContext<Step>.() -> Unit) {
@@ -76,22 +76,24 @@ open class NestedStageContext(
 
         if (sequentialStages.size > 0) {
             return Stage.Sequence(
-                    name.strDouble(),
-                    sequentialStages,
-                    agentContext.drainAll().firstOrNull(),
-                    whenContext.drainAll(),
-                    toolContext.drainAll(),
-                    optionContext.drainAll(),
-                    postContext.toPost())
+                name.strDouble(),
+                sequentialStages,
+                agentContext.drainAll().firstOrNull(),
+                whenContext.drainAll(),
+                toolContext.drainAll(),
+                optionContext.drainAll(),
+                postContext.toPost(),
+            )
         } else {
             return Stage.Steps(
-                    name.strDouble(),
-                    steps.toStep(),
-                    agentContext.drainAll().firstOrNull(),
-                    whenContext.drainAll(),
-                    toolContext.drainAll(),
-                    optionContext.drainAll(),
-                    postContext.toPost())
+                name.strDouble(),
+                steps.toStep(),
+                agentContext.drainAll().firstOrNull(),
+                whenContext.drainAll(),
+                toolContext.drainAll(),
+                optionContext.drainAll(),
+                postContext.toPost(),
+            )
         }
     }
 }

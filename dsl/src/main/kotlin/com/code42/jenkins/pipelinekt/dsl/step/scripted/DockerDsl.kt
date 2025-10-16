@@ -26,21 +26,20 @@ data class DockerVar(val name: String, val context: DslContext<Step>) : Var.Exte
         args: String = "",
         command: String = "",
         containerVariable: Var.Variable = "container".groovyVariable(),
-        steps: DslContext<Step>.() -> Unit
+        steps: DslContext<Step>.() -> Unit,
     ) {
         context.literal(this.name)
-        context.add(Docker.ImageOps.WithRun(args.strDouble(),
+        context.add(
+            Docker.ImageOps.WithRun(
+                args.strDouble(),
                 command.strDouble(),
                 DslContext.into(steps).toStep(),
-                containerVariable))
+                containerVariable,
+            ),
+        )
     }
 
-    fun withRun(
-        args: Literal.Str,
-        command: Literal.Str?,
-        containerVariable: Var.Variable,
-        steps: DslContext<Step>.() -> Unit
-    ) {
+    fun withRun(args: Literal.Str, command: Literal.Str?, containerVariable: Var.Variable, steps: DslContext<Step>.() -> Unit) {
         context.literal(this.name)
         context.add(Docker.ImageOps.WithRun(args, command, DslContext.into(steps).toStep(), containerVariable))
     }
@@ -59,56 +58,32 @@ data class DockerVar(val name: String, val context: DslContext<Step>) : Var.Exte
     }
 }
 
-private fun DslContext<Step>.dockerVar(step: Step): DockerVar =
-        def { add(step) }.let { DockerVar(it.name, this) }
+private fun DslContext<Step>.dockerVar(step: Step): DockerVar = def { add(step) }.let { DockerVar(it.name, this) }
 
-fun DslContext<Step>.dockerBuild(image: Var.Literal.Str, args: Var.Literal.Str = ".".strSingle()): DockerVar =
-        dockerVar(Docker.Build(image, args))
+fun DslContext<Step>.dockerBuild(image: Var.Literal.Str, args: Var.Literal.Str = ".".strSingle()): DockerVar = dockerVar(Docker.Build(image, args))
 
-fun DslContext<Step>.dockerImage(id: Var.Literal.Str): DockerVar =
-        dockerVar(Docker.Image(id))
+fun DslContext<Step>.dockerImage(id: Var.Literal.Str): DockerVar = dockerVar(Docker.Image(id))
 
-fun DslContext<Step>.withDockerRegistry(
-    url: Var.Literal.Str,
-    credentialsId: Var.Literal.Str? = null,
-    steps: DslContext<Step>.() -> Unit
-) {
+fun DslContext<Step>.withDockerRegistry(url: Var.Literal.Str, credentialsId: Var.Literal.Str? = null, steps: DslContext<Step>.() -> Unit) {
     add(Docker.WithRegistry(url, credentialsId, DslContext.into(steps).toStep()))
 }
-fun DslContext<Step>.withDockerServer(
-    url: Var.Literal.Str,
-    credentialsId: Var.Literal.Str? = null,
-    steps: DslContext<Step>.() -> Unit
-) {
+fun DslContext<Step>.withDockerServer(url: Var.Literal.Str, credentialsId: Var.Literal.Str? = null, steps: DslContext<Step>.() -> Unit) {
     add(Docker.WithServer(url, credentialsId, DslContext.into(steps).toStep()))
 }
 fun DslContext<Step>.withDockerTool(toolName: Var.Literal.Str, steps: DslContext<Step>.() -> Unit) {
     add(Docker.WithTool(toolName, DslContext.into(steps).toStep()))
 }
 
-fun DslContext<Step>.dockerBuild(image: String, args: String = "."): DockerVar =
-        dockerVar(Docker.Build(image.strDouble(), args.strDouble()))
+fun DslContext<Step>.dockerBuild(image: String, args: String = "."): DockerVar = dockerVar(Docker.Build(image.strDouble(), args.strDouble()))
 
-fun DslContext<Step>.dockerImage(id: String): DockerVar =
-        dockerVar(Docker.Image(id.strDouble()))
+fun DslContext<Step>.dockerImage(id: String): DockerVar = dockerVar(Docker.Image(id.strDouble()))
 
-fun DslContext<Step>.withDockerRegistry(
-    url: String,
-    credentialsId: String? = null,
-    steps: DslContext<Step>.() -> Unit
-) {
+fun DslContext<Step>.withDockerRegistry(url: String, credentialsId: String? = null, steps: DslContext<Step>.() -> Unit) {
     add(Docker.WithRegistry(url.strDouble(), credentialsId?.let { it.strDouble() }, DslContext.into(steps).toStep()))
 }
-fun DslContext<Step>.withDockerServer(
-    url: String,
-    credentialsId: String? = null,
-    steps: DslContext<Step>.() -> Unit
-) {
+fun DslContext<Step>.withDockerServer(url: String, credentialsId: String? = null, steps: DslContext<Step>.() -> Unit) {
     add(Docker.WithServer(url.strDouble(), credentialsId?.let { it.strDouble() }, DslContext.into(steps).toStep()))
 }
-fun DslContext<Step>.withDockerTool(
-    toolName: String,
-    steps: DslContext<Step>.() -> Unit
-) {
+fun DslContext<Step>.withDockerTool(toolName: String, steps: DslContext<Step>.() -> Unit) {
     add(Docker.WithTool(toolName.strDouble(), DslContext.into(steps).toStep()))
 }

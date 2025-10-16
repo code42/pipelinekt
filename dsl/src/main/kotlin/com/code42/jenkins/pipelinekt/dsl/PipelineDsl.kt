@@ -67,7 +67,7 @@ data class PipelineDsl(
     val remoteStageOptions: DslContext<StageOption>.() -> Unit = { },
     val defaultAgent: SingletonDslContext<Agent>.() -> Unit = { },
     override val pipelineMethodRegistry: PipelineMethodRegistry = PipelineMethodRegistry(),
-    val stages: Deque<Stage> = LinkedBlockingDeque()
+    val stages: Deque<Stage> = LinkedBlockingDeque(),
 ) : MethodDsl {
 
     fun DslContext<Environment>.defaultEnvirontment() {
@@ -98,11 +98,11 @@ data class PipelineDsl(
         prepSteps: DslContext<Step>.() -> Unit = { },
         pipelineBlock: PipelineContext.() -> Unit,
         customWorkspace: String? = null,
-        useMultibranchWorkspace: Boolean = true
+        useMultibranchWorkspace: Boolean = true,
     ): Pipeline {
         val context = PipelineContext(
             topLevelStageContext = topLevelStageWrapperContext(),
-            pipelineMethodRegistry = pipelineMethodRegistry
+            pipelineMethodRegistry = pipelineMethodRegistry,
         )
         context.pipelineBlock()
 
@@ -117,34 +117,33 @@ data class PipelineDsl(
             post = applyBeforeAndAfterPipelinePost(context.postContext.toPost()),
             methods = pipelineMethodRegistry.methods(),
             customWorkspace = customWorkspace,
-            useMultibranchWorkspace = useMultibranchWorkspace
+            useMultibranchWorkspace = useMultibranchWorkspace,
         )
         pipelineMethodRegistry.reset()
         return pipeline
     }
 
-    private fun topLevelStageWrapperContext(): StageWrapperContext<TopLevelStageContext> =
-        StageWrapperContext(
-            pipelineMethodRegistry,
-            beforeLocalStage,
-            afterLocalStage,
-            beforeRemoteStage,
-            afterRemoteStage,
-            beforeLocalStagePost,
-            afterLocalStagePost,
-            beforeRemoteStagePost,
-            afterRemoteStagePost,
-            remoteStageOptions,
-            defaultAgent,
-            {
-                TopLevelStageContext(
-                    parallelStageContext = nestedStageWrapperContext(),
-                    nestedStageContext = nestedStageWrapperContext(),
-                    matrixContext = MatrixContext(nestedStageWrapperContext())
-                )
-            },
-            LinkedBlockingDeque()
-        )
+    private fun topLevelStageWrapperContext(): StageWrapperContext<TopLevelStageContext> = StageWrapperContext(
+        pipelineMethodRegistry,
+        beforeLocalStage,
+        afterLocalStage,
+        beforeRemoteStage,
+        afterRemoteStage,
+        beforeLocalStagePost,
+        afterLocalStagePost,
+        beforeRemoteStagePost,
+        afterRemoteStagePost,
+        remoteStageOptions,
+        defaultAgent,
+        {
+            TopLevelStageContext(
+                parallelStageContext = nestedStageWrapperContext(),
+                nestedStageContext = nestedStageWrapperContext(),
+                matrixContext = MatrixContext(nestedStageWrapperContext()),
+            )
+        },
+        LinkedBlockingDeque(),
+    )
 
     private fun nestedStageWrapperContext(): StageWrapperContext<NestedStageContext> = StageWrapperContext(
         pipelineMethodRegistry,
@@ -159,11 +158,10 @@ data class PipelineDsl(
         remoteStageOptions,
         defaultAgent,
         { NestedStageContext(nestedStageContext = nestedStageWrapperContext()) },
-        LinkedBlockingDeque()
+        LinkedBlockingDeque(),
     )
 
     private fun prepStage(stepsBlock: DslContext<Step>.() -> Unit): List<Stage> {
-
         val prepSteps = DslContext.into<Step> {
             beforePrepSteps()
             stepsBlock()
