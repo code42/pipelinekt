@@ -15,7 +15,7 @@ fun DslContext<Step>.rtUpload(
     buildNumber: String? = null,
     failNoOp: Boolean = false,
     spec: RTSpec? = null,
-    specPath: String? = null
+    specPath: String? = null,
 ) {
     rtUpload(serverId.strDouble(), buildName?.strDouble(), buildNumber?.strDouble(), failNoOp.boolVar(), spec, specPath?.strDouble())
 }
@@ -26,7 +26,7 @@ fun DslContext<Step>.rtUpload(
     buildNumber: Var.Literal.Str? = null,
     failNoOp: Var.Literal.Bool = false.boolVar(),
     spec: RTSpec? = null,
-    specPath: Var.Literal.Str? = null
+    specPath: Var.Literal.Str? = null,
 ) {
     add(RTUpload(serverId, buildName, buildNumber, failNoOp, spec, specPath))
 }
@@ -37,7 +37,7 @@ fun DslContext<Step>.rtDownload(
     buildNumber: String? = null,
     failNoOp: Boolean = false,
     spec: RTSpec? = null,
-    specPath: String? = null
+    specPath: String? = null,
 ) {
     rtDownload(serverId.strDouble(), buildName?.strDouble(), buildNumber?.strDouble(), failNoOp.boolVar(), spec, specPath?.strDouble())
 }
@@ -48,7 +48,7 @@ fun DslContext<Step>.rtDownload(
     buildNumber: Var.Literal.Str? = null,
     failNoOp: Var.Literal.Bool = false.boolVar(),
     spec: RTSpec? = null,
-    specPath: Var.Literal.Str? = null
+    specPath: Var.Literal.Str? = null,
 ) {
     add(RTDownload(serverId, buildName, buildNumber, failNoOp, spec, specPath))
 }

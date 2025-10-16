@@ -23,7 +23,7 @@ open class TopLevelStageContext(
     val postContext: PostContext = PostContext(),
     val whenContext: DslContext<When> = DslContext(),
     val toolContext: DslContext<Tool> = DslContext(),
-    val optionContext: DslContext<StageOption> = DslContext()
+    val optionContext: DslContext<StageOption> = DslContext(),
 ) : StageContext {
 
     override fun steps(stepsBlock: DslContext<Step>.() -> Unit) {
@@ -70,48 +70,51 @@ open class TopLevelStageContext(
 
         if (sequentialStages.size > 0) {
             return Stage.Sequence(
-                    name.strDouble(),
-                    sequentialStages,
-                    agentContext.drainAll().firstOrNull(),
-                    whenContext.drainAll(),
-                    toolContext.drainAll(),
-                    optionContext.drainAll(),
-                    postContext.toPost())
+                name.strDouble(),
+                sequentialStages,
+                agentContext.drainAll().firstOrNull(),
+                whenContext.drainAll(),
+                toolContext.drainAll(),
+                optionContext.drainAll(),
+                postContext.toPost(),
+            )
         } else if (parallelStages.size > 0) {
             return Stage.Parallel(
-                    name.strDouble(),
-                    parallelStages,
-                    agentContext.drainAll().firstOrNull(),
-                    whenContext.drainAll(),
-                    toolContext.drainAll(),
-                    optionContext.drainAll(),
-                    postContext.toPost())
+                name.strDouble(),
+                parallelStages,
+                agentContext.drainAll().firstOrNull(),
+                whenContext.drainAll(),
+                toolContext.drainAll(),
+                optionContext.drainAll(),
+                postContext.toPost(),
+            )
         } else if (matrixStages.isNotEmpty()) {
             return Stage.Matrix(
-                    name.strDouble(),
-                    MatrixBody(
-                            matrixContext.axesContext.drainAll(),
-                            matrixContext.excludesContext.drainAll(),
-                            matrixStages,
-                            matrixContext.agentContext.drainAll().firstOrNull(),
-                            matrixContext.whenContext.drainAll(),
-                            matrixContext.toolContext.drainAll(),
-                            matrixContext.optionContext.drainAll(),
-                            matrixContext.postContext.toPost()
-                    ),
-                    whenContext.drainAll(),
-                    optionContext.drainAll(),
-                    postContext.toPost()
+                name.strDouble(),
+                MatrixBody(
+                    matrixContext.axesContext.drainAll(),
+                    matrixContext.excludesContext.drainAll(),
+                    matrixStages,
+                    matrixContext.agentContext.drainAll().firstOrNull(),
+                    matrixContext.whenContext.drainAll(),
+                    matrixContext.toolContext.drainAll(),
+                    matrixContext.optionContext.drainAll(),
+                    matrixContext.postContext.toPost(),
+                ),
+                whenContext.drainAll(),
+                optionContext.drainAll(),
+                postContext.toPost(),
             )
         } else {
             return Stage.Steps(
-                    name.strDouble(),
-                    steps.toStep(),
-                    agentContext.drainAll().firstOrNull(),
-                    whenContext.drainAll(),
-                    toolContext.drainAll(),
-                    optionContext.drainAll(),
-                    postContext.toPost())
+                name.strDouble(),
+                steps.toStep(),
+                agentContext.drainAll().firstOrNull(),
+                whenContext.drainAll(),
+                toolContext.drainAll(),
+                optionContext.drainAll(),
+                postContext.toPost(),
+            )
         }
     }
 }

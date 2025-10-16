@@ -10,9 +10,12 @@ fun DslContext<Step>.emailExt(
     subject: Var.Literal.Str,
     body: Var.Literal.Str,
     emailRecipients: Var.Literal.Str? = null,
-    recipientProviders: List<RecipientProvider>? = null
-) =
-    add(EmailExt(subject = subject,
-            body = body,
-            emailRecipients = emailRecipients,
-            recipientProviders = recipientProviders))
+    recipientProviders: List<RecipientProvider>? = null,
+) = add(
+    EmailExt(
+        subject = subject,
+        body = body,
+        emailRecipients = emailRecipients,
+        recipientProviders = recipientProviders,
+    ),
+)

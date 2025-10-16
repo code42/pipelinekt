@@ -1,3 +1,5 @@
+@file:Suppress("PackageName")
+
 package com.code42.jenkins.pipelinekt.dsl.`when`
 
 import com.code42.jenkins.pipelinekt.core.Cause
@@ -80,22 +82,20 @@ fun DslContext<When>.changeRequest(changeRequestType: ChangeRequestType, value: 
     changeRequest(changeRequestType, value.strDouble(), comparator)
 }
 
-fun DslContext<When>.changeRequest(
-    changeRequestType: ChangeRequestType,
-    value: Var.Literal.Str,
-    comparator: Comparator
-) {
-    add(when (changeRequestType) {
-        ChangeRequestType.Id -> ChangeRequest.Id(value, comparator)
-        ChangeRequestType.Target -> ChangeRequest.Target(value, comparator)
-        ChangeRequestType.Branch -> ChangeRequest.Branch(value, comparator)
-        ChangeRequestType.Fork -> ChangeRequest.Fork(value, comparator)
-        ChangeRequestType.Url -> ChangeRequest.Url(value, comparator)
-        ChangeRequestType.Title -> ChangeRequest.Title(value, comparator)
-        ChangeRequestType.Author -> ChangeRequest.Author(value, comparator)
-        ChangeRequestType.AuthorDisplayName -> ChangeRequest.AuthorDisplayName(value, comparator)
-        ChangeRequestType.AuthorEmail -> ChangeRequest.AuthorEmail(value, comparator)
-    })
+fun DslContext<When>.changeRequest(changeRequestType: ChangeRequestType, value: Var.Literal.Str, comparator: Comparator) {
+    add(
+        when (changeRequestType) {
+            ChangeRequestType.Id -> ChangeRequest.Id(value, comparator)
+            ChangeRequestType.Target -> ChangeRequest.Target(value, comparator)
+            ChangeRequestType.Branch -> ChangeRequest.Branch(value, comparator)
+            ChangeRequestType.Fork -> ChangeRequest.Fork(value, comparator)
+            ChangeRequestType.Url -> ChangeRequest.Url(value, comparator)
+            ChangeRequestType.Title -> ChangeRequest.Title(value, comparator)
+            ChangeRequestType.Author -> ChangeRequest.Author(value, comparator)
+            ChangeRequestType.AuthorDisplayName -> ChangeRequest.AuthorDisplayName(value, comparator)
+            ChangeRequestType.AuthorEmail -> ChangeRequest.AuthorEmail(value, comparator)
+        },
+    )
 }
 
 fun DslContext<When>.environment(name: String, value: String) {
@@ -114,18 +114,18 @@ fun DslContext<When>.expression(statementBlock: () -> BooleanStatement) {
 
 fun DslContext<When>.not(notBlock: SingletonDslContext<When>.() -> Unit) {
     SingletonDslContext.into(notBlock)
-            ?.let(this::add)
+        ?.let(this::add)
 }
 
 fun DslContext<When>.allOf(allOfBlock: DslContext<When>.() -> Unit) {
     DslContext.into(allOfBlock)
-            ?.let { this.add(AllOf(it)) }
+        ?.let { this.add(AllOf(it)) }
 }
 
 fun DslContext<When>.anyOf(anyOfBlock: DslContext<When>.() -> Unit) {
     DslContext.into(anyOfBlock)
-            .let { AnyOf(it) }
-            .let(this::add)
+        .let { AnyOf(it) }
+        .let(this::add)
 }
 
 fun DslContext<When>.literal(codeBlock: String) {

@@ -16,19 +16,20 @@ data class EmailExt(
     val subject: Var.Literal.Str,
     val body: Var.Literal.Str,
     val emailRecipients: Var.Literal.Str? = null,
-    val recipientProviders: List<RecipientProvider>? = null
+    val recipientProviders: List<RecipientProvider>? = null,
 ) : DeclarativeStep, SingletonStep {
 
     override fun toGroovy(writer: GroovyWriter) {
         val rString = recipientProviders
-                ?.map { it.toGroovy() }
-                ?.joinToString(",")
-                ?.let { "recipientProviders: [$it]" }
+            ?.map { it.toGroovy() }
+            ?.joinToString(",")
+            ?.let { "recipientProviders: [$it]" }
 
-        val emailContent = listOf("${writer.indentStr}subject: ${subject.toGroovy()}",
-                "body: ${body.toGroovy()}",
-                (emailRecipients?.let { "to: ${it.toGroovy()}" }),
-                (rString)
+        val emailContent = listOf(
+            "${writer.indentStr}subject: ${subject.toGroovy()}",
+            "body: ${body.toGroovy()}",
+            (emailRecipients?.let { "to: ${it.toGroovy()}" }),
+            (rString),
         ).filterNotNull().joinToString(",\n${writer.indentStr}")
 
         writer.writeln("emailext (\n${emailContent}\n)")

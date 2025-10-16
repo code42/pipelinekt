@@ -24,7 +24,7 @@ data class RTUpload(
     override val buildNumber: Var.Literal.Str? = null,
     override val failNoOp: Var.Literal.Bool = false.boolVar(),
     override val spec: RTSpec? = null,
-    override val specPath: Var.Literal.Str? = null
+    override val specPath: Var.Literal.Str? = null,
 ) : RTBase(), DeclarativeStep, SingletonStep {
     override val rtCommand = "rtUpload"
 

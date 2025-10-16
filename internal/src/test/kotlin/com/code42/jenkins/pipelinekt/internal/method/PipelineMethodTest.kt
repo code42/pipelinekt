@@ -4,8 +4,8 @@ import com.code42.jenkins.pipelinekt.GroovyScriptTest
 import com.code42.jenkins.pipelinekt.core.method.PipelineMethod
 import com.code42.jenkins.pipelinekt.core.vars.ext.strSingle
 import com.code42.jenkins.pipelinekt.internal.step.declarative.Echo
-import kotlin.test.assertEquals
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class PipelineMethodTest : GroovyScriptTest() {
 
@@ -14,10 +14,10 @@ class PipelineMethodTest : GroovyScriptTest() {
     @Test
     fun method_methodWithNoArgs_ToGroovy() {
         val expected = "def $methodName() {\n" +
-                "\techo 'hello'\n" +
-                "}\n"
+            "\techo 'hello'\n" +
+            "}\n"
         PipelineMethod(methodName, Echo("hello".strSingle()))
-                .toGroovy(writer)
+            .toGroovy(writer)
 
         assertEquals(expected, out.toString())
     }
@@ -27,8 +27,8 @@ class PipelineMethodTest : GroovyScriptTest() {
         val expected = "$methodName()\n"
 
         PipelineMethod
-                .invocation(PipelineMethod(methodName, Echo("hello".strSingle())))
-                .toGroovy(writer)
+            .invocation(PipelineMethod(methodName, Echo("hello".strSingle())))
+            .toGroovy(writer)
 
         assertEquals(expected, out.toString())
     }

@@ -1,3 +1,5 @@
+@file:Suppress("PackageName")
+
 package com.code42.jenkins.pipelinekt.core.`var`
 
 import com.code42.jenkins.pipelinekt.core.vars.Var
@@ -5,8 +7,8 @@ import com.code42.jenkins.pipelinekt.core.vars.ext.groovyVariable
 import com.code42.jenkins.pipelinekt.core.vars.ext.intVar
 import com.code42.jenkins.pipelinekt.core.vars.ext.strDouble
 import com.code42.jenkins.pipelinekt.core.vars.ext.strSingle
-import kotlin.test.assertEquals
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class ClosureInvocationTest {
     @Test fun noArgs_toGroovy() {

@@ -18,10 +18,10 @@ class AgentTest : GroovyScriptTest() {
     @Test fun dockerImageGroovyIsWellFormatted() {
         val image = "myImage".strSingle()
         val expected = "agent {\n" +
-                "\tdocker {\n" +
-                "\t\timage ${image.toGroovy()}\n" +
-                "\t}\n" +
-                "}\n"
+            "\tdocker {\n" +
+            "\t\timage ${image.toGroovy()}\n" +
+            "\t}\n" +
+            "}\n"
         DockerAgent.Image(image).toGroovy(writer)
         assertEquals(expected, out.toString())
     }
@@ -33,30 +33,31 @@ class AgentTest : GroovyScriptTest() {
         val registryUrl = "docker.io/".strSingle()
         val registryCredentialsId = "registry-creds".strSingle()
         val expected = "agent {\n" +
-                "\tdocker {\n" +
-                "\t\timage ${image.toGroovy()}\n" +
-                "\t\targs ${args.toGroovy()}\n" +
-                "\t\tlabel ${label.toGroovy()}\n" +
-                "\t\tregistryUrl ${registryUrl.toGroovy()}\n" +
-                "\t\tregistryCredentialsId ${registryCredentialsId.toGroovy()}\n" +
-                "\t}\n" +
-                "}\n"
+            "\tdocker {\n" +
+            "\t\timage ${image.toGroovy()}\n" +
+            "\t\targs ${args.toGroovy()}\n" +
+            "\t\tlabel ${label.toGroovy()}\n" +
+            "\t\tregistryUrl ${registryUrl.toGroovy()}\n" +
+            "\t\tregistryCredentialsId ${registryCredentialsId.toGroovy()}\n" +
+            "\t}\n" +
+            "}\n"
         DockerAgent.Image(
-                image = image,
-                args = args,
-                label = label,
-                registryUrl = registryUrl,
-                registryCredentialsId = registryCredentialsId).toGroovy(writer)
+            image = image,
+            args = args,
+            label = label,
+            registryUrl = registryUrl,
+            registryCredentialsId = registryCredentialsId,
+        ).toGroovy(writer)
         assertEquals(expected, out.toString())
     }
 
     @Test fun dockerFileGroovyIsWellFormatted() {
         val filename = "build.Dockerfile".strSingle()
         val expected = "agent {\n" +
-                "\tdockerfile {\n" +
-                "\t\tfilename ${filename.toGroovy()}\n" +
-                "\t}\n" +
-                "}\n"
+            "\tdockerfile {\n" +
+            "\t\tfilename ${filename.toGroovy()}\n" +
+            "\t}\n" +
+            "}\n"
         DockerAgent.File(filename).toGroovy(writer)
         assertEquals(expected, out.toString())
     }
@@ -71,24 +72,25 @@ class AgentTest : GroovyScriptTest() {
         val registryCredentialsId = "registry-creds".strSingle()
 
         val expected = "agent {\n" +
-                "\tdockerfile {\n" +
-                "\t\tfilename ${filename.toGroovy()}\n" +
-                "\t\targs ${args.toGroovy()}\n" +
-                "\t\tadditionalBuildArgs ${additionalBuildArgs.toGroovy()}\n" +
-                "\t\tdir ${dir.toGroovy()}\n" +
-                "\t\tlabel ${label.toGroovy()}\n" +
-                "\t\tregistryUrl ${registryUrl.toGroovy()}\n" +
-                "\t\tregistryCredentialsId ${registryCredentialsId.toGroovy()}\n" +
-                "\t}\n" +
-                "}\n"
+            "\tdockerfile {\n" +
+            "\t\tfilename ${filename.toGroovy()}\n" +
+            "\t\targs ${args.toGroovy()}\n" +
+            "\t\tadditionalBuildArgs ${additionalBuildArgs.toGroovy()}\n" +
+            "\t\tdir ${dir.toGroovy()}\n" +
+            "\t\tlabel ${label.toGroovy()}\n" +
+            "\t\tregistryUrl ${registryUrl.toGroovy()}\n" +
+            "\t\tregistryCredentialsId ${registryCredentialsId.toGroovy()}\n" +
+            "\t}\n" +
+            "}\n"
         DockerAgent.File(
-                filename = filename,
-                dir = dir,
-                additionalBuildArgs = additionalBuildArgs,
-                args = args,
-                label = label,
-                registryUrl = registryUrl,
-                registryCredentialsId = registryCredentialsId).toGroovy(writer)
+            filename = filename,
+            dir = dir,
+            additionalBuildArgs = additionalBuildArgs,
+            args = args,
+            label = label,
+            registryUrl = registryUrl,
+            registryCredentialsId = registryCredentialsId,
+        ).toGroovy(writer)
         assertEquals(expected, out.toString())
     }
 

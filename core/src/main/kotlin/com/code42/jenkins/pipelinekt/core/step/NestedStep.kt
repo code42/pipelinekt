@@ -5,8 +5,7 @@ interface NestedStep : Step {
 
     override fun isEmpty(): Boolean = steps.isEmpty()
 
-    override fun contains(other: Step): Boolean =
-            this.equals(other) || this.steps.contains(other)
+    override fun contains(other: Step): Boolean = this.equals(other) || this.steps.contains(other)
 
     override fun any(fn: (Step) -> Boolean): Boolean = fn(this) || steps.any(fn)
 }

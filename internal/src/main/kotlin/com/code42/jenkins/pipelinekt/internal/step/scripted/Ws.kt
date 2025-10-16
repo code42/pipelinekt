@@ -12,18 +12,17 @@ import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
  */
 data class Ws(
     val path: Var.Literal.Str,
-    val steps: Step
+    val steps: Step,
 ) : ScriptedStep {
     override fun scriptedGroovy(writer: GroovyWriter) {
         writer.closure("ws(${path.toGroovy()})") { innerWriter ->
             steps.toGroovy(innerWriter)
         }
     }
-    
+
     override fun isEmpty(): Boolean = steps.isEmpty()
-    
+
     override fun contains(other: Step): Boolean = steps.contains(other)
-    
-    override fun any(fn: (Step) -> Boolean): Boolean = 
-        fn(this) || steps.any(fn)
+
+    override fun any(fn: (Step) -> Boolean): Boolean = fn(this) || steps.any(fn)
 }

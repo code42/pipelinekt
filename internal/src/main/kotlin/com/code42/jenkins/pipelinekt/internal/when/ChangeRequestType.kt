@@ -1,3 +1,5 @@
+@file:Suppress("PackageName")
+
 package com.code42.jenkins.pipelinekt.internal.`when`
 
 sealed class ChangeRequestType {

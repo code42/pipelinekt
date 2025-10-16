@@ -20,8 +20,8 @@ class DockerAgentTest : GroovyScriptTest() {
             ${writer.indentStr.repeat(2)}${step.codeBlock}
             ${writer.indentStr}}
             }
-            
-            """.trimIndent()
+
+        """.trimIndent()
 
         Docker.WithRegistry(url.strSingle(), null, step).toGroovy(writer)
         assertEquals(expected, out.toString())
@@ -38,8 +38,8 @@ class DockerAgentTest : GroovyScriptTest() {
             ${writer.indentStr.repeat(2)}${step.codeBlock}
             ${writer.indentStr}}
             }
-            
-            """.trimIndent()
+
+        """.trimIndent()
 
         Docker.WithRegistry(url.strSingle(), creds.strDouble(), step).toGroovy(writer)
         assertEquals(expected, out.toString())
@@ -55,8 +55,8 @@ class DockerAgentTest : GroovyScriptTest() {
             ${writer.indentStr.repeat(2)}${step.codeBlock}
             ${writer.indentStr}}
             }
-            
-            """.trimIndent()
+
+        """.trimIndent()
 
         Docker.WithServer(url.strSingle(), null, step).toGroovy(writer)
         assertEquals(expected, out.toString())
@@ -73,8 +73,8 @@ class DockerAgentTest : GroovyScriptTest() {
             ${writer.indentStr.repeat(2)}${step.codeBlock}
             ${writer.indentStr}}
             }
-            
-            """.trimIndent()
+
+        """.trimIndent()
 
         Docker.WithServer(url.strSingle(), creds.strDouble(), step).toGroovy(writer)
         assertEquals(expected, out.toString())
@@ -90,8 +90,8 @@ class DockerAgentTest : GroovyScriptTest() {
             ${writer.indentStr.repeat(2)}${step.codeBlock}
             ${writer.indentStr}}
             }
-            
-            """.trimIndent()
+
+        """.trimIndent()
 
         Docker.WithTool(tool.strSingle(), step).toGroovy(writer)
         assertEquals(expected, out.toString())

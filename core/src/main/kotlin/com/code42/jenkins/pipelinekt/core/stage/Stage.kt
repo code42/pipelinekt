@@ -20,6 +20,7 @@ sealed class Stage : GroovyScript {
     abstract val whenBlock: List<When>?
     abstract val tools: List<Tool>
     abstract val options: List<StageOption>
+
     /**
      * Execute stages in parallel
      *
@@ -33,11 +34,10 @@ sealed class Stage : GroovyScript {
         override val whenBlock: List<When> = emptyList(),
         override val tools: List<Tool> = emptyList(),
         override val options: List<StageOption> = emptyList(),
-        override val post: Post = Post()
+        override val post: Post = Post(),
     ) : Stage() {
 
         override fun toGroovy(writer: GroovyWriter) {
-
             writer.closure("stage(${name.toGroovy()})") { writer ->
                 agent?.toGroovy(writer)
 
@@ -65,7 +65,7 @@ sealed class Stage : GroovyScript {
         override val whenBlock: List<When> = emptyList(),
         override val tools: List<Tool> = emptyList(),
         override val options: List<StageOption> = emptyList(),
-        override val post: Post = Post()
+        override val post: Post = Post(),
     ) : Stage() {
 
         override fun toGroovy(writer: GroovyWriter) {
@@ -104,7 +104,7 @@ sealed class Stage : GroovyScript {
         override val whenBlock: List<When> = emptyList(),
         override val tools: List<Tool> = emptyList(),
         override val options: List<StageOption> = emptyList(),
-        override val post: Post = Post()
+        override val post: Post = Post(),
     ) : Stage() {
 
         override fun toGroovy(writer: GroovyWriter) {
@@ -131,7 +131,7 @@ sealed class Stage : GroovyScript {
         val matrixBody: MatrixBody,
         override val whenBlock: List<When> = emptyList(),
         override val options: List<StageOption> = emptyList(),
-        override val post: Post = Post()
+        override val post: Post = Post(),
     ) : Stage() {
         override val agent: Agent? = null
         override val tools: List<Tool> = emptyList()

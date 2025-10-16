@@ -5,14 +5,14 @@ class PipelineMethodRegistry {
     companion object {
         fun validate(newPipelineMethod: PipelineMethod, existingMethods: List<PipelineMethod>) {
             existingMethods.find { existingPipelineMethod -> existingPipelineMethod.name == newPipelineMethod.name }
-                    ?.let { if (it == newPipelineMethod) null else it }
-                    ?.let { throw PipelineMethodError.DuplicateMethod(it, newPipelineMethod) }
+                ?.let { if (it == newPipelineMethod) null else it }
+                ?.let { throw PipelineMethodError.DuplicateMethod(it, newPipelineMethod) }
         }
 
         fun validate(newPipelineMethod: PipelineMethod, existingMethods: Map<String, PipelineMethod>) {
             existingMethods.get(newPipelineMethod.name)
-                    ?.let { if (it == newPipelineMethod) null else it }
-                    ?.let { throw PipelineMethodError.DuplicateMethod(it, newPipelineMethod) }
+                ?.let { if (it == newPipelineMethod) null else it }
+                ?.let { throw PipelineMethodError.DuplicateMethod(it, newPipelineMethod) }
         }
     }
     private val methods: MutableMap<String, PipelineMethod> = mutableMapOf()

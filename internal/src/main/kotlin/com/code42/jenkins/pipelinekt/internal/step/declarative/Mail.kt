@@ -29,10 +29,11 @@ data class Mail(
     val from: Var.Literal.Str = "".strSingle(),
     val replyTo: Var.Literal.Str = "".strSingle(),
     val mimeType: Var.Literal.Str = "".strSingle(),
-    val charset: Var.Literal.Str = "".strSingle()
+    val charset: Var.Literal.Str = "".strSingle(),
 ) : DeclarativeStep, SingletonStep {
     override fun toGroovy(writer: GroovyWriter) {
-        writer.writeln("mail to: ${to.toGroovy()}," +
+        writer.writeln(
+            "mail to: ${to.toGroovy()}," +
                 " subject: ${subject.toGroovy()}," +
                 " body: ${body.toGroovy()}," +
                 " from: ${from.toGroovy()}," +
@@ -40,6 +41,7 @@ data class Mail(
                 " bcc: ${bcc.toGroovy()}," +
                 " replyTo: ${replyTo.toGroovy()}," +
                 " mimeType: ${mimeType.toGroovy()}," +
-                " charset: ${charset.toGroovy()}")
+                " charset: ${charset.toGroovy()}",
+        )
     }
 }

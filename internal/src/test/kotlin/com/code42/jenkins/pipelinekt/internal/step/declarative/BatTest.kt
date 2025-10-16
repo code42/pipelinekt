@@ -3,8 +3,8 @@ package com.code42.jenkins.pipelinekt.internal.step.declarative
 import com.code42.jenkins.pipelinekt.GroovyScriptTest
 import com.code42.jenkins.pipelinekt.core.vars.ext.boolVar
 import com.code42.jenkins.pipelinekt.core.vars.ext.strSingle
-import kotlin.test.assertEquals
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class BatTest : GroovyScriptTest() {
     @Test fun noLabel_toGroovy() {

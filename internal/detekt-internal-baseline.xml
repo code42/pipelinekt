@@ -2,7 +2,7 @@
 <SmellBaseline>
   <Blacklist></Blacklist>
   <Whitelist>
-    <ID>MatchingDeclarationName:GrovyScriptTest.kt$GroovyScriptTest</ID>
+    <ID>MatchingDeclarationName:GroovyScriptTest.kt$GroovyScriptTest</ID>
     <ID>MaxLineLength:ArchiveArtifacts.kt$ArchiveArtifacts$data</ID>
     <ID>MaxLineLength:Bat.kt$Bat$data</ID>
     <ID>MaxLineLength:BooleanParam.kt$BooleanParam$writer.writeln("booleanParam(defaultValue: $defaultValue, description: ${description.toGroovy()}, name: ${name.toGroovy()})")</ID>
@@ -44,6 +44,6 @@
     <ID>MaxLineLength:Text.kt$Text$writer.writeln("text(defaultValue: ${defaultValue.toGroovy()}, description: ${description.toGroovy()}, name: ${name.toGroovy()})")</ID>
     <ID>MaxLineLength:WithCredentials.kt$WithCredentials$data</ID>
     <ID>MaxLineLength:WithCredentials.kt$WithCredentials$writer.closure(listOf("withCredentials([[") + credentials.toGroovy().map { "${writer.indentStr}$it" } + "]])", steps::toGroovy)</ID>
-    <ID>UnnecessaryAbstractClass:GrovyScriptTest.kt$GroovyScriptTest</ID>
+    <ID>UnnecessaryAbstractClass:GroovyScriptTest.kt$GroovyScriptTest</ID>
   </Whitelist>
 </SmellBaseline>

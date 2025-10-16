@@ -10,7 +10,7 @@ import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
 data class If(
     val statement: BooleanStatement,
     val ifTrue: Step,
-    val otherwise: Step? = null
+    val otherwise: Step? = null,
 ) : ScriptedStep, NestedStep {
 
     // I suspect that `steps` is only used by `isEmpty()`, that's why ifTrue and otherwise bodies are concatenated

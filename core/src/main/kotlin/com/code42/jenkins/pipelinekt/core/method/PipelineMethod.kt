@@ -6,7 +6,7 @@ import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
 
 data class PipelineMethod(
     val name: String,
-    val steps: Step
+    val steps: Step,
 ) : GroovyScript {
 
     companion object {

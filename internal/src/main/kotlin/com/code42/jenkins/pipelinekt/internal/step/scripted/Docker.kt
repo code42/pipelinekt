@@ -19,29 +19,20 @@ sealed class Docker : ScriptedStep {
             args: Var.Literal.Str = "".strSingle(),
             command: Var.Literal.Str? = null,
             steps: Step,
-            containerVariable: Var.Variable = "container".groovyVariable()
+            containerVariable: Var.Variable = "container".groovyVariable(),
         ): Step = this.andThen(WithRun(args, command, steps, containerVariable))
 
-        fun run(
-            args: Var.Literal.Str = "".strSingle(),
-            command: Var.Literal.Str = "".strDouble()
-        ): Step = this.andThen(Run(args, command))
+        fun run(args: Var.Literal.Str = "".strSingle(), command: Var.Literal.Str = "".strDouble()): Step = this.andThen(Run(args, command))
 
         fun pull(): Step = this.andThen(Pull)
 
-        fun tag(
-            tagName: Var.Literal.Str? = null,
-            force: Var.Literal.Bool = true.boolVar()
-        ) = this.andThen(Tag(tagName, force))
+        fun tag(tagName: Var.Literal.Str? = null, force: Var.Literal.Bool = true.boolVar()) = this.andThen(Tag(tagName, force))
 
-        fun push(
-            tagName: Var.Literal.Str? = null,
-            force: Var.Literal.Bool = true.boolVar()
-        ) = this.andThen(Push(tagName, force))
+        fun push(tagName: Var.Literal.Str? = null, force: Var.Literal.Bool = true.boolVar()) = this.andThen(Push(tagName, force))
 
         data class Inside(
             val args: Var.Literal.Str = "".strSingle(),
-            override val steps: Step
+            override val steps: Step,
         ) : Docker(), NestedStep {
             override fun scriptedGroovy(writer: GroovyWriter) {
                 writer.inner().closure(".inside(${args.toGroovy()})", steps::toGroovy)
@@ -52,19 +43,20 @@ sealed class Docker : ScriptedStep {
             val args: Var.Literal.Str = "".strSingle(),
             val command: Var.Literal.Str? = "".strDouble(),
             override val steps: Step,
-            val containerVariable: Var.Variable = "container".groovyVariable()
+            val containerVariable: Var.Variable = "container".groovyVariable(),
         ) : Docker(), NestedStep {
             override fun scriptedGroovy(writer: GroovyWriter) {
                 writer.inner().closure(
-                        ".withRun(${args.toGroovy()}${command?.let{", ${it.toGroovy()}"} ?: ""})",
-                        steps::toGroovy,
-                        containerVariable)
+                    ".withRun(${args.toGroovy()}${command?.let{", ${it.toGroovy()}"} ?: ""})",
+                    steps::toGroovy,
+                    containerVariable,
+                )
             }
         }
 
         data class Run(
             val args: Var.Literal.Str = "".strSingle(),
-            val command: Var.Literal.Str = "".strDouble()
+            val command: Var.Literal.Str = "".strDouble(),
         ) : Docker(), SingletonStep {
             override fun scriptedGroovy(writer: GroovyWriter) {
                 writer.inner().writeln(".run(${args.toGroovy()}, ${command.toGroovy()})")
@@ -79,7 +71,7 @@ sealed class Docker : ScriptedStep {
 
         data class Tag(
             val tagName: Var.Literal.Str? = null,
-            val force: Var.Literal.Bool = true.boolVar()
+            val force: Var.Literal.Bool = true.boolVar(),
         ) : Docker(), SingletonStep {
             override fun scriptedGroovy(writer: GroovyWriter) {
                 writer.inner().writeln(".tag(${tagName?.let { "${it.toGroovy()}, ${force.toGroovy()}"} ?: ""})")
@@ -88,7 +80,7 @@ sealed class Docker : ScriptedStep {
 
         data class Push(
             val tagName: Var.Literal.Str? = null,
-            val force: Var.Literal.Bool = true.boolVar()
+            val force: Var.Literal.Bool = true.boolVar(),
         ) : Docker(), SingletonStep {
             override fun scriptedGroovy(writer: GroovyWriter) {
                 writer.inner().writeln(".push(${tagName?.let { "${it.toGroovy()}, ${force.toGroovy()}"} ?: ""})")
@@ -98,7 +90,7 @@ sealed class Docker : ScriptedStep {
 
     data class Build(
         val image: Var.Literal.Str,
-        val args: Var.Literal.Str = ".".strSingle()
+        val args: Var.Literal.Str = ".".strSingle(),
     ) : Docker(), ImageOps, SingletonStep {
         override fun scriptedGroovy(writer: GroovyWriter) {
             writer.writeln("docker.build(${image.toGroovy()}, ${args.toGroovy()})")
@@ -114,24 +106,26 @@ sealed class Docker : ScriptedStep {
     data class WithRegistry(
         val url: Var.Literal.Str,
         val credentialsId: Var.Literal.Str? = null,
-        override val steps: Step
+        override val steps: Step,
     ) : Docker(), NestedStep {
         override fun scriptedGroovy(writer: GroovyWriter) {
             writer.closure(
-                    "docker.withRegistry(${url.toGroovy()}, ${credentialsId?.let {it.toGroovy()} ?: "null"})",
-                    steps::toGroovy)
+                "docker.withRegistry(${url.toGroovy()}, ${credentialsId?.let {it.toGroovy()} ?: "null"})",
+                steps::toGroovy,
+            )
         }
     }
 
     data class WithServer(
         val uri: Var.Literal.Str,
         val credentialsId: Var.Literal.Str? = null,
-        override val steps: Step
+        override val steps: Step,
     ) : Docker(), NestedStep {
         override fun scriptedGroovy(writer: GroovyWriter) {
             writer.closure(
-                    "docker.withServer(${uri.toGroovy()}, ${credentialsId?.let { it.toGroovy() } ?: "null"})",
-                    steps::toGroovy)
+                "docker.withServer(${uri.toGroovy()}, ${credentialsId?.let { it.toGroovy() } ?: "null"})",
+                steps::toGroovy,
+            )
         }
     }
 

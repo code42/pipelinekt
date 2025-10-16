@@ -19,7 +19,7 @@ fun List<GroovyScript>.toGroovy(writer: GroovyWriter) {
 fun Map<out Var, out Var>.toGroovy(writer: GroovyWriter) {
     writer.writeln("[")
     this.map { "${writer.indentStr}${it.key.toGroovy()}: ${it.value.toGroovy()}" }
-            .allButLast { str -> "$str," }
-            .forEach(writer::writeln)
+        .allButLast { str -> "$str," }
+        .forEach(writer::writeln)
     writer.writeln("]")
 }

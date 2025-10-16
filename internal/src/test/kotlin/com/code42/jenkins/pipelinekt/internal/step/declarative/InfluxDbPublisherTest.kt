@@ -5,8 +5,8 @@ import com.code42.jenkins.pipelinekt.core.vars.ext.environmentVar
 import com.code42.jenkins.pipelinekt.core.vars.ext.parameter
 import com.code42.jenkins.pipelinekt.core.vars.ext.strDouble
 import com.code42.jenkins.pipelinekt.core.vars.ext.strSingle
-import kotlin.test.assertEquals
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class InfluxDbPublisherTest : GroovyScriptTest() {
     @Test
@@ -24,7 +24,7 @@ class InfluxDbPublisherTest : GroovyScriptTest() {
             ${indentStr}customDataMap: [:],
             ${indentStr}customDataMapTags: [:]
             ])
-        
+
         """.trimIndent()
         InfluxDbPublisher(target.strSingle()).toGroovy(writer)
         assertEquals(expected, out.toString())
@@ -48,10 +48,12 @@ class InfluxDbPublisherTest : GroovyScriptTest() {
             ${indentStr}customDataMap: [:],
             ${indentStr}customDataMapTags: [:]
             ])
-        
+
         """.trimIndent()
-        InfluxDbPublisher(target = target.strSingle(),
-                customData = customData).toGroovy(writer)
+        InfluxDbPublisher(
+            target = target.strSingle(),
+            customData = customData,
+        ).toGroovy(writer)
         assertEquals(expected, out.toString())
     }
 
@@ -78,11 +80,13 @@ class InfluxDbPublisherTest : GroovyScriptTest() {
             ${indentStr}customDataMap: [:],
             ${indentStr}customDataMapTags: [:]
             ])
-        
+
         """.trimIndent()
-        InfluxDbPublisher(target = target.strSingle(),
-                customData = customData,
-                customDataTags = customTags).toGroovy(writer)
+        InfluxDbPublisher(
+            target = target.strSingle(),
+            customData = customData,
+            customDataTags = customTags,
+        ).toGroovy(writer)
         assertEquals(expected, out.toString())
     }
 
@@ -94,13 +98,14 @@ class InfluxDbPublisherTest : GroovyScriptTest() {
         val customTags = mapOf("myTag" to "customTag".strSingle(), "interpolated" to "${"my_env".environmentVar()}".strDouble())
 
         val customDataMap = mapOf(
-                "m1" to mapOf("f1" to "v1".strSingle()),
-                "m2" to mapOf("f2" to "f2".strSingle(), "env2" to "env1".environmentVar())
+            "m1" to mapOf("f1" to "v1".strSingle()),
+            "m2" to mapOf("f2" to "f2".strSingle(), "env2" to "env1".environmentVar()),
         )
 
         val customDataMapTags = mapOf(
-                "m1" to mapOf("t1" to "v1".strSingle()),
-                "m2" to mapOf("t2" to "f2".strSingle(), "t3" to "${"env1".environmentVar()}".strDouble()))
+            "m1" to mapOf("t1" to "v1".strSingle()),
+            "m2" to mapOf("t2" to "f2".strSingle(), "t3" to "${"env1".environmentVar()}".strDouble()),
+        )
         val expected = """
             step([
             ${indentStr}${'$'}class: 'InfluxDbPublisher',
@@ -127,13 +132,15 @@ class InfluxDbPublisherTest : GroovyScriptTest() {
             ${indentStr.repeat(3)}t2: 'f2',
             ${indentStr.repeat(3)}t3: "${'$'}{env.env1}" ] ]
             ])
-        
+
         """.trimIndent()
-        InfluxDbPublisher(target = target.strSingle(),
-                customData = customData,
-                customDataTags = customTags,
-                customDataMap = customDataMap,
-                customDataMapTags = customDataMapTags).toGroovy(writer)
+        InfluxDbPublisher(
+            target = target.strSingle(),
+            customData = customData,
+            customDataTags = customTags,
+            customDataMap = customDataMap,
+            customDataMapTags = customDataMapTags,
+        ).toGroovy(writer)
         assertEquals(expected, out.toString())
     }
 }

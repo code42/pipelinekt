@@ -9,10 +9,7 @@ import com.code42.jenkins.pipelinekt.dsl.into
 interface MethodDsl {
     val pipelineMethodRegistry: PipelineMethodRegistry
 
-    fun method(
-        name: String,
-        steps: DslContext<Step>.() -> Unit
-    ): PipelineMethod {
+    fun method(name: String, steps: DslContext<Step>.() -> Unit): PipelineMethod {
         val methodSteps = DslContext<Step>().into { steps() }.toStep()
         return PipelineMethod(name, methodSteps)
     }

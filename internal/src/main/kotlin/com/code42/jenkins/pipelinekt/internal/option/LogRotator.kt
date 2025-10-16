@@ -7,7 +7,7 @@ data class LogRotator(
     val numToKeep: Int,
     val daysToKeep: Int,
     val artifactsNumToKeep: Int,
-    val artifactDaysToKeep: Int
+    val artifactDaysToKeep: Int,
 ) : BuildDiscarder {
     override fun toGroovy(writer: GroovyWriter) {
         writer.writeln("buildDiscarder(logRotator(")

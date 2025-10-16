@@ -3,8 +3,8 @@ package com.code42.jenkins.pipelinekt.core.agent
 import com.code42.jenkins.pipelinekt.core.GroovyScriptTest
 import com.code42.jenkins.pipelinekt.core.vars.ext.boolVar
 import com.code42.jenkins.pipelinekt.core.vars.ext.strDouble
-import kotlin.test.assertEquals
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class DockerAgentTest : GroovyScriptTest() {
     @Test
@@ -25,9 +25,15 @@ class DockerAgentTest : GroovyScriptTest() {
 
     @Test
     fun dockerImage_Serializes_allFields() {
-        val agent = DockerAgent.Image("my.image:123".strDouble(), "my args".strDouble(), "mylabel".strDouble(),
-                "custom/worksapce".strDouble(), "https://custom.registry".strDouble(), "reg-creds".strDouble(),
-                false.boolVar())
+        val agent = DockerAgent.Image(
+            "my.image:123".strDouble(),
+            "my args".strDouble(),
+            "mylabel".strDouble(),
+            "custom/worksapce".strDouble(),
+            "https://custom.registry".strDouble(),
+            "reg-creds".strDouble(),
+            false.boolVar(),
+        )
 
         val expected = """
             agent {
@@ -66,15 +72,16 @@ class DockerAgentTest : GroovyScriptTest() {
     @Test
     fun dockerFile_Serializes_allFields() {
         val agent = DockerAgent.File(
-                "agent.Dockerfile".strDouble(),
-                "ci/".strDouble(),
-                "build args".strDouble(),
-                "my args".strDouble(),
-                "mylabel".strDouble(),
-                "custom/worksapce".strDouble(),
-                "https://custom.registry".strDouble(),
-                "reg-creds".strDouble(),
-                false.boolVar())
+            "agent.Dockerfile".strDouble(),
+            "ci/".strDouble(),
+            "build args".strDouble(),
+            "my args".strDouble(),
+            "mylabel".strDouble(),
+            "custom/worksapce".strDouble(),
+            "https://custom.registry".strDouble(),
+            "reg-creds".strDouble(),
+            false.boolVar(),
+        )
 
         val expected = """
             agent {

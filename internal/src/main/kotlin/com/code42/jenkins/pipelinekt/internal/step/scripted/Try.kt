@@ -8,7 +8,7 @@ import com.code42.jenkins.pipelinekt.core.writer.GroovyWriter
 
 data class Try(
     val tryStep: Step,
-    val catchStep: Step? = null
+    val catchStep: Step? = null,
 ) : ScriptedStep, NestedStep {
 
     // I suspect that `steps` is only used by `isEmpty()`, that's why tryStep and catchStep bodies are concatenated

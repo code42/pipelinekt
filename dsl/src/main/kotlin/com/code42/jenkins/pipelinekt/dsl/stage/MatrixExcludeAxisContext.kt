@@ -8,7 +8,7 @@ import java.util.Queue
 import java.util.concurrent.LinkedBlockingQueue
 
 data class MatrixExcludeAxisContext(
-    val excludeAxes: Queue<ExcludeAxis> = LinkedBlockingQueue()
+    val excludeAxes: Queue<ExcludeAxis> = LinkedBlockingQueue(),
 ) : DslContext<ExcludeAxis>(excludeAxes) {
     fun axis(name: String, values: String) {
         axis(name.strDouble(), values.strDouble())

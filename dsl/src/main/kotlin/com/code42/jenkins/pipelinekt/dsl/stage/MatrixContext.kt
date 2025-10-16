@@ -22,7 +22,7 @@ data class MatrixContext(
     val whenContext: DslContext<When> = DslContext(),
     val toolContext: DslContext<Tool> = DslContext(),
     val optionContext: DslContext<StageOption> = DslContext(),
-    val postContext: PostContext = PostContext()
+    val postContext: PostContext = PostContext(),
 ) {
     fun stages(stagesBlock: StageWrapperContext<NestedStageContext>.() -> Unit) {
         nestedStageContext.stagesBlock()

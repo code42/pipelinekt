@@ -34,16 +34,16 @@ data class WithEnv(val envs: Map<String, String> = emptyMap(), override val step
          */
         fun ofVarToVar(envs: Map<Var, Var>, steps: Step): WithEnv {
             val envs = envs
-                    .mapKeys { it.key.interpolated() }
-                    .mapValues { it.value.interpolated() }
+                .mapKeys { it.key.interpolated() }
+                .mapValues { it.value.interpolated() }
             return WithEnv(envs, steps)
         }
     }
 
     override fun toGroovy(writer: GroovyWriter) {
         val envsList = envs
-                .map { (k, v) -> "\t\"$k=${v}\"" }
-                .allButLast { str -> "$str," }
+            .map { (k, v) -> "\t\"$k=${v}\"" }
+            .allButLast { str -> "$str," }
 
         writer.closure(listOf("withEnv([") + envsList + "])", steps::toGroovy)
     }

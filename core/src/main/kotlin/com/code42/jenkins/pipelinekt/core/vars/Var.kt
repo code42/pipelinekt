@@ -20,8 +20,7 @@ sealed class Var {
         }
     }
     data class ClosureInvocation(val name: String, val arguments: List<Var> = emptyList()) : Var() {
-        override fun toGroovy(): String =
-                "$name(${arguments.map { it.toGroovy()}.allButLast { "$it, "}.joinToString("")})"
+        override fun toGroovy(): String = "$name(${arguments.map { it.toGroovy()}.allButLast { "$it, "}.joinToString("")})"
     }
 
     /**

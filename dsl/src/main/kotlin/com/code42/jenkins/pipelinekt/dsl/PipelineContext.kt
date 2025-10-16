@@ -20,7 +20,7 @@ data class PipelineContext(
     val optionContext: DslContext<Option> = DslContext(),
     val topLevelStageContext: StageWrapperContext<TopLevelStageContext>,
     val postContext: PostContext = PostContext(),
-    val pipelineMethodRegistry: PipelineMethodRegistry
+    val pipelineMethodRegistry: PipelineMethodRegistry,
 ) {
 
     fun stages(stagesBlock: StageWrapperContext<TopLevelStageContext>.() -> Unit) {
