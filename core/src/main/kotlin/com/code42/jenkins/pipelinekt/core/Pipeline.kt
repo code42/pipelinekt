@@ -30,16 +30,69 @@ data class Pipeline(
     val customWorkspace: String? = null,
     val useMultibranchWorkspace: Boolean = true,
 ) : GroovyScript {
+
+    /**
+     * Transforms an agent to use customWorkspacePath for multibranch pipelines.
+     */
+    private fun Agent.withMultibranchWorkspace(): Agent {
+        return if (useMultibranchWorkspace || customWorkspace != null) {
+            this.withCustomWorkspaceVariable()
+        } else {
+            this
+        }
+    }
+
+    /**
+     * Recursively transforms stages to use customWorkspacePath for their agents.
+     */
+    private fun Stage.withMultibranchWorkspace(pipeline: Pipeline): Stage {
+        val transformedAgent = this.agent?.withMultibranchWorkspace()
+
+        return when (this) {
+            is Stage.Steps -> this.copy(agent = transformedAgent)
+            is Stage.Parallel -> this.copy(
+                agent = transformedAgent,
+                stages = stages.map { it.withMultibranchWorkspace(pipeline) },
+            )
+            is Stage.Sequence -> this.copy(
+                agent = transformedAgent,
+                stages = stages.map { it.withMultibranchWorkspace(pipeline) },
+            )
+            is Stage.Matrix -> this // Matrix doesn't support agent transformation
+        }
+    }
+
     override fun toGroovy(writer: GroovyWriter) {
         if (methods.isNotEmpty()) {
             methods.toGroovy(writer)
+        }
+
+        // Calculate custom workspace path BEFORE pipeline block for multibranch pipelines
+        // This ensures each branch gets its own workspace to avoid conflicts and
+        // prevent workspace path truncation issues in Jenkins
+        if (customWorkspace != null) {
+            writer.writeln("// Custom workspace specified")
+            writer.writeln("def customWorkspacePath = \"$customWorkspace\"")
+            writer.writeln("")
+        } else if (useMultibranchWorkspace) {
+            writer.writeln("// Calculate custom workspace for multibranch pipelines")
+            writer.writeln("// This prevents workspace path truncation and branch conflicts")
+            writer.writeln("// by using a relative path that includes the sanitized branch name")
+            writer.writeln("def customWorkspacePath = null")
+            writer.writeln("if (env.BRANCH_NAME) {")
+            val innerWriter = writer.inner()
+            innerWriter.writeln("def safeBranch = env.BRANCH_NAME.replaceAll(/[^A-Za-z0-9._-]/, '_')")
+            innerWriter.writeln("customWorkspacePath = \"../\${env.JOB_NAME}-\${safeBranch}\"")
+            writer.writeln("}")
+            writer.writeln("")
         }
 
         writer.closure("pipeline") { writer ->
             if (environment.isNotEmpty()) {
                 writer.closure("environment", environment::toGroovy)
             }
-            agent?.toGroovy(writer)
+            // Transform agent to use customWorkspacePath if multibranch is enabled
+            agent?.withMultibranchWorkspace()?.toGroovy(writer)
             if (tools.isNotEmpty()) {
                 writer.closure("tools", tools::toGroovy)
             }
@@ -85,6 +138,7 @@ data class Pipeline(
                 writer.closure("stages", stages::toGroovy)
                 post.toGroovy(writer)
             }
+            post.toGroovy(writer)
         }
     }
 }
