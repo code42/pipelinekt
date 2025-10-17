@@ -77,13 +77,14 @@ data class Pipeline(
         } else if (useMultibranchWorkspace) {
             writer.writeln("// Calculate custom workspace for multibranch pipelines")
             writer.writeln("// This prevents workspace path truncation and branch conflicts")
-            writer.writeln("// by using a relative path that includes the sanitized branch name")
+            writer.writeln("// by using a relative path that includes the sanitized job name")
             writer.writeln("def customWorkspacePath = null")
             writer.writeln("if (env.BRANCH_NAME) {")
             val innerWriter = writer.inner()
-            innerWriter.writeln("// Replace slashes and other special characters with underscores for safe filesystem paths")
-            innerWriter.writeln("def safeBranch = env.BRANCH_NAME.replaceAll('/', '_').replaceAll(/[^A-Za-z0-9._-]/, '_')")
-            innerWriter.writeln("customWorkspacePath = \"./workspace//\${safeBranch}\"")
+            innerWriter.writeln("// Decode URL-encoded characters (e.g., %2F -> /) from job name and sanitize for safe filesystem paths")
+            innerWriter.writeln("def decodedJobName = java.net.URLDecoder.decode(env.JOB_NAME, 'UTF-8')")
+            innerWriter.writeln("def safeJobName = decodedJobName.replaceAll(/[^A-Za-z0-9._-]/, '_')")
+            innerWriter.writeln("customWorkspacePath = \"./workspace//\${safeJobName}\"")
             writer.writeln("}")
             writer.writeln("")
         }
