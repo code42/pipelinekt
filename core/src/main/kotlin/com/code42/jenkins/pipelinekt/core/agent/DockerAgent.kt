@@ -34,7 +34,6 @@ sealed class DockerAgent : Agent {
         override val registryUrl: Var.Literal.Str? = null,
         override val registryCredentialsId: Var.Literal.Str? = null,
         override val reuseNode: Var.Literal.Bool? = null,
-        override val useCustomWorkspaceVariable: Boolean = false,
     ) : DockerAgent() {
         override fun toGroovy(writer: GroovyWriter) {
             writer.closure("agent") { writer ->
@@ -72,7 +71,6 @@ sealed class DockerAgent : Agent {
         override val registryUrl: Var.Literal.Str? = null,
         override val registryCredentialsId: Var.Literal.Str? = null,
         override val reuseNode: Var.Literal.Bool? = null,
-        override val useCustomWorkspaceVariable: Boolean = false,
     ) : DockerAgent() {
         override fun toGroovy(writer: GroovyWriter) {
             writer.closure("agent") { writer ->
