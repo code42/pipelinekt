@@ -82,7 +82,7 @@ data class Pipeline(
             writer.writeln("if (env.BRANCH_NAME) {")
             val innerWriter = writer.inner()
             innerWriter.writeln("def safeBranch = env.BRANCH_NAME.replaceAll(/[^A-Za-z0-9._-]/, '_')")
-            innerWriter.writeln("customWorkspacePath = \"../\${env.JOB_NAME}-\${safeBranch}\"")
+            innerWriter.writeln("customWorkspacePath = \"./workspace//\${env.JOB_NAME}-\${safeBranch}\"")
             writer.writeln("}")
             writer.writeln("")
         }
