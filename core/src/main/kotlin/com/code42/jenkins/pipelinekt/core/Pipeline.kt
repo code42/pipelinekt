@@ -83,7 +83,7 @@ data class Pipeline(
             val innerWriter = writer.inner()
             innerWriter.writeln("// Replace slashes and other special characters with underscores for safe filesystem paths")
             innerWriter.writeln("def safeBranch = env.BRANCH_NAME.replaceAll('/', '_').replaceAll(/[^A-Za-z0-9._-]/, '_')")
-            innerWriter.writeln("customWorkspacePath = \"./workspace//\${env.JOB_NAME}-\${safeBranch}\"")
+            innerWriter.writeln("customWorkspacePath = \"./workspace//\${safeBranch}\"")
             writer.writeln("}")
             writer.writeln("")
         }
