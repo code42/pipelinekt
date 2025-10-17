@@ -95,10 +95,10 @@ data class PipelineDsl(
     }
 
     fun pipeline(
-        prepSteps: DslContext<Step>.() -> Unit = { },
-        pipelineBlock: PipelineContext.() -> Unit,
         customWorkspace: String? = null,
         useMultibranchWorkspace: Boolean = true,
+        prepSteps: DslContext<Step>.() -> Unit = { },
+        pipelineBlock: PipelineContext.() -> Unit,
     ): Pipeline {
         val context = PipelineContext(
             topLevelStageContext = topLevelStageWrapperContext(),
