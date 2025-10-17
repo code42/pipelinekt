@@ -106,45 +106,11 @@ data class Pipeline(
                 writer.closure("parameters", parameters::toGroovy)
             }
 
-<<<<<<< HEAD
             // For multibranch or custom workspace, agents will reference customWorkspacePath
             // Transform stage agents as well
             val transformedStages = stages.map { it.withMultibranchWorkspace(this) }
             writer.closure("stages") { stageWriter ->
                 transformedStages.toGroovy(stageWriter)
-=======
-            // Handle custom workspace logic
-            if (customWorkspace != null) {
-                // If a specific custom workspace is provided, use it directly
-                writer.writeln("def customPath = \"$customWorkspace\"")
-                writer.closure("ws(customPath)") { wsWriter ->
-                    wsWriter.writeln("checkout scm")
-                    wsWriter.closure("stages", stages::toGroovy)
-                    post.toGroovy(wsWriter)
-                }
-            } else if (useMultibranchWorkspace) {
-                // Check if this is a multibranch pipeline at runtime and use custom workspace if so
-                writer.closure("if (env.BRANCH_NAME)") { ifWriter ->
-                    ifWriter.writeln("// Calculate multibranch-specific workspace path")
-                    ifWriter.writeln("def rootDir = new File(env.WORKSPACE).parentFile.parent")
-                    ifWriter.writeln("def safeBranch = (env.BRANCH_NAME ?: 'unknown').replaceAll(/[^A-Za-z0-9._-]/, '_')")
-                    ifWriter.writeln("def customPath = \"${"\${rootDir}/${"\${env.JOB_NAME}-\${safeBranch}"}"}\"")
-                    ifWriter.closure("ws(customPath)") { wsWriter ->
-                        wsWriter.writeln("checkout scm")
-                        wsWriter.closure("stages", stages::toGroovy)
-                        post.toGroovy(wsWriter)
-                    }
-                }
-                writer.closure("else") { elseWriter ->
-                    elseWriter.writeln("// Not a multibranch pipeline, use default workspace")
-                    elseWriter.closure("stages", stages::toGroovy)
-                    post.toGroovy(elseWriter)
-                }
-            } else {
-                // Regular pipeline without custom workspace
-                writer.closure("stages", stages::toGroovy)
-                post.toGroovy(writer)
->>>>>>> 60cec40220f625018466c6ac02f1433c2fe9a767
             }
             post.toGroovy(writer)
         }
