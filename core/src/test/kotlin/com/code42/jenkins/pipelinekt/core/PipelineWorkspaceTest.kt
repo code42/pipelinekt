@@ -31,13 +31,11 @@ class PipelineWorkspaceTest {
         println(result)
 
         // Verify it contains the runtime check
-        assertTrue(result.contains("if (env.BRANCH_NAME)"), "Should check for BRANCH_NAME")
-        assertTrue(result.contains("def rootDir = new File(env.WORKSPACE).parentFile.parent"))
-        assertTrue(result.contains("def safeBranch = (env.BRANCH_NAME ?: 'unknown').replaceAll(/[^A-Za-z0-9._-]/, '_')"))
-        assertTrue(result.contains("def customPath"))
-        assertTrue(result.contains("ws(customPath)"))
-        assertTrue(result.contains("checkout scm"))
-        assertTrue(result.contains("else {"), "Should have else block for non-multibranch")
+        assertTrue(result.contains("if (env.BRANCH_NAME)"), "Should check for BRANCH_NAME to detect multibranch")
+        assertTrue(result.contains("def decodedJobName = java.net.URLDecoder.decode(env.JOB_NAME, 'UTF-8')"), "Should decode URL-encoded job name")
+        assertTrue(result.contains("def safeJobName = decodedJobName.replaceAll(/[^A-Za-z0-9._-]/, '_')"), "Should sanitize job name")
+        assertTrue(result.contains("customWorkspacePath"), "Should define customWorkspacePath")
+        assertTrue(result.contains("customWorkspace customWorkspacePath"), "Should use customWorkspacePath in agent")
     }
 
     @Test
@@ -61,9 +59,8 @@ class PipelineWorkspaceTest {
         println(result)
 
         // Verify it uses custom workspace directly
-        assertTrue(result.contains("def customPath = \"/my/custom/workspace\""))
-        assertTrue(result.contains("ws(customPath)"))
-        assertTrue(result.contains("checkout scm"))
+        assertTrue(result.contains("def customWorkspacePath = \"/my/custom/workspace\""), "Should define customWorkspacePath with custom value")
+        assertTrue(result.contains("customWorkspace customWorkspacePath"), "Should use customWorkspacePath in agent")
         assertTrue(!result.contains("if (env.BRANCH_NAME)"), "Should NOT check for BRANCH_NAME when custom workspace is set")
     }
 
@@ -87,10 +84,9 @@ class PipelineWorkspaceTest {
         println("\n=== Generated Jenkinsfile with useMultibranchWorkspace=false ===")
         println(result)
 
-        // Verify it doesn't use any workspace wrapping
-        assertTrue(!result.contains("ws("), "Should NOT use ws() wrapper")
-        assertTrue(!result.contains("customPath"), "Should NOT have customPath")
-        assertTrue(!result.contains("checkout scm"), "Should NOT have checkout scm")
+        // Verify it doesn't use any custom workspace logic
+        assertTrue(!result.contains("customWorkspacePath"), "Should NOT have customWorkspacePath")
+        assertTrue(!result.contains("if (env.BRANCH_NAME)"), "Should NOT check for BRANCH_NAME")
         assertTrue(result.contains("stages {"), "Should have stages block directly")
     }
 }
