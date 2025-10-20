@@ -30,10 +30,12 @@ class PipelineWorkspaceTest {
         println("=== Generated Jenkinsfile with useMultibranchWorkspace=true ===")
         println(result)
 
-        // Verify it contains the runtime check
+        // Verify it contains the runtime check and path building logic
         assertTrue(result.contains("if (env.BRANCH_NAME)"), "Should check for BRANCH_NAME to detect multibranch")
-        assertTrue(result.contains("def decodedJobName = java.net.URLDecoder.decode(env.JOB_NAME, 'UTF-8')"), "Should decode URL-encoded job name")
-        assertTrue(result.contains("def safeJobName = decodedJobName.replaceAll(/[^A-Za-z0-9._-]/, '_')"), "Should sanitize job name")
+        assertTrue(result.contains("def rawParts = env.JOB_NAME.tokenize('/')"))
+        assertTrue(result.contains("def decodedLeaf = java.net.URLDecoder.decode(rawLeaf, 'UTF-8')"))
+        assertTrue(result.contains("def safeLeaf = decodedLeaf.replaceAll('/', '_').replaceAll(/[^A-Za-z0-9._-]/, '_')"))
+        assertTrue(result.contains("def safeFolderPath = folderParts.collect { it.replaceAll(/[^A-Za-z0-9._-]/, '_') }.join('/')"))
         assertTrue(result.contains("customWorkspacePath"), "Should define customWorkspacePath")
         assertTrue(result.contains("customWorkspace customWorkspacePath"), "Should use customWorkspacePath in agent")
     }
