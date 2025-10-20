@@ -93,7 +93,9 @@ data class Pipeline(
             innerWriter.writeln("// Sanitize folder parts but keep '/' between them")
             innerWriter.writeln("def safeFolderPath = folderParts.collect { it.replaceAll(/[^A-Za-z0-9._-]/, '_') }.join('/')")
             innerWriter.writeln("")
-            innerWriter.writeln("customWorkspacePath = safeFolderPath ? \"./workspace//\${safeFolderPath}/\${safeLeaf}\" : \"./workspace//\${safeLeaf}\"")
+            innerWriter.writeln(
+                "customWorkspacePath = safeFolderPath ? \"./workspace//\${safeFolderPath}/\${safeLeaf}\" : \"./workspace//\${safeLeaf}\"",
+            )
             writer.writeln("}")
             writer.writeln("")
         }
